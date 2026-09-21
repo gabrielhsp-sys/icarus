@@ -4,6 +4,11 @@ Jogo de plataforma vertical 2.5D inspirado no mito de Ícaro — projeto de Comp
 Python + Panda3D, com cenário 3D real modelado no Blender e importado como GLB.
 
 > Estado: **bootstrap**. Ainda não há jogo jogável. Veja [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
+>
+> **A infraestrutura técnica foi preparada, mas o escopo e o design do jogo ainda não foram
+> aprovados pelo grupo.** Os documentos de design são propostas do Gabriel
+> (`GABRIEL-PROPOSAL`); decisões coletivas ficam em
+> [`docs/GROUP-DECISIONS.md`](docs/GROUP-DECISIONS.md).
 
 ## Requisitos
 

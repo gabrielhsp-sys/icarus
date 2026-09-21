@@ -1,5 +1,16 @@
 # Design técnico
 
+> ## Status misto
+>
+> - **CONFIRMED** — a *stack* abaixo foi instalada e validada localmente em 2026-09-19
+>   (Python 3.12.14, Panda3D 1.10.16, `panda3d-gltf`, `panda3d-simplepbr`, pytest;
+>   `pip check` limpo, imports OK). É fato técnico verificado.
+> - **GABRIEL-PROPOSAL** — a *arquitetura* de pastas e a divisão de módulos são proposta do
+>   Gabriel, ainda não discutidas com o grupo.
+> - **NEEDS-GROUP-APPROVAL** — a stack ser o padrão **do grupo**, o workflow Git/GitHub, a
+>   estratégia para integrantes com pouca experiência em Git e a divisão de responsabilidades
+>   técnicas. Ver [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md).
+
 Status: **inicial**. Descreve a arquitetura planejada; atualizar conforme o código evolui.
 
 ## Stack

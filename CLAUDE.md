@@ -2,6 +2,18 @@
 
 Projeto oficial do jogo Icarus (Python 3.12 + Panda3D). Leia só o que a tarefa pedir.
 
+> ## ⚠️ O design ainda NÃO foi aprovado pelo grupo
+>
+> A infraestrutura técnica foi preparada, mas **escopo e design não foram aprovados**.
+> `GDD.md`, `LEVEL_DESIGN.md`, `ASSETS.md`, `CUTSCENES.md`, `ROADMAP.md` e a arquitetura em
+> `TECHNICAL_DESIGN.md` são **`GABRIEL-PROPOSAL`** — ideias do Gabriel, não decisões coletivas.
+>
+> Não trate nada desses documentos como escopo fechado e não escreva código de gameplay
+> assumindo que estão aprovados. Decisões reais do grupo ficam em `docs/GROUP-DECISIONS.md`.
+>
+> Categorias: **CONFIRMED** (decidido ou tecnicamente validado) · **GABRIEL-PROPOSAL**
+> (proposta do Gabriel) · **NEEDS-GROUP-APPROVAL** (depende do grupo).
+
 ## Onde está cada coisa
 
 - estado atual e próximos passos: `docs/CURRENT_STATE.md`, `docs/TODO.md`, `docs/ROADMAP.md`
@@ -10,13 +22,15 @@ Projeto oficial do jogo Icarus (Python 3.12 + Panda3D). Leia só o que a tarefa 
 - assets e cutscenes: `docs/ASSETS.md`, `docs/CUTSCENES.md`
 - Blender → GLB → Panda3D: `docs/ASSET_PIPELINE.md`
 - arquitetura do código: `docs/TECHNICAL_DESIGN.md`
-- decisões: `docs/DECISIONS.md` (registre decisões novas aqui)
+- decisões técnicas/infra: `docs/DECISIONS.md` (registre decisões novas aqui)
+- **decisões do grupo: `docs/GROUP-DECISIONS.md`** — só ali algo vira decisão coletiva
 - procedência dos docs: `docs/SOURCES.md`
 - `docs/archive/` é histórico: consultar, não seguir como regra
 
 ## Regras
 
-1. Ordem de produção: física → graybox de Creta → teste → graybox das 5 regiões → arte. Não pular para arte final.
+0. **Nada de design é decisão.** Escopo, gameplay, mecânicas, fases, arte, divisão de tarefas, workflow Git e cronograma dependem do grupo. Se uma tarefa exigir uma dessas definições, parar e dizer que falta decisão do grupo — não escolher pelo grupo.
+1. Ordem de produção: física → graybox de Creta → teste → graybox das 5 regiões → arte. Não pular para arte final. *(proposta, ver `docs/ROADMAP.md`)*
 2. Valores de física, distâncias e temperatura são tuning: implementar, jogar, ajustar. Não inventar números "finais" nos docs.
 3. Binários (`*.blend`, `*.glb`, `*.png`, `*.wav`, `*.ogg`) só via Git LFS. Nunca commitar `.blend1`, renders ou `.venv`.
 4. Não instalar pacotes de sistema, skills, MCPs ou serviços; não criar remoto, fazer push, autenticar ou gastar dinheiro sem pedido explícito. Dependências Python só no `.venv` do projeto e registradas nos `requirements*.txt`.

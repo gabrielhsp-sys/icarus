@@ -1,14 +1,26 @@
 # Roadmap
 
+> ## ⚠️ GABRIEL-PROPOSAL · NEEDS-GROUP-APPROVAL
+>
+> Esta ordem de produção é **proposta do Gabriel**, derivada de `docs/LEVEL_DESIGN.md` §24 — que
+> também é proposta. **Não** é cronograma aprovado.
+>
+> Faltam ao grupo: escopo final, quais fases entram, o que é entregável, prazos e quem faz o quê.
+> Não há datas aqui **de propósito**: inventar cronograma antes da reunião seria fabricar
+> compromisso que ninguém assumiu. Ver [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md).
+>
+> **Exceção — CONFIRMED:** os itens 1 e 2 da Fase 0 são infraestrutura local já executada ou em
+> execução pelo Gabriel, sem impacto no design. O item 4 (remoto e CI) depende do grupo.
+
 Ordem de produção (de `docs/LEVEL_DESIGN.md` §24, detalhada com o handoff histórico).
 Uma etapa só começa quando a anterior está validada.
 
 ## Fase 0 — Ambiente e pipeline
 
-1. ambiente Python 3.12 reproduzível (`.venv` + `requirements-dev.txt`)
-2. teste de fumaça: janela abre com câmera ortográfica
-3. teste de pipeline Blender → GLB → Panda3D **com material** e regras de `docs/ASSET_PIPELINE.md`
-4. CI mínimo (sintaxe + testes) e remoto privado `icarus`
+1. ambiente Python 3.12 reproduzível (`.venv` + `requirements-dev.txt`) — **CONFIRMED** (feito e validado em 2026-09-19)
+2. teste de fumaça: janela abre com câmera ortográfica — **CONFIRMED** como tarefa técnica; ainda pendente
+3. teste de pipeline Blender → GLB → Panda3D **com material** e regras de `docs/ASSET_PIPELINE.md` — **CONFIRMED** como tarefa técnica; ainda pendente
+4. CI mínimo (sintaxe + testes) e remoto privado `icarus` — **NEEDS-GROUP-APPROVAL** (workflow Git/GitHub do grupo ainda não definido)
 
 ## Fase 1 — Física e controle
 

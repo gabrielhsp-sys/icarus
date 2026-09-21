@@ -1,7 +1,20 @@
 # Icarus — Cutscenes e Trailer
 
-> Documento de pré-produção.
-> As cenas finais ainda poderão mudar durante a produção.
+> ## ⚠️ GABRIEL-PROPOSAL · NEEDS-GROUP-APPROVAL
+>
+> Este documento nasceu das **ideias e suposições do Gabriel**. Ele **não** representa decisão
+> aprovada pelo grupo, e nada aqui deve ser tratado como escopo fechado.
+>
+> Continuam **não definidos coletivamente**: escopo final, gameplay, mecânicas, fases, arte final,
+> divisão de tarefas, responsáveis, workflow Git/GitHub, cronograma e entregáveis.
+> O grupo sabe apenas que o projeto será dividido entre os integrantes; a divisão concreta
+> ainda será discutida.
+>
+> O conteúdo criativo abaixo foi **preservado integralmente** — só o *status* mudou.
+> Decisões reais do grupo entram em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md).
+
+> _Texto original preservado:_ "Documento de pré-produção. As cenas finais ainda poderão mudar
+> durante a produção."
 
 # 1. Objetivo das Cutscenes
 

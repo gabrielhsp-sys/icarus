@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-09-21 — status documental corrigido: design é proposta, não decisão
+
+- `GDD.md`, `LEVEL_DESIGN.md`, `ASSETS.md`, `CUTSCENES.md`, `ROADMAP.md` e `TECHNICAL_DESIGN.md`
+  marcados como `GABRIEL-PROPOSAL` / `NEEDS-GROUP-APPROVAL`. **Nenhuma ideia foi apagada**;
+  o conteúdo criativo ficou intacto e só o status mudou
+- `DECISIONS.md`: legenda das três categorias, classificação de ICR-001…ICR-011 e novas entradas
+  ICR-012…ICR-015 (a tabela antiga não foi reescrita, conforme a regra do arquivo)
+- `CURRENT_STATE.md`: deixa explícito que a infraestrutura foi preparada mas o escopo e o design
+  não foram aprovados pelo grupo; separa o que é técnico do que depende do grupo
+- novo `GROUP-DECISIONS.md`, com as seções vazias — nada foi preenchido por suposição
+- `CLAUDE.md`, `README.md` e `TODO.md` atualizados para não induzir uma sessão futura a tratar
+  proposta como escopo fechado
+- nenhum código alterado; nenhum laboratório tocado
+
 ## 2026-09-19 — ambiente Python 3.12 validado
 
 - Python 3.12.14 (pacote Fedora `python3.12`) e `.venv` local criados

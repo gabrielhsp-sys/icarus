@@ -1,8 +1,22 @@
 # Estado atual
 
-Atualizado em: 2026-09-19
+Atualizado em: 2026-09-21
 
-## O que existe
+> ## A infraestrutura técnica foi preparada, mas o escopo e o design do jogo ainda não foram aprovados pelo grupo.
+>
+> O que está pronto é **ambiente, repositório e esqueleto de código** — verificado localmente.
+> Tudo que é **design** (GDD, level design, assets, cutscenes, roadmap, arquitetura) é
+> `GABRIEL-PROPOSAL` e depende de discussão coletiva.
+>
+> Ainda **não** foram definidos com o grupo: escopo final, gameplay, mecânicas, fases, arte final,
+> divisão de tarefas, responsáveis por programação/Blender/animação/level design/UI/áudio/
+> documentação/testes, workflow Git/GitHub, estratégia para integrantes com pouca experiência em
+> Git, cronograma e entregáveis finais.
+>
+> O grupo sabe apenas que o projeto será dividido entre os integrantes. A divisão concreta ainda
+> será discutida. Ver [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md).
+
+## O que existe — CONFIRMED (verificado localmente)
 
 - repositório Git local (`main`), sem remoto
 - Git LFS configurado para `*.blend`, `*.glb`, `*.png`, `*.wav`, `*.ogg` (nenhum binário versionado ainda)
@@ -16,12 +30,27 @@ Atualizado em: 2026-09-19
   - todos os módulos do projeto compilam e importam sem erro (sem abrir janela)
   - ainda não há testes: `pytest` não coleta nada
 
-## O que ainda NÃO existe / não foi testado
+## O que ainda NÃO existe / não foi testado — técnico
 
 - o esqueleto nunca abriu janela (teste de fumaça pendente)
 - física, controlador, graybox
 - teste de pipeline com material
-- CI e remoto GitHub
+- CI e remoto GitHub (também depende do grupo — ICR-014)
+
+## O que ainda NÃO foi decidido — NEEDS-GROUP-APPROVAL
+
+Nada disto tem resposta hoje, e **nenhuma resposta foi inventada** nos documentos:
+
+- escopo final do jogo e o que conta como entregável
+- gameplay, mecânicas e fases
+- arte final e direção visual
+- divisão de tarefas e quem responde por programação, Blender, animação, level design, UI,
+  áudio, documentação e testes
+- workflow Git/GitHub do grupo
+- estratégia para integrantes com pouca experiência em Git
+- cronograma
+
+O grupo sabe apenas que o projeto será dividido entre os integrantes.
 
 ## Laboratórios de referência (não alterar)
 

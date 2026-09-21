@@ -1,8 +1,25 @@
 # Icarus — Level Design Final v1
 
-> Status: **fechado para iniciar implementação**.
+> ## ⚠️ GABRIEL-PROPOSAL · NEEDS-GROUP-APPROVAL
 >
-> Este documento congela as decisões de level design. Valores numéricos de física, distância, velocidade e temperatura continuam sendo parâmetros de tuning e serão definidos por playtest no graybox.
+> Este documento nasceu das **ideias e suposições do Gabriel**. Ele **não** representa decisão
+> aprovada pelo grupo, e nada aqui deve ser tratado como escopo fechado.
+>
+> Continuam **não definidos coletivamente**: escopo final, gameplay, mecânicas, fases, arte final,
+> divisão de tarefas, responsáveis, workflow Git/GitHub, cronograma e entregáveis.
+> O grupo sabe apenas que o projeto será dividido entre os integrantes; a divisão concreta
+> ainda será discutida.
+>
+> O conteúdo criativo abaixo foi **preservado integralmente** — só o *status* mudou.
+> Decisões reais do grupo entram em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md).
+
+> **Correção de status (2026-09-21).** O título e a linha abaixo dizem "Final v1" e "fechado para
+> iniciar implementação". Isso descreve o quanto a **proposta do Gabriel** amadureceu, **não**
+> aprovação do grupo. Nenhuma decisão de level design foi ratificada coletivamente.
+>
+> _Texto original preservado:_ "Status: **fechado para iniciar implementação**. Este documento
+> congela as decisões de level design. Valores numéricos de física, distância, velocidade e
+> temperatura continuam sendo parâmetros de tuning e serão definidos por playtest no graybox."
 
 # 1. Visão do level design
 
