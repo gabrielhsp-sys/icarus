@@ -5,7 +5,8 @@ pedir.
 
 ## Onde está cada coisa
 
-- escopo do jogo (fonte única): `docs/GROUP_SCOPE.md` — transcrição fiel; não editar o texto do grupo
+- escopo do jogo: `docs/GROUP_SCOPE.md` e o complemento `docs/GROUP_SCOPE_COMPLEMENT.md`, que vale
+  onde os dois diferem — transcrições fiéis; não editar o texto do grupo
 - o que está decidido e o que está pendente: `docs/GROUP-DECISIONS.md`
 - registro de decisões: `docs/DECISIONS.md` (decisões novas entram no fim)
 - estado atual e mudanças: `docs/CURRENT_STATE.md`, `docs/CHANGELOG.md`
@@ -15,12 +16,15 @@ Rótulos usados nos docs: **DECIDIDO (grupo)** · **PENDENTE (grupo)** · **TÉC
 
 ## Regras
 
-1. O escopo vem só de `GROUP_SCOPE.md` e da seção Decidido de `GROUP-DECISIONS.md`. Se uma tarefa
-   depender de uma pendência (número de fases, final, jump de impulso, flechas e inimigos,
-   controles, **como o 3D entra no jogo** etc.), pare e diga que falta decisão do grupo.
+1. O escopo vem só de `GROUP_SCOPE.md`, `GROUP_SCOPE_COMPLEMENT.md` e da seção Decidido de
+   `GROUP-DECISIONS.md`. Se uma tarefa depender de uma pendência (divisão por pessoa, duração da
+   partida, poderes temporários, o que vem depois da cutscene final, o que acontece quando um
+   inimigo atinge Ícaro, quem revisa e aprova o merge na `main`), pare e diga que falta decisão do
+   grupo.
 2. Use o Godot 4.7.2, a versão fixada pelo grupo; outra versão pode reescrever os arquivos do projeto.
 3. Não decida pelo grupo: mecânicas, fases, arte, divisão de tarefas, workflow Git e cronograma são
-   decisões do grupo. Em particular, não escolha entre 2D e 3D para personagem e plataformas.
+   decisões do grupo. O 3D já está decidido (G-004: Ícaro, plataformas e inimigos em 3D; fundos
+   em 2D); não mude essa divisão.
 4. Valores de física, distâncias e tempos são tuning: implementar, testar, ajustar. Não registrar
    números "finais" nos docs.
 5. Binários (`*.blend`, `*.glb`, `*.png`, `*.wav`, `*.ogg`) só via Git LFS. Nunca commitar
