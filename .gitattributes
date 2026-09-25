@@ -1,12 +1,8 @@
-# Texto: normaliza fim de linha (colegas podem usar Windows)
-* text=auto
-*.py text eol=lf
-*.md text eol=lf
-*.txt text eol=lf
-*.yml text eol=lf
-*.toml text eol=lf
+# Texto: normaliza fim de linha em LF (integrantes podem usar Windows).
+# Cenas, recursos e scripts do Godot são texto e ficam fora do LFS.
+* text=auto eol=lf
 
-# Binários de produção via Git LFS
+# Binários via Git LFS
 *.blend filter=lfs diff=lfs merge=lfs -text
 *.glb filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text

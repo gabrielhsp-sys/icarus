@@ -1,29 +1,25 @@
-# Python
-.venv/
-venv/
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-.coverage
-htmlcov/
+# Godot 4+ specific ignores
+.godot/
+/android/
 
-# Build / distribuição
-build/
-dist/
-*.egg-info/
+# Saídas de exportação (builds do jogo)
+/build/
+/export/
+*.pck
 
 # Blender: backups e arquivos temporários de salvamento
 *.blend1
 *.blend2
 *.blend@
 
-# Saídas geradas (renders, exports temporários)
+# Renders e temporários
 renders/
 tmp/
 *.tmp
 *.log
+
+# Ambientes locais
+.venv/
 
 # Editores / sistema
 .idea/

@@ -1,2 +1,0 @@
-# Runtime do Icarus — Python 3.12 (ver .python-version).
-pygame==2.6.1  # engine atual (provisória); wheels cp312 para Linux, Windows e macOS
