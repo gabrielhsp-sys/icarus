@@ -21,60 +21,92 @@ Regras:
 ### 2026-09-25 — escopo do jogo (G-001)
 
 Fonte: [`GROUP_SCOPE.md`](GROUP_SCOPE.md). Sujeito a alteração. Entra aqui só o que o documento
-afirma sem ambiguidade.
+afirma sem ambiguidade, já com o que o complemento (G-004 a G-011) substituiu.
 
 - jogo de subida vertical por plataformas até o céu
-- derrota ao cair; vitória ao atingir a altura final
+- derrota ao cair. A vitória ao atingir a altura final foi **substituída**: não existe vitória
+  (G-006)
 - salto automático
 - plataformas fixas, móveis e instáveis (que quebram)
-- poderes temporários, incluindo velocidade e altura de salto
+- poderes temporários, incluindo velocidade e altura de salto; a lista final é pendente
 - score pela altura alcançada
-- progressão temática de Terra (Creta) até o Céu, com dificuldade crescente
-- o jogo tem elementos 3D modelados no Blender; o documento descreve uma base 2D em que o 3D
-  complementa o visual dos cenários. Como o 3D entra no jogo é a pendência 7
-- telas: inicial, por fase, HUD, vitória e derrota
+- obstáculos e desafios cada vez mais difíceis
+- cenários de fundo de Terra (Creta) até o Céu. As fases do documento original foram
+  **substituídas**: não há fases, o jogo é contínuo (G-005)
+- telas: inicial, HUD e derrota. A tela de vitória foi **substituída** pela cutscene final
+  (G-006); as "interfaces específicas por fase" do documento original ficaram sem fases a que se
+  referir (G-005)
 - animações: quebra das plataformas, quebra das asas, queda de Ícaro ao errar um salto, efeitos de
   poder temporário
 - sons: plataformas quebrando, pulo, poderes especiais, movimento das asas
-- flechas e inimigos estão no escopo; o comportamento deles é a pendência 4
-- o trabalho se divide em três áreas: Arte, Programação e Design; quem faz cada uma é a pendência 5
+- o trabalho se divide em três áreas: Arte, Programação e Design; quem faz cada uma é pendente
 
 ### 2026-09-25 — engine e linguagem (G-002)
 
-- **Godot 4 + GDScript**, por delegação do grupo. Substitui o trecho do documento de escopo que
-  cita Python e "gamepy". Justificativa em [`DECISIONS.md`](DECISIONS.md#g-002--godot-4--gdscript).
+- **Godot 4 + GDScript**, por delegação do grupo, versão **4.7.2** para todos. Substitui o trecho
+  do documento de escopo que cita Python e "gamepy". Justificativa em
+  [`DECISIONS.md`](DECISIONS.md#g-002--godot-4--gdscript). O complemento do grupo agora também
+  registra essa decisão; os modelos 3D continuam no Blender.
+
+### 2026-09-25 — complemento do grupo (G-004 a G-011)
+
+Fonte: [`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md). Onde difere do documento
+original, vale o complemento.
+
+- **3D (G-004):** Ícaro, as plataformas e os inimigos são objetos 3D; os cenários de fundo são 2D
+- **estrutura contínua (G-005):** não há fases; Ícaro sobe sem parar e o cenário de fundo muda ao
+  longo da subida: Terra/Creta, Cidade, Subida para o céu, Nuvens, Céu
+- **final (G-006):** não existe vitória; ao chegar ao céu, o jogo termina com uma cutscene em que
+  o sol derrete as asas e Ícaro cai. Derrota: Ícaro cai das plataformas durante a subida
+- **jump de impulso (G-007):** é uma plataforma do tipo pula-pula
+- **flechas e inimigos (G-008):** Ícaro atira flechas com o clique do mouse; inimigo atingido
+  morre ou sai da tela
+- **controles (G-009):** A e D movem Ícaro para os lados; o salto é automático; o clique do mouse
+  dispara as flechas
+- **checkpoint (G-010):** não há checkpoint; a partida dura até chegar ao fim ou perder
+- **organização (G-011):** cada integrante trabalha em uma branch separada no Git, para não quebrar
+  a `main`
+
+### Pendências anteriores resolvidas
+
+| Pendência anterior | Resolução |
+|---|---|
+| engine | Godot 4 + GDScript (G-002) |
+| versão exata do Godot para todos | 4.7.2 (G-002) |
+| fases × cenários | não há fases; 5 cenários de fundo ao longo da subida (G-005) |
+| final: cutscene ou derrota | cutscene; não existe vitória (G-006) |
+| "jump de impulso" | plataforma pula-pula (G-007) |
+| flechas e inimigos | G-008; o dano a Ícaro continua pendente (item 5 abaixo) |
+| checkpoints e controles | G-010 e G-009; duração e poderes continuam pendentes (itens 2 e 3) |
+| como os elementos 3D entram no jogo | G-004 |
+| modelo de branches | uma branch por integrante (G-011); o merge na `main` continua pendente (item 6) |
 
 ## Pendente
 
-1. [ ] **Fases × cenários**: o documento cita 5 temas, "quatro fases principais" e 5 cenários de
-       fundo. Quantas fases existem? Fase e cenário são a mesma coisa?
-2. [ ] **Final**: a queda de Ícaro pelo sol é uma cutscene depois da vitória ou é uma derrota?
-3. [ ] **"Jump de impulso"**: o que é, e como convive com o salto automático?
-4. [ ] **Flechas e inimigos**: quem dispara, contra quem, e como isso afeta vitória e derrota?
-5. [ ] **Divisão por pessoa**: quem faz Arte, Programação e Design.
-6. [ ] **Checkpoints, duração, poderes e controles**: o documento não trata; falta a lista final de
-       poderes e o esquema de controles.
-7. [ ] **Como os elementos 3D entram no jogo**: personagem e plataformas em 3D com câmera lateral,
-       ou 3D só nos cenários?
+O que o próprio grupo listou como "Ainda em aberto" no complemento:
 
-Resolvidas:
+1. [ ] **Divisão das tarefas por pessoa.**
+2. [ ] **Duração da partida.**
+3. [ ] **Quais são os poderes temporários.**
+4. [ ] **O que aparece depois da cutscene final** (ex.: tela com o score).
+5. [ ] **O que acontece quando um inimigo atinge Ícaro.**
+6. [ ] **Como as branches são juntadas na `main`** (quem revisa e aprova).
 
-- **engine** — Godot 4 + GDScript (G-002, 2026-09-25)
-- **versão exata do Godot para todos** — **4.7.2** (G-002, 2026-09-25)
+## Para levar ao grupo
 
-### Organização do trabalho — pendente
+Pontos técnicos de organização que o grupo ainda não discutiu. Não são decisões nem pendências
+registradas pelo grupo; ficam aqui para não se perderem.
 
-- [ ] licença do repositório
-- [ ] colaboradores do GitHub e permissões
-- [ ] modelo de branches; proteção da `main`; pull request e revisão obrigatórios
-- [ ] CI (validação automática no GitHub)
-- [ ] padrão de mensagens de commit
-- [x] versão exata do Godot para todos: **4.7.2** (resolvida em 2026-09-25)
-- [ ] versão do Blender usada pelo grupo
-- [ ] como evitar conflito em arquivo binário (`.blend` não tem merge) e em cenas `.tscn` editadas
-      por duas pessoas ao mesmo tempo
-- [ ] apoio a quem tem pouca experiência com Git
-- [ ] entregáveis e cronograma
+- licença do repositório
+- colaboradores do GitHub e permissões
+- proteção da `main` no GitHub (depende do item 6 acima)
+- CI (validação automática no GitHub)
+- padrão de mensagens de commit
+- versão do Blender usada pelo grupo
+- como evitar conflito em arquivo binário (`.blend` não tem merge) e em cenas `.tscn` editadas
+  por duas pessoas ao mesmo tempo
+- apoio a quem tem pouca experiência com Git
+- entregáveis e cronograma
 
 ## Próxima reunião
 
