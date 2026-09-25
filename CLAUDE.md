@@ -1,40 +1,41 @@
-# Icarus — roteador para Claude
+# Icarus — instruções para agentes
 
-Projeto oficial do jogo Icarus (Python 3.12 — engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel). Leia só o que a tarefa pedir.
-
-> ## ⚠️ O design ainda NÃO foi aprovado pelo grupo
->
-> A infraestrutura técnica foi preparada, mas **escopo e design não foram aprovados**.
-> `GDD.md`, `LEVEL_DESIGN.md`, `ASSETS.md`, `CUTSCENES.md`, `ROADMAP.md` e a arquitetura em
-> `TECHNICAL_DESIGN.md` são **`GABRIEL-PROPOSAL`** — ideias do Gabriel, não decisões coletivas.
->
-> Não trate nada desses documentos como escopo fechado e não escreva código de gameplay
-> assumindo que estão aprovados. Decisões reais do grupo ficam em `docs/GROUP-DECISIONS.md`.
->
-> Categorias: **CONFIRMED** (decidido ou tecnicamente validado) · **GABRIEL-PROPOSAL**
-> (proposta do Gabriel) · **NEEDS-GROUP-APPROVAL** (depende do grupo).
+Jogo do grupo em Python 3.12 com pygame (engine atual, provisória). Leia só o que a tarefa pedir.
 
 ## Onde está cada coisa
 
-- estado atual e próximos passos: `docs/CURRENT_STATE.md`, `docs/TODO.md`, `docs/ROADMAP.md`
-- visão do jogo: `docs/GDD.md`
-- level design **vigente**: `docs/LEVEL_DESIGN.md` (prevalece sobre qualquer outro doc de níveis)
-- assets e cutscenes: `docs/ASSETS.md`, `docs/CUTSCENES.md`
-- pipeline Blender → GLB → Panda3D (GABRIEL-PROPOSAL; engine pendente — ICR-016, pendência 4): `docs/ASSET_PIPELINE.md`
-- arquitetura do código: `docs/TECHNICAL_DESIGN.md`
-- decisões técnicas/infra: `docs/DECISIONS.md` (registre decisões novas aqui)
-- **decisões do grupo: `docs/GROUP-DECISIONS.md`** — só ali algo vira decisão coletiva
-- escopo aprovado pelo grupo (transcrição fiel, 2026-09-25): `docs/GROUP_SCOPE.md`
-- procedência dos docs: `docs/SOURCES.md`
-- `docs/archive/` é histórico: consultar, não seguir como regra
+- escopo do jogo (fonte única): `docs/GROUP_SCOPE.md`
+- o que está decidido e o que está pendente: `docs/GROUP-DECISIONS.md`
+- registro de decisões: `docs/DECISIONS.md` (decisões novas entram no fim)
+- estado atual e mudanças: `docs/CURRENT_STATE.md`, `docs/CHANGELOG.md`
+- instalação, execução e estrutura: `README.md`
+
+Rótulos usados nos docs: **DECIDIDO (grupo)** · **PENDENTE (grupo)** · **TÉCNICO (verificado)**.
 
 ## Regras
 
-0. **Nada de design é decisão.** Escopo, gameplay, mecânicas, fases, arte, divisão de tarefas, workflow Git e cronograma dependem do grupo. Se uma tarefa exigir uma dessas definições, parar e dizer que falta decisão do grupo — não escolher pelo grupo.
-1. Ordem de produção: física → graybox de Creta → teste → graybox das 5 regiões → arte. Não pular para arte final. *(proposta, ver `docs/ROADMAP.md`)*
-2. Valores de física, distâncias e temperatura são tuning: implementar, jogar, ajustar. Não inventar números "finais" nos docs.
-3. Binários (`*.blend`, `*.glb`, `*.png`, `*.wav`, `*.ogg`) só via Git LFS. Nunca commitar `.blend1`, renders ou `.venv`.
-4. Não instalar pacotes de sistema, skills, MCPs ou serviços; não criar remoto, fazer push, autenticar ou gastar dinheiro sem pedido explícito. Dependências Python só no `.venv` do projeto e registradas nos `requirements*.txt`.
-5. `~/Dev/tests/icarus-lab` e `~/Dev/tests/icarus-blender-test` são laboratórios históricos: consultar, nunca alterar.
-6. `docs/archive/CLAUDE_ICARUS_START_HERE.md` é referência histórica; sua política antiga de autonomia/instalação **não** vale.
-7. Ao fim de uma sessão relevante, atualize `docs/CURRENT_STATE.md` e `docs/CHANGELOG.md`.
+1. O escopo vem só de `GROUP_SCOPE.md` e da seção Decidido de `GROUP-DECISIONS.md`. Se uma tarefa
+   depender de uma pendência (número de fases, final, jump de impulso, flechas e inimigos,
+   integração dos elementos 3D, controles etc.), pare e diga que falta decisão do grupo.
+2. Não decida pelo grupo: mecânicas, fases, arte, divisão de tarefas, workflow Git e cronograma são
+   decisões do grupo.
+3. Valores de física, distâncias e tempos são tuning: implementar, testar, ajustar. Não registrar
+   números "finais" nos docs.
+4. Binários (`*.blend`, `*.glb`, `*.png`, `*.wav`, `*.ogg`) só via Git LFS. Nunca commitar
+   `.blend1`, renders, `.venv` ou `.env`.
+5. Dependências Python só no `.venv` do projeto, fixadas com `==` em `requirements*.txt`. Não
+   instalar pacotes de sistema nem serviços.
+6. Não criar remoto, fazer push, alterar configurações do GitHub nem reescrever histórico sem pedido
+   explícito.
+7. Antes de concluir uma mudança de código, rode os testes (abaixo).
+8. Ao fim de uma mudança relevante, atualize `docs/CURRENT_STATE.md` e `docs/CHANGELOG.md`.
+
+## Comandos
+
+```bash
+python3.12 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt   # ambiente
+.venv/bin/python main.py                                                    # rodar (ESC fecha)
+.venv/bin/python -m pytest                                                  # testes
+```
+
+Sem tela (CI, terminal remoto): `SDL_VIDEODRIVER=dummy`.
