@@ -34,7 +34,7 @@ o significado está em `docs/GROUP-DECISIONS.md`.
 8. Não instalar pacotes de sistema, plugins ou serviços; não criar remoto, fazer push, alterar
    configurações do GitHub nem reescrever histórico sem pedido explícito.
 9. Trabalhe numa branch e entregue por Pull Request; nunca commite nem faça push direto na `main`
-   (G-011).
+   (G-011). Quem revisa e aprova os Pull Requests: Gabriel e Guilherme Falcucci (G-012).
 10. Antes de concluir uma mudança, rode a validação (abaixo) e exija código de saída 0.
 11. Ao fim de uma mudança relevante, atualize `docs/CURRENT_STATE.md` e `docs/CHANGELOG.md`.
 
