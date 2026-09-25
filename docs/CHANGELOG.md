@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-25 — Godot 4.7.2 fixado e projeto base validado
+
+- versão do projeto fixada em Godot 4.7.2 para todos (README, `DECISIONS.md` G-002,
+  `GROUP-DECISIONS.md`)
+- projeto base validado sem janela no Godot 4.7.2: `--import`, `--quit` e `--check-only` com código 0
+- `scripts/main.gd.uid` gerado pelo Godot e versionado
+
 ## 2026-09-25 — Godot 4 + GDScript
 
 - engine e linguagem decididas por delegação do grupo: Godot 4 + GDScript (`DECISIONS.md` G-002,
@@ -10,7 +17,6 @@
 - `DECISIONS.md` recomeçado; pendência da engine fechada em `GROUP-DECISIONS.md`; a pendência sobre
   o 3D passa a ser "como os elementos 3D entram no jogo"
 - `README.md` e `CLAUDE.md` reescritos
-- validação no Godot pendente: o Godot não estava instalado onde o projeto foi criado
 
 ## 2026-09-25 — repositório reorganizado como projeto do grupo
 
