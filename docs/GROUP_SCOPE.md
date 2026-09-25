@@ -15,6 +15,10 @@
 >
 > O trecho que cita Python e "gamepy" foi substituído por **Godot 4 + GDScript**
 > ([`DECISIONS.md`](DECISIONS.md) G-002); a transcrição abaixo continua como o grupo escreveu.
+>
+> **Complemento (2026-09-25):** o grupo acrescentou ao documento um complemento de decisões,
+> transcrito em [`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md). Onde os dois diferem,
+> vale o complemento.
 
 ## Documento do grupo
 
