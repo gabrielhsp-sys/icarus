@@ -6,6 +6,12 @@
 /build/
 /export/
 *.pck
+*.exe
+*.x86_64
+*.apk
+*.aab
+*.dmg
+/*.zip
 
 # Blender: backups e arquivos temporários de salvamento
 *.blend1
@@ -17,9 +23,6 @@ renders/
 tmp/
 *.tmp
 *.log
-
-# Ambientes locais
-.venv/
 
 # Editores / sistema
 .idea/
