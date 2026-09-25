@@ -5,22 +5,27 @@ Computação Gráfica (UNIFAL-MG).
 
 ## O jogo
 
-O jogador controla Ícaro e sobe pulando de plataforma em plataforma, com saltos automáticos, até
-alcançar o céu. No caminho há plataformas fixas, móveis e instáveis, que quebram ao serem pisadas;
-itens que concedem poderes temporários, como mais velocidade ou mais altura de salto; e obstáculos
-cada vez mais difíceis. O score é a altura alcançada.
+O jogador controla Ícaro e sobe pulando de plataforma em plataforma até alcançar o céu. O salto é
+automático: A e D movem Ícaro para os lados, e o clique do mouse dispara flechas contra os
+inimigos. No caminho há plataformas fixas, móveis e instáveis, que quebram ao serem pisadas;
+plataformas pula-pula; itens que concedem poderes temporários, como mais velocidade ou mais altura
+de salto; e obstáculos cada vez mais difíceis. O score é a altura alcançada.
 
-A subida atravessa fases temáticas, da Terra (Creta) até o Céu, cada uma mais difícil que a
-anterior. Cair das plataformas é derrota; alcançar o céu completa o jogo. O jogo tem elementos 3D
-modelados no Blender.
+Não há fases nem checkpoint: a subida é contínua, e o cenário de fundo muda ao longo dela — Terra
+(Creta), Cidade, Subida para o céu, Nuvens e Céu. Cair das plataformas é derrota. Não existe
+vitória: ao chegar ao céu, o jogo termina com uma cutscene em que o sol derrete as asas e Ícaro
+cai. Ícaro, as plataformas e os inimigos são objetos 3D modelados no Blender; os cenários de fundo
+são 2D.
 
-O escopo completo, como o grupo escreveu, está em [`docs/GROUP_SCOPE.md`](docs/GROUP_SCOPE.md).
+O escopo, como o grupo escreveu, está em [`docs/GROUP_SCOPE.md`](docs/GROUP_SCOPE.md) e no
+complemento [`docs/GROUP_SCOPE_COMPLEMENT.md`](docs/GROUP_SCOPE_COMPLEMENT.md), que vale onde os
+dois diferem.
 
 ## Estado atual
 
 **Projeto base.** O repositório tem um projeto Godot 4.7.2 mínimo: uma cena principal vazia que
-fecha com ESC, validada sem janela. Nenhuma mecânica de jogo foi implementada, e ainda não está decidido como os elementos 3D
-entram no jogo. Detalhes em [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
+fecha com ESC, validada sem janela. Nenhuma mecânica de jogo foi implementada. Detalhes em
+[`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 
 ## Stack
 
@@ -84,16 +89,45 @@ ainda está **pendente**.
 | Programação | jump automático; disparo de flechas; score pela altura; tela de vitória ao chegar à altura final; queda de Ícaro ao errar | pendente |
 | Design | design das plataformas, do personagem e dos inimigos; tela inicial; tela final | pendente |
 
+A tabela repete o documento original. A tela de vitória foi substituída pelo complemento: não
+existe vitória, e o jogo termina com a cutscene da queda de Ícaro ([`docs/DECISIONS.md`](docs/DECISIONS.md)
+G-006).
+
+## Como contribuir
+
+O grupo decidiu que cada integrante trabalha na sua própria branch, para não quebrar a `main`
+([`docs/DECISIONS.md`](docs/DECISIONS.md) G-011).
+
+1. Atualize a `main` e crie a sua branch a partir dela:
+
+   ```bash
+   git switch main
+   git pull
+   git switch -c <nome-da-sua-branch>
+   ```
+
+2. Faça commits pequenos na sua branch e envie-a para o GitHub:
+
+   ```bash
+   git push -u origin <nome-da-sua-branch>
+   ```
+
+3. No GitHub, abra um **Pull Request** da sua branch para a `main`.
+
+Não faça push direto na `main`. Quem revisa e aprova os Pull Requests, e como o merge é feito,
+ainda está **pendente** ([Pendências do grupo](docs/GROUP-DECISIONS.md#pendente)).
+
 ## Documentação
 
 | Documento | Conteúdo |
 |---|---|
 | [`docs/GROUP_SCOPE.md`](docs/GROUP_SCOPE.md) | escopo do jogo (transcrição do documento do grupo) |
+| [`docs/GROUP_SCOPE_COMPLEMENT.md`](docs/GROUP_SCOPE_COMPLEMENT.md) | complemento do grupo ao escopo (transcrição); vale onde difere do original |
 | [`docs/GROUP-DECISIONS.md`](docs/GROUP-DECISIONS.md) | o que está decidido e o que está **pendente** |
 | [`docs/DECISIONS.md`](docs/DECISIONS.md) | registro cronológico das decisões |
 | [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) | estado atual do projeto |
 | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) | histórico de mudanças |
 
-As questões em aberto — número de fases, final, jump de impulso, flechas e inimigos, divisão por
-pessoa, como o 3D entra no jogo, entre outras — estão em
-[Pendências do grupo](docs/GROUP-DECISIONS.md#pendente).
+As questões em aberto — divisão das tarefas por pessoa, duração da partida, poderes temporários,
+o que aparece depois da cutscene final, o que acontece quando um inimigo atinge Ícaro e como as
+branches são juntadas na `main` — estão em [Pendências do grupo](docs/GROUP-DECISIONS.md#pendente).
