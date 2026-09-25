@@ -2,34 +2,32 @@
 
 Atualizado em: 2026-09-25
 
-## Escopo
+## Escopo e engine
 
-**DECIDIDO (grupo)** em 2026-09-25, sujeito a alteração: [`GROUP_SCOPE.md`](GROUP_SCOPE.md).
-Resumo do que está decidido e a lista das 8 pendências em
-[`GROUP-DECISIONS.md`](GROUP-DECISIONS.md).
+- escopo: **DECIDIDO (grupo)** em 2026-09-25, sujeito a alteração — [`GROUP_SCOPE.md`](GROUP_SCOPE.md)
+- engine e linguagem: **Godot 4 + GDScript**, DECIDIDO (grupo) por delegação — [`DECISIONS.md`](DECISIONS.md) G-002
+- 7 pendências de escopo e a organização do trabalho em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)
 
-## Código — TÉCNICO (verificado)
+## Projeto — TÉCNICO
 
-- bootstrap mínimo em pygame 2.6.1 (`game/app.py`): janela 1280×720, loop a 60 FPS, fecha com ESC
-  ou pelo botão da janela
-- `tests/test_smoke.py`: abre o bootstrap sem tela (`SDL_VIDEODRIVER=dummy`), roda 10 quadros e
-  confere o código de saída 0; confere também que ESC e o fechamento da janela encerram o jogo
-- `pytest`: 2 testes, todos passando
+- `project.godot`: nome "Icarus", cena principal `res://scenes/main.tscn`
+- `scenes/main.tscn`: nó raiz `Node` (nem 2D nem 3D), com `scripts/main.gd`, que fecha o jogo com ESC
+- pastas `scenes/`, `scripts/`, `assets/models/`, `assets/textures/`, `assets/audio/`
+- `.gitignore` do Godot 4 (`.godot/`, `/android/`, saídas de exportação)
+- Git LFS para `*.blend`, `*.glb`, `*.png`, `*.wav` e `*.ogg`, verificado com `git check-attr`;
+  nenhum binário versionado ainda
 - nenhuma mecânica de jogo implementada
 
-## Ambiente — TÉCNICO (verificado)
+## Não verificado
 
-- Python 3.12.14, `.venv` criado com `python3.12 -m venv .venv`
-- `requirements.txt` e `requirements-dev.txt` com versões fixadas; `pip check` sem problemas
-- Git LFS configurado para `*.blend`, `*.glb`, `*.png`, `*.wav` e `*.ogg`; nenhum binário
-  versionado ainda
-- repositório privado no GitHub, branch `main`
+- **abertura do projeto no Godot**: o Godot não estava instalado na máquina onde o projeto base foi
+  criado, então `godot --headless --path . --quit` ainda não foi executado. Até alguém rodar esse
+  comando e obter código 0, o projeto base conta como não validado.
 
 ## Próximos passos
 
 Dependem do grupo — ver [Pendências](GROUP-DECISIONS.md#pendente):
 
-- responder às pendências de escopo, principalmente fases × cenários (1) e integração dos
-  elementos 3D num jogo pygame (8), que afetam a estrutura do código
-- definir quem faz cada área (6)
-- definir a organização do trabalho no repositório (licença, colaboradores, branches, CI)
+- decidir como os elementos 3D entram no jogo (7): isso define o tipo do nó raiz e da câmera
+- responder às pendências de escopo, principalmente fases × cenários (1)
+- definir quem faz cada área (5) e a versão exata do Godot 4 que todos vão usar
