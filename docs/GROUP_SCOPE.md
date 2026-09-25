@@ -12,6 +12,9 @@
 > Este é o documento de escopo do jogo. O texto abaixo é **transcrição fiel**: não foi reescrito,
 > corrigido nem interpretado. O que ele deixa em aberto ou contraditório está como
 > **PENDENTE (grupo)** em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md).
+>
+> O trecho que cita Python e "gamepy" foi substituído por **Godot 4 + GDScript**
+> ([`DECISIONS.md`](DECISIONS.md) G-002); a transcrição abaixo continua como o grupo escreveu.
 
 ## Documento do grupo
 
