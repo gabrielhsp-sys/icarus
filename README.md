@@ -18,15 +18,15 @@ O escopo completo, como o grupo escreveu, está em [`docs/GROUP_SCOPE.md`](docs/
 
 ## Estado atual
 
-**Projeto base.** O repositório tem um projeto Godot 4 mínimo: uma cena principal vazia que fecha
-com ESC. Nenhuma mecânica de jogo foi implementada, e ainda não está decidido como os elementos 3D
+**Projeto base.** O repositório tem um projeto Godot 4.7.2 mínimo: uma cena principal vazia que
+fecha com ESC, validada sem janela. Nenhuma mecânica de jogo foi implementada, e ainda não está decidido como os elementos 3D
 entram no jogo. Detalhes em [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 
 ## Stack
 
 | Item | Uso |
 |---|---|
-| [Godot 4](https://godotengine.org/) | engine do jogo |
+| [Godot 4.7.2](https://godotengine.org/) | engine do jogo; todos usam esta mesma versão |
 | GDScript | linguagem dos scripts |
 | [Blender](https://www.blender.org/) | modelagem dos elementos 3D |
 | Git LFS | versionamento de `.blend`, `.glb`, `.png`, `.wav` e `.ogg` |
@@ -35,9 +35,9 @@ A escolha e os motivos estão em [`docs/DECISIONS.md`](docs/DECISIONS.md) (G-002
 
 ## Como abrir o projeto
 
-Pré-requisitos: Git, [Git LFS](https://git-lfs.com/) e Godot 4
-([site oficial](https://godotengine.org/download) ou Flathub, `org.godotengine.Godot`). A versão
-exata do Godot 4 que todos vão usar ainda será combinada pelo grupo.
+Pré-requisitos: Git, [Git LFS](https://git-lfs.com/) e **Godot 4.7.2**
+([site oficial](https://godotengine.org/download) ou Flathub, `org.godotengine.Godot`). Use exatamente
+essa versão: o formato dos arquivos do projeto muda entre versões 4.x.
 
 ```bash
 git lfs install
@@ -52,6 +52,7 @@ Pelo terminal:
 ```bash
 godot --path . --editor          # abre o editor
 godot --path .                   # roda o jogo
+godot --headless --path . --import # importa recursos e gera .uid/.import
 godot --headless --path . --quit # validação sem janela (deve sair com código 0)
 ```
 

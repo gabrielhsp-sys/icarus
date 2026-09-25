@@ -30,6 +30,10 @@ delegou a escolha da engine, e a escolha foi Godot 4 com GDScript, pelos motivos
 - **Godot é gratuito e open source**, e os arquivos de projeto (cenas, recursos, configuração) são
   texto, o que funciona bem no Git com vários integrantes.
 
+**Versão do projeto: Godot 4.7.2** (fixada em 2026-09-25). Todos os integrantes usam essa mesma
+versão, porque o formato dos arquivos do projeto muda entre versões 4.x. O projeto base foi
+validado nela sem janela (`--import`, `--quit` e `--check-only`, todos com código 0).
+
 Continua **PENDENTE (grupo)**: como os elementos 3D entram no jogo (pendência 7 em
 [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)). A decisão de engine não responde essa
 pergunta.

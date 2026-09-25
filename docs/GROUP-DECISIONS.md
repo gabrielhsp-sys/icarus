@@ -57,7 +57,10 @@ afirma sem ambiguidade.
 7. [ ] **Como os elementos 3D entram no jogo**: personagem e plataformas em 3D com câmera lateral,
        ou 3D só nos cenários?
 
-Resolvida: **engine** — Godot 4 + GDScript (G-002, 2026-09-25).
+Resolvidas:
+
+- **engine** — Godot 4 + GDScript (G-002, 2026-09-25)
+- **versão exata do Godot para todos** — **4.7.2** (G-002, 2026-09-25)
 
 ### Organização do trabalho — pendente
 
@@ -66,7 +69,7 @@ Resolvida: **engine** — Godot 4 + GDScript (G-002, 2026-09-25).
 - [ ] modelo de branches; proteção da `main`; pull request e revisão obrigatórios
 - [ ] CI (validação automática no GitHub)
 - [ ] padrão de mensagens de commit
-- [ ] versão exata do Godot 4 usada por todos (o formato dos arquivos muda entre versões 4.x)
+- [x] versão exata do Godot para todos: **4.7.2** (resolvida em 2026-09-25)
 - [ ] versão do Blender usada pelo grupo
 - [ ] como evitar conflito em arquivo binário (`.blend` não tem merge) e em cenas `.tscn` editadas
       por duas pessoas ao mesmo tempo
