@@ -17,6 +17,8 @@ Atualizado em: 2026-09-25
 - versão do projeto: **Godot 4.7.2**, a mesma para todos
 - trabalho em branch por integrante (G-011); como as branches entram na `main` é pendente
 - 6 pendências do grupo em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)
+- guia para integrantes novos (Windows, Git, Godot 4.7.2, branch e Pull Request):
+  [`COMO-COMECAR.md`](COMO-COMECAR.md)
 
 ## Projeto — TÉCNICO
 
