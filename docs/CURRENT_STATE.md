@@ -5,9 +5,18 @@ Atualizado em: 2026-09-25
 ## Escopo e engine
 
 - escopo: **DECIDIDO (grupo)** em 2026-09-25, sujeito a alteração — [`GROUP_SCOPE.md`](GROUP_SCOPE.md)
-- engine e linguagem: **Godot 4 + GDScript**, DECIDIDO (grupo) por delegação — [`DECISIONS.md`](DECISIONS.md) G-002
+  e o complemento [`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md), que vale onde os dois
+  diferem ([`DECISIONS.md`](DECISIONS.md) G-004 a G-011)
+- o jogo: subida vertical contínua, **sem fases** e sem checkpoint; o cenário de fundo muda ao
+  longo da subida (Terra/Creta, Cidade, Subida para o céu, Nuvens, Céu). Salto automático; A e D
+  movem Ícaro; clique do mouse dispara flechas. Cair é derrota; **não existe vitória**: ao chegar
+  ao céu, cutscene em que o sol derrete as asas e Ícaro cai
+- 3D: Ícaro, plataformas e inimigos são objetos 3D; os cenários de fundo são 2D (G-004)
+- engine e linguagem: **Godot 4 + GDScript**, DECIDIDO (grupo) por delegação — [`DECISIONS.md`](DECISIONS.md) G-002;
+  o complemento do grupo também a registra
 - versão do projeto: **Godot 4.7.2**, a mesma para todos
-- 7 pendências de escopo e a organização do trabalho em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)
+- trabalho em branch por integrante (G-011); como as branches entram na `main` é pendente
+- 6 pendências do grupo em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)
 
 ## Projeto — TÉCNICO
 
@@ -33,6 +42,10 @@ Em 2026-09-25, com Godot 4.7.2 (Flathub), sem janela:
 
 Dependem do grupo — ver [Pendências](GROUP-DECISIONS.md#pendente):
 
-- decidir como os elementos 3D entram no jogo (7): isso define o tipo do nó raiz e da câmera
-- responder às pendências de escopo, principalmente fases × cenários (1)
-- definir quem faz cada área (5)
+- dividir as tarefas por pessoa (1)
+- definir quem revisa e aprova os Pull Requests na `main` (6)
+- definir os poderes temporários (3), a duração da partida (2), o que aparece depois da cutscene
+  final (4) e o que acontece quando um inimigo atinge Ícaro (5)
+
+Técnico, sem depender de pendência: com o 3D decidido (G-004), a cena principal ainda tem nó raiz
+`Node`; o tipo do nó raiz e da câmera é trabalho de implementação, feito numa branch.

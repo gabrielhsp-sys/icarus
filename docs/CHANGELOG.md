@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-09-25 — complemento de decisões do grupo
+
+- complemento do grupo ao documento de escopo transcrito em `GROUP_SCOPE_COMPLEMENT.md`;
+  `GROUP_SCOPE.md` ganhou só uma nota no cabeçalho apontando para ele
+- `DECISIONS.md`: G-004 a G-011 (3D, estrutura contínua, final, pula-pula, flechas e inimigos,
+  controles, checkpoint, branches); fases, vitória e tela de vitória do documento original marcadas
+  como substituídas; nota em G-002 de que o documento do grupo agora também registra a engine
+- `GROUP-DECISIONS.md`: respostas movidas para Decidido; Pendente reduzido aos 6 itens que o grupo
+  deixou em aberto; os pontos técnicos de organização ainda não discutidos foram para "Para levar ao
+  grupo"
+- `README.md` e `CURRENT_STATE.md`: resumo do jogo sem fases e sem vitória; README ganhou a seção
+  "Como contribuir" (branch, Pull Request, sem push direto na `main`)
+- `CLAUDE.md`: lista de pendências e regra sobre 2D/3D atualizadas
+
 ## 2026-09-25 — Godot 4.7.2 fixado e projeto base validado
 
 - versão do projeto fixada em Godot 4.7.2 para todos (README, `DECISIONS.md` G-002,
