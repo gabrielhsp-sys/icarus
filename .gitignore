@@ -25,10 +25,6 @@ tmp/
 *.tmp
 *.log
 
-# Caches do Panda3D
-*.bam.cache
-model-cache/
-
 # Editores / sistema
 .idea/
 .vscode/

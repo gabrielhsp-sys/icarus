@@ -1,12 +1,13 @@
 """Ponto de entrada do Icarus."""
 
-from game.app import IcarusApp
+import sys
+
+from game.app import run
 
 
-def main() -> None:
-    app = IcarusApp()
-    app.run()
+def main() -> int:
+    return run()
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
