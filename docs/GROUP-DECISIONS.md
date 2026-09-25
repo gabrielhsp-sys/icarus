@@ -1,8 +1,9 @@
 # Decisões do grupo
 
 O que o grupo já decidiu e o que ainda está em aberto. A fonte do escopo é
-[`GROUP_SCOPE.md`](GROUP_SCOPE.md); o registro cronológico das decisões está em
-[`DECISIONS.md`](DECISIONS.md).
+[`GROUP_SCOPE.md`](GROUP_SCOPE.md) com o complemento
+[`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md), que vale onde os dois diferem; o registro
+das decisões, em ordem e com os motivos, está em [`DECISIONS.md`](DECISIONS.md).
 
 | Rótulo | Significado |
 |---|---|
@@ -105,7 +106,8 @@ registradas pelo grupo; ficam aqui para não se perderem.
 - versão do Blender usada pelo grupo
 - como evitar conflito em arquivo binário (`.blend` não tem merge) e em cenas `.tscn` editadas
   por duas pessoas ao mesmo tempo
-- apoio a quem tem pouca experiência com Git
+- apoio a quem tem pouca experiência com Git (um guia inicial está em
+  [`COMO-COMECAR.md`](COMO-COMECAR.md))
 - entregáveis e cronograma
 
 ## Próxima reunião

@@ -28,8 +28,8 @@ diferem, vale o complemento.
 
 ## Estado atual
 
-**Projeto base.** O repositório tem um projeto Godot 4.7.2 mínimo: uma cena principal vazia que
-fecha com ESC. Nenhuma mecânica do jogo foi implementada, e a divisão das tarefas por pessoa ainda
+**Projeto base.** O repositório tem um projeto Godot 4.7.2 mínimo: uma cena principal sem nada
+do jogo, que só fecha com ESC. Nenhuma mecânica do jogo foi implementada, e a divisão das tarefas por pessoa ainda
 não foi feita. Detalhes em [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 
 ## Onde está cada coisa

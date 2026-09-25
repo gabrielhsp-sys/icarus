@@ -47,5 +47,5 @@ Dependem do grupo — ver [Pendências](GROUP-DECISIONS.md#pendente):
 - definir os poderes temporários (3), a duração da partida (2), o que aparece depois da cutscene
   final (4) e o que acontece quando um inimigo atinge Ícaro (5)
 
-Técnico, sem depender de pendência: com o 3D decidido (G-004), a cena principal ainda tem nó raiz
-`Node`; o tipo do nó raiz e da câmera é trabalho de implementação, feito numa branch.
+Ainda não definido: a cena principal tem nó raiz `Node`, que não é 2D nem 3D. O tipo do nó raiz
+e a câmera do jogo ainda não foram definidos.
