@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-09-25 — auditoria de usabilidade da documentação
+
+- `COMO-COMECAR.md` novo: guia para quem nunca usou Git nem Godot (acesso ao repositório privado,
+  GitHub Desktop ou Git para Windows, nome e e-mail noreply, clone fora do OneDrive, Godot 4.7.2
+  normal e não "mono", branch, commit, push e Pull Request)
+- `README.md` reorganizado para quem chega: link para o guia no topo, tabela "Onde está cada
+  coisa", explicação dos rótulos e dos IDs G-00N, clone por HTTPS em vez de SSH, e a tabela de
+  áreas marcando o que o complemento substituiu (fases, tela de vitória, jump de impulso)
+- `GROUP-DECISIONS.md`: a fonte do escopo passa a citar também o complemento
+- `CURRENT_STATE.md`: tipo do nó raiz e câmera descritos como ainda não definidos
+- `CLAUDE.md`: pendências apontadas para `GROUP-DECISIONS.md` em vez de repetidas; regra de
+  branch e Pull Request (G-011); "fases" trocado por "cenários"
+
 ## 2026-09-25 — complemento de decisões do grupo
 
 - complemento do grupo ao documento de escopo transcrito em `GROUP_SCOPE_COMPLEMENT.md`;

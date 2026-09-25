@@ -10,20 +10,20 @@ pedir.
 - o que está decidido e o que está pendente: `docs/GROUP-DECISIONS.md`
 - registro de decisões: `docs/DECISIONS.md` (decisões novas entram no fim)
 - estado atual e mudanças: `docs/CURRENT_STATE.md`, `docs/CHANGELOG.md`
-- como abrir, rodar e estrutura de pastas: `README.md`
+- como abrir, rodar e estrutura de pastas: `README.md`; passo a passo para integrantes:
+  `docs/COMO-COMECAR.md`
 
-Rótulos usados nos docs: **DECIDIDO (grupo)** · **PENDENTE (grupo)** · **TÉCNICO (verificado)**.
+Rótulos usados nos docs: **DECIDIDO (grupo)** · **PENDENTE (grupo)** · **TÉCNICO (verificado)**;
+o significado está em `docs/GROUP-DECISIONS.md`.
 
 ## Regras
 
 1. O escopo vem só de `GROUP_SCOPE.md`, `GROUP_SCOPE_COMPLEMENT.md` e da seção Decidido de
-   `GROUP-DECISIONS.md`. Se uma tarefa depender de uma pendência (divisão por pessoa, duração da
-   partida, poderes temporários, o que vem depois da cutscene final, o que acontece quando um
-   inimigo atinge Ícaro, quem revisa e aprova o merge na `main`), pare e diga que falta decisão do
-   grupo.
+   `GROUP-DECISIONS.md`. Se uma tarefa depender de um item da seção Pendente de
+   `GROUP-DECISIONS.md`, pare e diga que falta decisão do grupo.
 2. Use o Godot 4.7.2, a versão fixada pelo grupo; outra versão pode reescrever os arquivos do projeto.
-3. Não decida pelo grupo: mecânicas, fases, arte, divisão de tarefas, workflow Git e cronograma são
-   decisões do grupo. O 3D já está decidido (G-004: Ícaro, plataformas e inimigos em 3D; fundos
+3. Não decida pelo grupo: mecânicas, cenários, arte, divisão de tarefas, workflow Git e cronograma
+   são decisões do grupo. O 3D já está decidido (G-004: Ícaro, plataformas e inimigos em 3D; fundos
    em 2D); não mude essa divisão.
 4. Valores de física, distâncias e tempos são tuning: implementar, testar, ajustar. Não registrar
    números "finais" nos docs.
@@ -33,8 +33,10 @@ Rótulos usados nos docs: **DECIDIDO (grupo)** · **PENDENTE (grupo)** · **TÉC
 7. Scripts em GDScript, em `scripts/`; cenas em `scenes/`; assets em `assets/{models,textures,audio}/`.
 8. Não instalar pacotes de sistema, plugins ou serviços; não criar remoto, fazer push, alterar
    configurações do GitHub nem reescrever histórico sem pedido explícito.
-9. Antes de concluir uma mudança, rode a validação (abaixo) e exija código de saída 0.
-10. Ao fim de uma mudança relevante, atualize `docs/CURRENT_STATE.md` e `docs/CHANGELOG.md`.
+9. Trabalhe numa branch e entregue por Pull Request; nunca commite nem faça push direto na `main`
+   (G-011).
+10. Antes de concluir uma mudança, rode a validação (abaixo) e exija código de saída 0.
+11. Ao fim de uma mudança relevante, atualize `docs/CURRENT_STATE.md` e `docs/CHANGELOG.md`.
 
 ## Comandos
 
