@@ -1,23 +1,17 @@
-# Escopo do grupo — transcrição
+# Escopo do grupo
 
-> ## Procedência
->
 > | Campo | Valor |
 > |---|---|
-> | Origem | documento de escopo escrito pelo grupo num Google Doc |
-> | Status | **confirmado pelo Gabriel em 2026-09-25 como decisão do grupo; sujeito a alteração** |
+> | Origem | documento de escopo escrito pelo grupo (Google Doc) |
+> | Status | **DECIDIDO (grupo)** em 2026-09-25; sujeito a alteração, como o próprio documento prevê |
 > | Data do documento | não consta no documento |
-> | Autores / presentes | não constam no documento |
+> | Autores | não constam no documento |
 > | Ata | não existe |
 > | Transcrito em | 2026-09-25 |
 >
-> O texto abaixo é **transcrição fiel** do documento do grupo: não foi reescrito, corrigido nem
-> interpretado. O próprio documento diz que pode haver alteração.
->
-> A leitura do documento — o que ficou **CONFIRMED** e o que ficou **NEEDS-GROUP-APPROVAL** por
-> contradição ou lacuna — está em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md). O cruzamento com as
-> propostas anteriores do Gabriel está em [`DECISIONS.md`](DECISIONS.md) (ICR-016).
-> Nenhuma `GABRIEL-PROPOSAL` foi promovida por este documento além do que ele afirma.
+> Este é o documento de escopo do jogo. O texto abaixo é **transcrição fiel**: não foi reescrito,
+> corrigido nem interpretado. O que ele deixa em aberto ou contraditório está como
+> **PENDENTE (grupo)** em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md).
 
 ## Documento do grupo
 
