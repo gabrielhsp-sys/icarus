@@ -44,7 +44,9 @@ escolhido pelo grupo.
 
 ## O que existe — CONFIRMED (verificado localmente)
 
-- repositório Git local (`main`), sem remoto
+- repositório Git local (`main`) com remote **privado** `gabrielhsp-sys/icarus` (`origin`, SSH) desde
+  2026-09-25, criado na mesma sessão do ICR-016 (registro no ecossistema: D-106); sem colaboradores,
+  proteção de branch, rulesets ou Actions
 - Git LFS configurado para `*.blend`, `*.glb`, `*.png`, `*.wav`, `*.ogg` (nenhum binário versionado ainda)
 - documentos de design copiados da pré-produção e do pacote de migração (`docs/SOURCES.md`)
 - esqueleto de código: `main.py`, `game/app.py` (janela + câmera ortográfica), `game/camera.py`
@@ -61,7 +63,7 @@ escolhido pelo grupo.
 - o esqueleto nunca abriu janela (teste de fumaça pendente)
 - física, controlador, graybox
 - teste de pipeline com material
-- CI e remoto GitHub (também depende do grupo — ICR-014)
+- CI, proteção da `main` e colaboradores no GitHub (também dependem do grupo — ICR-014)
 
 ## O que ainda NÃO foi decidido — NEEDS-GROUP-APPROVAL
 

@@ -15,7 +15,8 @@
 - [ ] adaptar `tests/icarus-lab/test_blender_import.py` para `tools/view_model.py` (caminho do GLB por argumento)
 - [ ] fixar o preset de exportação em `docs/ASSET_PIPELINE.md`
 - [ ] `NEEDS-GROUP-APPROVAL` criar CI mínimo em `.github/workflows/` (Python 3.12, sintaxe + pytest)
-- [ ] `NEEDS-GROUP-APPROVAL` criar remoto privado `icarus`, proteger `main`, adicionar colaboradores — depende do workflow Git do grupo (ICR-014)
+- [x] criar remoto privado `gabrielhsp-sys/icarus` (2026-09-25, autorização explícita do Gabriel; ver `CURRENT_STATE.md`)
+- [ ] `NEEDS-GROUP-APPROVAL` proteger `main`, adicionar colaboradores — depende do workflow Git do grupo (ICR-014)
 
 ## Depois
 
