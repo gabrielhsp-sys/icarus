@@ -1,56 +1,97 @@
 # Icarus
 
-Jogo de plataforma vertical inspirado no mito de Ícaro — projeto de Computação Gráfica (UNIFAL-MG).
-Python, base 2D com elementos 3D modelados no Blender (escopo do grupo, ICR-016); a câmera 2.5D foi
-proposta anterior do Gabriel. Engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel.
+Jogo de plataforma vertical inspirado no mito de Ícaro, desenvolvido em grupo para a disciplina de
+Computação Gráfica (UNIFAL-MG).
 
-> Estado: **bootstrap**. Ainda não há jogo jogável. Veja [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
->
-> **A infraestrutura técnica foi preparada, mas o escopo e o design do jogo ainda não foram
-> aprovados pelo grupo.** Os documentos de design são propostas do Gabriel
-> (`GABRIEL-PROPOSAL`); decisões coletivas ficam em
-> [`docs/GROUP-DECISIONS.md`](docs/GROUP-DECISIONS.md).
+## O jogo
 
-## Requisitos
+O jogador controla Ícaro e sobe pulando de plataforma em plataforma, com saltos automáticos, até
+alcançar o céu. No caminho há plataformas fixas, móveis e instáveis, que quebram ao serem pisadas;
+itens que concedem poderes temporários, como mais velocidade ou mais altura de salto; e obstáculos
+cada vez mais difíceis. O score é a altura alcançada.
 
-- Python **3.12** (ver `.python-version`)
-- Git + **Git LFS** (`.blend`, `.glb`, `.png`, `.wav`, `.ogg` são versionados via LFS)
-- Blender 5.2.x para editar os arquivos em `blender/`
+A subida atravessa fases temáticas, da Terra (Creta) até o Céu, cada uma mais difícil que a
+anterior. Cair das plataformas é derrota; alcançar o céu completa o jogo. A base é 2D, com
+elementos 3D modelados no Blender complementando o visual dos cenários.
 
-## Preparar o ambiente
+O escopo completo, como o grupo escreveu, está em [`docs/GROUP_SCOPE.md`](docs/GROUP_SCOPE.md).
+
+## Estado atual
+
+**Bootstrap.** O repositório tem uma janela pygame que abre, roda o loop e fecha com ESC, e um teste
+de fumaça automatizado. Nenhuma mecânica de jogo foi implementada. Detalhes em
+[`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
+
+## Stack
+
+| Item | Uso |
+|---|---|
+| Python 3.12 | linguagem do jogo (ver `.python-version`) |
+| pygame 2.6.1 | engine atual, provisória: o grupo pode alterar |
+| Blender | modelagem dos elementos 3D; como eles entram no jogo ainda está pendente |
+| pytest | testes automatizados |
+| Git LFS | versionamento de `.blend`, `.glb`, `.png`, `.wav` e `.ogg` |
+
+## Como instalar
+
+Pré-requisitos: Python 3.12, Git e [Git LFS](https://git-lfs.com/).
 
 ```bash
-git lfs install --local
+git lfs install
+git clone git@github.com:gabrielhsp-sys/icarus.git
+cd icarus
 python3.12 -m venv .venv
 .venv/bin/pip install -r requirements-dev.txt
 ```
 
-## Rodar
+No Windows, use `py -3.12 -m venv .venv` e troque `.venv/bin/` por `.venv\Scripts\` nos comandos.
+
+## Como rodar
 
 ```bash
 .venv/bin/python main.py
 ```
 
+ESC ou o botão de fechar encerra o jogo.
+
+Testes:
+
+```bash
+.venv/bin/python -m pytest
+```
+
 ## Estrutura
 
-- `main.py` — ponto de entrada
-- `game/` — código do jogo (`app.py`, `camera.py`, `core/`, `player/`, `world/`, `levels/`)
-- `assets/models/` — GLBs exportados do Blender
-- `blender/` — arquivos-fonte `.blend`
-- `tools/` — utilitários de desenvolvimento
-- `tests/` — testes automatizados
-- `docs/` — design, pipeline, decisões e estado do projeto
+```text
+main.py          ponto de entrada
+game/app.py      bootstrap pygame: janela, loop e saída com ESC
+tests/           testes automatizados (pytest)
+assets/models/   arquivos usados pelo jogo (via Git LFS)
+blender/         arquivos-fonte .blend (via Git LFS)
+docs/            escopo, decisões e estado do projeto
+```
+
+## Áreas de trabalho
+
+O grupo divide o trabalho em três áreas, conforme o documento de escopo. Quem faz cada área
+ainda está **pendente**.
+
+| Área | Responsabilidades (documento do grupo) | Responsáveis |
+|---|---|---|
+| Arte | personagem Ícaro; plataformas fixas, móveis e instáveis; jump de impulso; fundo das fases | pendente |
+| Programação | jump automático; disparo de flechas; score pela altura; tela de vitória ao chegar à altura final; queda de Ícaro ao errar | pendente |
+| Design | design das plataformas, do personagem e dos inimigos; tela inicial; tela final | pendente |
 
 ## Documentação
 
 | Documento | Conteúdo |
 |---|---|
-| [`docs/GDD.md`](docs/GDD.md) | visão geral do jogo |
-| [`docs/LEVEL_DESIGN.md`](docs/LEVEL_DESIGN.md) | **level design vigente** (congelado para implementação) |
-| [`docs/ASSETS.md`](docs/ASSETS.md) | lista de assets |
-| [`docs/CUTSCENES.md`](docs/CUTSCENES.md) | cutscenes e trailer |
-| [`docs/ASSET_PIPELINE.md`](docs/ASSET_PIPELINE.md) | regras Blender → GLB → Panda3D (GABRIEL-PROPOSAL; engine pendente — ICR-016, pendência 4) |
-| [`docs/TECHNICAL_DESIGN.md`](docs/TECHNICAL_DESIGN.md) | arquitetura técnica |
-| [`docs/ROADMAP.md`](docs/ROADMAP.md) | ordem de produção |
-| [`docs/DECISIONS.md`](docs/DECISIONS.md) | decisões e motivos |
-| [`docs/SOURCES.md`](docs/SOURCES.md) | procedência dos documentos |
+| [`docs/GROUP_SCOPE.md`](docs/GROUP_SCOPE.md) | escopo do jogo (transcrição do documento do grupo) |
+| [`docs/GROUP-DECISIONS.md`](docs/GROUP-DECISIONS.md) | o que está decidido e o que está **pendente** |
+| [`docs/DECISIONS.md`](docs/DECISIONS.md) | registro cronológico das decisões |
+| [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) | estado atual do projeto |
+| [`docs/CHANGELOG.md`](docs/CHANGELOG.md) | histórico de mudanças |
+
+As questões em aberto — número de fases, final, jump de impulso, flechas e inimigos, divisão por
+pessoa, integração dos elementos 3D, entre outras — estão em
+[Pendências do grupo](docs/GROUP-DECISIONS.md#pendente).
