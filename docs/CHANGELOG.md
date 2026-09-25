@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-09-25 — base técnica e revisores de Pull Request
+
+- `project.godot` e `scenes/main.tscn` salvos pelo Godot 4.7.2 (sem janela, `ResourceSaver.save` e
+  `ProjectSettings.save`): `config/features=PackedStringArray("4.7")` gravado e `load_steps`
+  retirado da cena. Validação `--headless --quit`: código 0, sem ERROR/WARNING
+- `.gitattributes`: Git LFS também para `*.jpg`, `*.jpeg`, `*.mp3`, `*.ttf`, `*.otf` e `*.fbx`
+- `.gitignore`: sem a sobra de Python (`.venv/`); exports `*.exe`, `*.x86_64`, `*.apk`, `*.aab`,
+  `*.dmg` e `/*.zip` ignorados
+- `DECISIONS.md`: G-012 (Gabriel e Guilherme Falcucci revisam e aprovam os Pull Requests e ficam
+  com a Programação); a nota de G-002 não cita mais uma "pendência 7" inexistente
+- `GROUP-DECISIONS.md`: "como as branches são juntadas na `main`" foi para Decidido (G-012); divisão
+  por pessoa parcialmente decidida; câmera e formato do modelo 3D entraram em Pendente, com as
+  propostas marcadas como propostas
+- `README.md`, `COMO-COMECAR.md`, `CLAUDE.md` e `CURRENT_STATE.md`: revisores de Pull Request
+  (G-012) no lugar de "pendente"
+
 ## 2026-09-25 — auditoria de usabilidade da documentação
 
 - `COMO-COMECAR.md` novo: guia para quem nunca usou Git nem Godot (acesso ao repositório privado,

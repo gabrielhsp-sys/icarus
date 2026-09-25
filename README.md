@@ -29,8 +29,8 @@ diferem, vale o complemento.
 ## Estado atual
 
 **Projeto base.** O repositório tem um projeto Godot 4.7.2 mínimo: uma cena principal sem nada
-do jogo, que só fecha com ESC. Nenhuma mecânica do jogo foi implementada, e a divisão das tarefas por pessoa ainda
-não foi feita. Detalhes em [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
+do jogo, que só fecha com ESC. Nenhuma mecânica do jogo foi implementada, e a divisão das tarefas por pessoa só
+está feita para a Programação (G-012). Detalhes em [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 
 ## Onde está cada coisa
 
@@ -44,9 +44,9 @@ não foi feita. Detalhes em [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 | O texto original do grupo | [`docs/GROUP_SCOPE.md`](docs/GROUP_SCOPE.md) e [`docs/GROUP_SCOPE_COMPLEMENT.md`](docs/GROUP_SCOPE_COMPLEMENT.md) |
 | Regras para agentes de IA (Claude Code) | [`CLAUDE.md`](CLAUDE.md) |
 
-O que ainda falta o grupo decidir: divisão das tarefas por pessoa, duração da partida, quais são
-os poderes temporários, o que aparece depois da cutscene final, o que acontece quando um inimigo
-atinge Ícaro e quem revisa e aprova os Pull Requests. A lista fica em
+O que ainda falta o grupo decidir: a divisão das tarefas dos outros 4 integrantes, duração da
+partida, quais são os poderes temporários, o que aparece depois da cutscene final, o que acontece
+quando um inimigo atinge Ícaro, a câmera e o formato do modelo 3D. A lista fica em
 [Pendências do grupo](docs/GROUP-DECISIONS.md#pendente).
 
 ### Como ler os documentos
@@ -60,12 +60,13 @@ atinge Ícaro e quem revisa e aprova os Pull Requests. A lista fica em
 
 ## Áreas de trabalho
 
-O documento de escopo divide o trabalho em três áreas. Quem faz cada área ainda está **pendente**.
+O documento de escopo divide o trabalho em três áreas. A Programação fica com Gabriel e Guilherme
+Falcucci (G-012); a divisão dos outros 4 integrantes ainda está **pendente**.
 
 | Área | Responsabilidades (documento do grupo) | Responsáveis |
 |---|---|---|
 | Arte | personagem Ícaro; plataformas fixas, móveis e instáveis; jump de impulso (plataforma pula-pula, G-007); fundo das fases (não há fases: são os cenários de fundo, G-005) | pendente |
-| Programação | jump automático; disparo de flechas; score pela altura; ~~tela de vitória ao chegar à altura final~~ (não existe vitória: o jogo termina com a cutscene da queda, G-006); queda de Ícaro ao errar | pendente |
+| Programação | jump automático; disparo de flechas; score pela altura; ~~tela de vitória ao chegar à altura final~~ (não existe vitória: o jogo termina com a cutscene da queda, G-006); queda de Ícaro ao errar | Gabriel e Guilherme Falcucci (G-012) |
 | Design | design das plataformas, do personagem e dos inimigos; tela inicial; tela final | pendente |
 
 ## Como contribuir
@@ -75,8 +76,8 @@ O grupo decidiu que cada integrante trabalha na sua própria branch, para não q
 e abrir um Pull Request para a `main`. O passo a passo, com os comandos, está em
 [Como começar → O dia a dia](docs/COMO-COMECAR.md#6-o-dia-a-dia).
 
-Não faça push direto na `main`. Quem revisa e aprova os Pull Requests ainda está **pendente**
-([Pendências do grupo](docs/GROUP-DECISIONS.md#pendente)).
+Não faça push direto na `main`. Quem revisa e aprova os Pull Requests: Gabriel e Guilherme
+Falcucci (G-012).
 
 ## Estrutura de pastas
 

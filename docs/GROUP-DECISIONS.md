@@ -40,7 +40,8 @@ afirma sem ambiguidade, já com o que o complemento (G-004 a G-011) substituiu.
 - animações: quebra das plataformas, quebra das asas, queda de Ícaro ao errar um salto, efeitos de
   poder temporário
 - sons: plataformas quebrando, pulo, poderes especiais, movimento das asas
-- o trabalho se divide em três áreas: Arte, Programação e Design; quem faz cada uma é pendente
+- o trabalho se divide em três áreas: Arte, Programação e Design. A Programação fica com Gabriel
+  e Guilherme Falcucci (G-012); a divisão dos outros 4 integrantes é pendente
 
 ### 2026-09-25 — engine e linguagem (G-002)
 
@@ -68,6 +69,15 @@ original, vale o complemento.
 - **organização (G-011):** cada integrante trabalha em uma branch separada no Git, para não quebrar
   a `main`
 
+### 2026-09-25 — revisão de Pull Requests e Programação (G-012)
+
+Confirmado por Gabriel em 2026-09-25.
+
+- **revisão e aprovação:** Gabriel e Guilherme Falcucci revisam e aprovam os Pull Requests para a
+  `main`. Responde a pendência "como as branches são juntadas na `main`" do complemento
+- **Programação:** fica com Gabriel e Guilherme Falcucci. A divisão dos outros 4 integrantes
+  continua pendente (item 1 abaixo)
+
 ### Pendências anteriores resolvidas
 
 | Pendência anterior | Resolução |
@@ -80,18 +90,22 @@ original, vale o complemento.
 | flechas e inimigos | G-008; o dano a Ícaro continua pendente (item 5 abaixo) |
 | checkpoints e controles | G-010 e G-009; duração e poderes continuam pendentes (itens 2 e 3) |
 | como os elementos 3D entram no jogo | G-004 |
-| modelo de branches | uma branch por integrante (G-011); o merge na `main` continua pendente (item 6) |
+| modelo de branches | uma branch por integrante (G-011) |
+| como as branches são juntadas na `main` (quem revisa e aprova) | Gabriel e Guilherme Falcucci (G-012) |
 
 ## Pendente
 
-O que o próprio grupo listou como "Ainda em aberto" no complemento:
+Os itens 1 a 5 são o que o próprio grupo listou como "Ainda em aberto" no complemento. Os itens 6
+e 7 estão em discussão no grupo; a proposta feita aparece entre parênteses e **não** é decisão.
 
-1. [ ] **Divisão das tarefas por pessoa.**
+1. [ ] **Divisão das tarefas por pessoa.** Parcialmente decidida: a Programação fica com Gabriel e
+   Guilherme Falcucci (G-012); falta a divisão dos outros 4 integrantes.
 2. [ ] **Duração da partida.**
 3. [ ] **Quais são os poderes temporários.**
 4. [ ] **O que aparece depois da cutscene final** (ex.: tela com o score).
 5. [ ] **O que acontece quando um inimigo atinge Ícaro.**
-6. [ ] **Como as branches são juntadas na `main`** (quem revisa e aprova).
+6. [ ] **Câmera** (proposta: perspectiva).
+7. [ ] **Formato do modelo 3D** (proposta: `.glb`; a alternativa é `.blend`).
 
 ## Para levar ao grupo
 
@@ -100,7 +114,7 @@ registradas pelo grupo; ficam aqui para não se perderem.
 
 - licença do repositório
 - colaboradores do GitHub e permissões
-- proteção da `main` no GitHub (depende do item 6 acima)
+- proteção da `main` no GitHub (quem aprova já está definido em G-012)
 - CI (validação automática no GitHub)
 - padrão de mensagens de commit
 - versão do Blender usada pelo grupo

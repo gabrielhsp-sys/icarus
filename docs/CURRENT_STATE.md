@@ -15,19 +15,25 @@ Atualizado em: 2026-09-25
 - engine e linguagem: **Godot 4 + GDScript**, DECIDIDO (grupo) por delegação — [`DECISIONS.md`](DECISIONS.md) G-002;
   o complemento do grupo também a registra
 - versão do projeto: **Godot 4.7.2**, a mesma para todos
-- trabalho em branch por integrante (G-011); como as branches entram na `main` é pendente
-- 6 pendências do grupo em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)
+- trabalho em branch por integrante (G-011); Gabriel e Guilherme Falcucci revisam e aprovam os
+  Pull Requests e ficam com a Programação (G-012)
+- 7 pendências do grupo em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)
 - guia para integrantes novos (Windows, Git, Godot 4.7.2, branch e Pull Request):
   [`COMO-COMECAR.md`](COMO-COMECAR.md)
 
 ## Projeto — TÉCNICO
 
-- `project.godot`: nome "Icarus", cena principal `res://scenes/main.tscn`
+- `project.godot`: nome "Icarus", cena principal `res://scenes/main.tscn`,
+  `config/features=PackedStringArray("4.7")`; projeto e cena já salvos pelo Godot 4.7.2, então o
+  primeiro salvamento de um integrante não gera diff nesses dois arquivos
 - `scenes/main.tscn`: nó raiz `Node` (nem 2D nem 3D), com `scripts/main.gd`, que fecha o jogo com ESC;
   `scripts/main.gd.uid` gerado pelo Godot e versionado
 - pastas `scenes/`, `scripts/`, `assets/models/`, `assets/textures/`, `assets/audio/`
-- `.gitignore` do Godot 4 (`.godot/`, `/android/`, saídas de exportação)
-- Git LFS para `*.blend`, `*.glb`, `*.png`, `*.wav` e `*.ogg`, verificado com `git check-attr`;
+- `.gitignore` do Godot 4 (`.godot/`, `/android/`, saídas de exportação: `/build/`, `/export/`,
+  `*.pck`, `*.exe`, `*.x86_64`, `*.apk`, `*.aab`, `*.dmg`, `/*.zip`), backups do Blender,
+  `renders/`, `tmp/`, `*.log`, editores e `.env`
+- Git LFS para `*.blend`, `*.glb`, `*.png`, `*.jpg`, `*.jpeg`, `*.wav`, `*.ogg`, `*.mp3`, `*.ttf`,
+  `*.otf` e `*.fbx`, verificado com `git check-attr`;
   nenhum binário versionado ainda
 - nenhuma mecânica de jogo implementada
 
@@ -44,10 +50,10 @@ Em 2026-09-25, com Godot 4.7.2 (Flathub), sem janela:
 
 Dependem do grupo — ver [Pendências](GROUP-DECISIONS.md#pendente):
 
-- dividir as tarefas por pessoa (1)
-- definir quem revisa e aprova os Pull Requests na `main` (6)
+- dividir as tarefas dos outros 4 integrantes (1)
 - definir os poderes temporários (3), a duração da partida (2), o que aparece depois da cutscene
   final (4) e o que acontece quando um inimigo atinge Ícaro (5)
+- decidir a câmera (6) e o formato do modelo 3D (7)
 
 Ainda não definido: a cena principal tem nó raiz `Node`, que não é 2D nem 3D. O tipo do nó raiz
-e a câmera do jogo ainda não foram definidos.
+ainda não foi definido.

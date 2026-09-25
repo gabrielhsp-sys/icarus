@@ -109,5 +109,5 @@ O GitHub Desktop tem um botão para cada um desses passos.
 Duas pessoas não editam a mesma cena (arquivo `.tscn`) ao mesmo tempo: quando isso acontece, o
 Git costuma gerar um conflito difícil de resolver. Antes de mexer numa cena, combine com o grupo.
 
-**Quem aprova os Pull Requests ainda não foi decidido pelo grupo** (pendência 6 em
-[`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)).
+**Quem revisa e aprova os Pull Requests:** Gabriel e Guilherme Falcucci (G-012, em
+[`DECISIONS.md`](DECISIONS.md)).

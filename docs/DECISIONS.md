@@ -21,6 +21,7 @@ Decisões novas entram no fim. Uma decisão não é reescrita: outra entrada a s
 | G-009 | 2026-09-25 | Controles: A e D movem Ícaro para os lados; o salto é automático; o clique do mouse dispara as flechas | **DECIDIDO (grupo)**, pelo complemento | [`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md), "Controles" |
 | G-010 | 2026-09-25 | Checkpoint: não há checkpoint; a partida dura até chegar ao fim ou perder | **DECIDIDO (grupo)**, pelo complemento | [`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md), "Checkpoint" |
 | G-011 | 2026-09-25 | Organização: cada integrante trabalha em uma branch separada no Git, para não quebrar a `main`. Como as branches são juntadas na `main` (quem revisa e aprova) continua **PENDENTE (grupo)** | **DECIDIDO (grupo)**, pelo complemento | [`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md), "Organização" |
+| G-012 | 2026-09-25 | Revisão de Pull Requests: Gabriel e Guilherme Falcucci revisam e aprovam os Pull Requests para a `main`. Os dois ficam com a Programação. Responde a parte de G-011 que continuava pendente (quem revisa e aprova). A divisão dos outros 4 integrantes continua **PENDENTE (grupo)** | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#2026-09-25--revisão-de-pull-requests-e-programação-g-012) |
 
 ## G-002 — Godot 4 + GDScript
 
@@ -42,9 +43,8 @@ delegou a escolha da engine, e a escolha foi Godot 4 com GDScript, pelos motivos
 versão, porque o formato dos arquivos do projeto muda entre versões 4.x. O projeto base foi
 validado nela sem janela (`--import`, `--quit` e `--check-only`, todos com código 0).
 
-Continua **PENDENTE (grupo)**: como os elementos 3D entram no jogo (pendência 7 em
-[`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)). A decisão de engine não responde essa
-pergunta.
+Quando esta decisão foi registrada, continuava **PENDENTE (grupo)** como os elementos 3D entram
+no jogo; a decisão de engine não responde essa pergunta. O grupo a respondeu depois, em G-004.
 
 **Nota (2026-09-25):** o documento do grupo agora também registra esta decisão. O complemento
 ([`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md), "Engine e linguagem") diz: Godot 4,
