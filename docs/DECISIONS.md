@@ -42,9 +42,8 @@ delegou a escolha da engine, e a escolha foi Godot 4 com GDScript, pelos motivos
 versão, porque o formato dos arquivos do projeto muda entre versões 4.x. O projeto base foi
 validado nela sem janela (`--import`, `--quit` e `--check-only`, todos com código 0).
 
-Continua **PENDENTE (grupo)**: como os elementos 3D entram no jogo (pendência 7 em
-[`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)). A decisão de engine não responde essa
-pergunta.
+Quando esta decisão foi registrada, continuava **PENDENTE (grupo)** como os elementos 3D entram
+no jogo; a decisão de engine não responde essa pergunta. O grupo a respondeu depois, em G-004.
 
 **Nota (2026-09-25):** o documento do grupo agora também registra esta decisão. O complemento
 ([`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md), "Engine e linguagem") diz: Godot 4,
