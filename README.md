@@ -1,7 +1,8 @@
 # Icarus
 
-Jogo de plataforma vertical 2.5D inspirado no mito de Ícaro — projeto de Computação Gráfica (UNIFAL-MG).
-Python + Panda3D, com cenário 3D real modelado no Blender e importado como GLB.
+Jogo de plataforma vertical inspirado no mito de Ícaro — projeto de Computação Gráfica (UNIFAL-MG).
+Python, base 2D com elementos 3D modelados no Blender (escopo do grupo, ICR-016); a câmera 2.5D foi
+proposta anterior do Gabriel. Engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel.
 
 > Estado: **bootstrap**. Ainda não há jogo jogável. Veja [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 >
@@ -48,7 +49,7 @@ python3.12 -m venv .venv
 | [`docs/LEVEL_DESIGN.md`](docs/LEVEL_DESIGN.md) | **level design vigente** (congelado para implementação) |
 | [`docs/ASSETS.md`](docs/ASSETS.md) | lista de assets |
 | [`docs/CUTSCENES.md`](docs/CUTSCENES.md) | cutscenes e trailer |
-| [`docs/ASSET_PIPELINE.md`](docs/ASSET_PIPELINE.md) | regras Blender → GLB → Panda3D |
+| [`docs/ASSET_PIPELINE.md`](docs/ASSET_PIPELINE.md) | regras Blender → GLB → Panda3D (GABRIEL-PROPOSAL; engine pendente — ICR-016, pendência 4) |
 | [`docs/TECHNICAL_DESIGN.md`](docs/TECHNICAL_DESIGN.md) | arquitetura técnica |
 | [`docs/ROADMAP.md`](docs/ROADMAP.md) | ordem de produção |
 | [`docs/DECISIONS.md`](docs/DECISIONS.md) | decisões e motivos |

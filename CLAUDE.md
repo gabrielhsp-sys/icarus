@@ -1,6 +1,6 @@
 # Icarus — roteador para Claude
 
-Projeto oficial do jogo Icarus (Python 3.12 + Panda3D). Leia só o que a tarefa pedir.
+Projeto oficial do jogo Icarus (Python 3.12 — engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel). Leia só o que a tarefa pedir.
 
 > ## ⚠️ O design ainda NÃO foi aprovado pelo grupo
 >
@@ -20,7 +20,7 @@ Projeto oficial do jogo Icarus (Python 3.12 + Panda3D). Leia só o que a tarefa 
 - visão do jogo: `docs/GDD.md`
 - level design **vigente**: `docs/LEVEL_DESIGN.md` (prevalece sobre qualquer outro doc de níveis)
 - assets e cutscenes: `docs/ASSETS.md`, `docs/CUTSCENES.md`
-- Blender → GLB → Panda3D: `docs/ASSET_PIPELINE.md`
+- pipeline Blender → GLB → Panda3D (GABRIEL-PROPOSAL; engine pendente — ICR-016, pendência 4): `docs/ASSET_PIPELINE.md`
 - arquitetura do código: `docs/TECHNICAL_DESIGN.md`
 - decisões técnicas/infra: `docs/DECISIONS.md` (registre decisões novas aqui)
 - **decisões do grupo: `docs/GROUP-DECISIONS.md`** — só ali algo vira decisão coletiva

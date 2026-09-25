@@ -34,7 +34,7 @@ Resumo; a lista integral está em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#conf
 1. número de fases (5 temas × "quatro fases principais" × 5 cenários)
 2. o final pelo sol: cutscene depois da vitória ou derrota?
 3. o que é "jump de impulso" e como convive com o salto automático
-4. **engine** — "gamepy" não existe; nenhuma engine foi escolhida ou instalada por isso
+4. **engine** — "gamepy" não existe; nenhuma engine foi escolhida ou instalada por isso. Engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel
 5. flechas e inimigos: quem dispara, contra quem, efeito em vitória/derrota
 6. quem faz cada área
 7. checkpoints, duração-alvo, lista final de poderes e controles

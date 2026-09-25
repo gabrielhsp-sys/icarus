@@ -11,7 +11,7 @@
 - [ ] teste de fumaça: `python main.py` abre a janela
 - [ ] primeiro teste automatizado (hoje `pytest` não coleta nada)
 - [ ] copiar `tests/icarus-blender-test/blender/coluna-teste.blend` para `blender/_pipeline-test/`
-- [ ] reexportar o GLB seguindo `docs/ASSET_PIPELINE.md` e confirmar o material no Panda3D
+- [ ] reexportar o GLB seguindo `docs/ASSET_PIPELINE.md` e confirmar o material no Panda3D — depende da engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel
 - [ ] adaptar `tests/icarus-lab/test_blender_import.py` para `tools/view_model.py` (caminho do GLB por argumento)
 - [ ] fixar o preset de exportação em `docs/ASSET_PIPELINE.md`
 - [ ] `NEEDS-GROUP-APPROVAL` criar CI mínimo em `.github/workflows/` (Python 3.12, sintaxe + pytest)

@@ -19,7 +19,7 @@ Uma etapa só começa quando a anterior está validada.
 
 1. ambiente Python 3.12 reproduzível (`.venv` + `requirements-dev.txt`) — **CONFIRMED** (feito e validado em 2026-09-19)
 2. teste de fumaça: janela abre com câmera ortográfica — **CONFIRMED** como tarefa técnica; ainda pendente
-3. teste de pipeline Blender → GLB → Panda3D **com material** e regras de `docs/ASSET_PIPELINE.md` — **CONFIRMED** como tarefa técnica; ainda pendente
+3. teste de pipeline Blender → GLB → Panda3D **com material** e regras de `docs/ASSET_PIPELINE.md` — **CONFIRMED** como tarefa técnica; ainda pendente. O destino Panda3D depende da engine — engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel
 4. CI mínimo (sintaxe + testes) e remoto privado `icarus` — **NEEDS-GROUP-APPROVAL** (workflow Git/GitHub do grupo ainda não definido)
 
 ## Fase 1 — Física e controle

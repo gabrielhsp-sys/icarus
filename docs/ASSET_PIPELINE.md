@@ -3,6 +3,8 @@
 Status: **rascunho inicial**. As regras abaixo precisam ser validadas no primeiro teste de pipeline
 (ver `docs/TODO.md`) e ajustadas com o que for medido.
 
+Engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel. As regras abaixo supõem Panda3D e só valem se essa proposta for adotada.
+
 ## Ferramentas
 
 - Blender 5.2.x (exportador glTF 2.0 embutido)

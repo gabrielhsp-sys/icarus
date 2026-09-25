@@ -15,7 +15,7 @@ Status: **inicial**. Descreve a arquitetura planejada; atualizar conforme o cód
 
 ## Stack
 
-- Python 3.12, Panda3D 1.10.16
+- Python 3.12; engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel (Panda3D 1.10.16 está instalado e validado localmente, ver o status acima)
 - `panda3d-gltf` + `panda3d-simplepbr` para modelos GLB vindos do Blender
 - pytest para testes automatizados
 

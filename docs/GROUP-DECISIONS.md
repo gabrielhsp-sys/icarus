@@ -88,6 +88,8 @@ Nenhuma foi respondida por suposição.
        convive com o salto automático?
 4. [ ] **Engine**: "gamepy" não existe com esse nome. Qual é a engine? *(nenhuma engine foi
        escolhida nem instalada por causa desta pendência)*
+   > Nota (2026-09-25): engine: pendente de confirmação do grupo (ICR-016, pendência 4); pygame é a opção provável segundo o Gabriel em 2026-09-25; Panda3D foi proposta anterior do Gabriel. **Não é decisão**: a pendência continua aberta até o grupo
+   > confirmar.
 5. [ ] **Flechas e inimigos**: quem dispara, contra quem, e como isso afeta vitória e derrota?
 6. [ ] **Quem faz cada área** (Arte, Programação, Design): divisão concreta entre integrantes.
 7. [ ] **Checkpoints, duração-alvo, lista final de poderes e controles**: o documento não trata.
