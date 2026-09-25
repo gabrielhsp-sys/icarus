@@ -11,65 +11,66 @@ itens que concedem poderes temporários, como mais velocidade ou mais altura de 
 cada vez mais difíceis. O score é a altura alcançada.
 
 A subida atravessa fases temáticas, da Terra (Creta) até o Céu, cada uma mais difícil que a
-anterior. Cair das plataformas é derrota; alcançar o céu completa o jogo. A base é 2D, com
-elementos 3D modelados no Blender complementando o visual dos cenários.
+anterior. Cair das plataformas é derrota; alcançar o céu completa o jogo. O jogo tem elementos 3D
+modelados no Blender.
 
 O escopo completo, como o grupo escreveu, está em [`docs/GROUP_SCOPE.md`](docs/GROUP_SCOPE.md).
 
 ## Estado atual
 
-**Bootstrap.** O repositório tem uma janela pygame que abre, roda o loop e fecha com ESC, e um teste
-de fumaça automatizado. Nenhuma mecânica de jogo foi implementada. Detalhes em
-[`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
+**Projeto base.** O repositório tem um projeto Godot 4 mínimo: uma cena principal vazia que fecha
+com ESC. Nenhuma mecânica de jogo foi implementada, e ainda não está decidido como os elementos 3D
+entram no jogo. Detalhes em [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 
 ## Stack
 
 | Item | Uso |
 |---|---|
-| Python 3.12 | linguagem do jogo (ver `.python-version`) |
-| pygame 2.6.1 | engine atual, provisória: o grupo pode alterar |
-| Blender | modelagem dos elementos 3D; como eles entram no jogo ainda está pendente |
-| pytest | testes automatizados |
+| [Godot 4](https://godotengine.org/) | engine do jogo |
+| GDScript | linguagem dos scripts |
+| [Blender](https://www.blender.org/) | modelagem dos elementos 3D |
 | Git LFS | versionamento de `.blend`, `.glb`, `.png`, `.wav` e `.ogg` |
 
-## Como instalar
+A escolha e os motivos estão em [`docs/DECISIONS.md`](docs/DECISIONS.md) (G-002).
 
-Pré-requisitos: Python 3.12, Git e [Git LFS](https://git-lfs.com/).
+## Como abrir o projeto
+
+Pré-requisitos: Git, [Git LFS](https://git-lfs.com/) e Godot 4
+([site oficial](https://godotengine.org/download) ou Flathub, `org.godotengine.Godot`). A versão
+exata do Godot 4 que todos vão usar ainda será combinada pelo grupo.
 
 ```bash
 git lfs install
 git clone git@github.com:gabrielhsp-sys/icarus.git
-cd icarus
-python3.12 -m venv .venv
-.venv/bin/pip install -r requirements-dev.txt
 ```
 
-No Windows, use `py -3.12 -m venv .venv` e troque `.venv/bin/` por `.venv\Scripts\` nos comandos.
+No Godot, em **Gerenciador de Projetos → Importar**, selecione o arquivo `project.godot` da pasta
+clonada. Com o projeto aberto, **F5** roda o jogo; ESC fecha.
 
-## Como rodar
+Pelo terminal:
 
 ```bash
-.venv/bin/python main.py
+godot --path . --editor          # abre o editor
+godot --path .                   # roda o jogo
+godot --headless --path . --quit # validação sem janela (deve sair com código 0)
 ```
 
-ESC ou o botão de fechar encerra o jogo.
-
-Testes:
-
-```bash
-.venv/bin/python -m pytest
-```
+Com a instalação pelo Flathub, troque `godot` por `flatpak run org.godotengine.Godot`.
 
 ## Estrutura
 
 ```text
-main.py          ponto de entrada
-game/app.py      bootstrap pygame: janela, loop e saída com ESC
-tests/           testes automatizados (pytest)
-assets/models/   arquivos usados pelo jogo (via Git LFS)
-blender/         arquivos-fonte .blend (via Git LFS)
-docs/            escopo, decisões e estado do projeto
+project.godot     configuração do projeto Godot
+scenes/           cenas (.tscn); main.tscn é a cena principal
+scripts/          scripts GDScript (.gd)
+assets/models/    modelos do Blender (.blend, .glb) — Git LFS
+assets/textures/  texturas (.png) — Git LFS
+assets/audio/     sons (.wav, .ogg) — Git LFS
+docs/             escopo, decisões e estado do projeto
 ```
+
+O Godot gera arquivos `.import` e `.uid` ao lado dos recursos: eles vão para o Git. A pasta
+`.godot/` é cache local e fica fora do Git.
 
 ## Áreas de trabalho
 
@@ -93,5 +94,5 @@ ainda está **pendente**.
 | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) | histórico de mudanças |
 
 As questões em aberto — número de fases, final, jump de impulso, flechas e inimigos, divisão por
-pessoa, integração dos elementos 3D, entre outras — estão em
+pessoa, como o 3D entra no jogo, entre outras — estão em
 [Pendências do grupo](docs/GROUP-DECISIONS.md#pendente).
