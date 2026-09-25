@@ -34,6 +34,7 @@ Formato: ID · data · decisão · motivo. Decisões novas entram no fim; não r
 | ICR-013 | 2026-09-21 | Corrige a redação de **ICR-002**: o Python 3.12 está `CONFIRMED` como **validação técnica local** (venv, `pip check`, imports), mas "versão aprovada para o grupo" era suposição. Adotar 3.12 como padrão do grupo é `NEEDS-GROUP-APPROVAL` | a validação aconteceu; a aprovação coletiva não |
 | ICR-014 | 2026-09-21 | **ICR-004** (remoto privado `icarus` no GitHub) passa a `NEEDS-GROUP-APPROVAL` | remoto, proteção de branch, colaboradores e workflow Git dependem do grupo — inclusive da estratégia para quem tem pouca experiência com Git |
 | ICR-015 | 2026-09-21 | Um GDD definitivo só é `APPROVED` mediante **decisão explícita do grupo**, registrada em `GROUP-DECISIONS.md` com data | evita que a proposta vire escopo por inércia |
+| ICR-016 | 2026-09-25 | O **grupo aprovou um documento de escopo** do jogo — confirmado pelo Gabriel em 2026-09-25 como decisão do grupo; sujeito a alteração. Transcrição fiel em [`GROUP_SCOPE.md`](GROUP_SCOPE.md); itens `CONFIRMED` e 7 pendências `NEEDS-GROUP-APPROVAL` em `GROUP-DECISIONS.md`. Só muda de estado o que o documento afirma; o cruzamento com as propostas anteriores está em [ICR-016 — propostas anteriores × documento do grupo](#icr-016--propostas-anteriores--documento-do-grupo-2026-09-25). Não é um GDD `APPROVED` (ICR-015): o documento tem contradições internas abertas | o documento do grupo não traz data, autores nem ata; a procedência é a declaração do Gabriel, registrada literalmente |
 
 ## Classificação (2026-09-21)
 
@@ -66,3 +67,47 @@ Resumo: o que está `CONFIRMED` é **infraestrutura e verificação técnica**. 
 Cinco regiões; subida vertical; 10–15 min; câmera 2.5D ortográfica; elementos 3D reais;
 asa automática; planar; impulso especial; temperatura/cera; vento; score; sem checkpoints;
 morte reinicia a tentativa; final clássico; cutscene inicial e final.
+
+## ICR-016 — propostas anteriores × documento do grupo (2026-09-25)
+
+Base: a lista de "Decisões de design herdadas" acima e o [`GDD.md`](GDD.md), todos
+`GABRIEL-PROPOSAL`. Critério: uma proposta só muda de estado se o documento do grupo
+([`GROUP_SCOPE.md`](GROUP_SCOPE.md)) **afirmar** a mesma coisa (confirmada) ou outra coisa
+incompatível (contrariada). Silêncio ou ambiguidade do documento mantém a proposta pendente.
+Os documentos de proposta **não foram editados**; esta tabela é o único registro da mudança.
+
+### Confirmadas pelo documento do grupo
+
+| Proposta anterior | O que o grupo afirma |
+|---|---|
+| subida vertical | subida por plataformas até o céu |
+| score (GDD §12) | só a parte **pela altura**; os demais componentes (penas, tempo, regiões, conclusão) seguem pendentes |
+| Creta como início (GDD §4) | 1ª fase "Terra (Creta)" |
+| plataformas normal, móvel e quebrável (GDD §8) | plataformas fixas, móveis e instáveis/que quebram |
+| existência de inimigos (GDD §10) | inimigos no escopo; comportamento não definido |
+| Python e Blender (GDD §16) | Python na lógica; Blender no 3D |
+
+### Contrariadas pelo documento do grupo
+
+| Proposta anterior | O que o grupo afirma |
+|---|---|
+| sequência de regiões Creta → Mar Egeu → Nuvens Altas → Tempestade → Região Solar (GDD §4) | Terra (Creta) → Cidade → Subida para o céu → Nuvens → Céu. Só Creta coincide; **quantas** fases existem é a pendência 1 |
+
+### Seguem pendentes (`GABRIEL-PROPOSAL` / `NEEDS-GROUP-APPROVAL`)
+
+| Proposta anterior | Por quê |
+|---|---|
+| cinco regiões | o documento diz 5 temas, "quatro fases principais" e 5 cenários — pendência 1 |
+| final clássico | a narrativa do documento coincide (o sol derrete as asas e Ícaro cai), mas não diz se isso é cutscene após a vitória ou derrota — pendência 2 |
+| impulso especial (`Shift`) | o documento cita "jump de impulso" sem definir — pendência 3 |
+| Panda3D como engine; câmera 2.5D ortográfica; "elementos 3D reais" | o documento pede engine 2D com elementos 3D e nomeia "gamepy", que não existe — pendência 4. As dependências Panda3D já fixadas em `requirements*.txt` são validação técnica local (ICR-013), **não** escolha do grupo |
+| inimigos como obstáculos, "sem sistema complexo de combate" (GDD §10) | o documento inclui disparo de flechas sem dizer por quem — pendência 5 |
+| 10–15 min; sem checkpoints; controles provisórios | o documento não trata — pendência 7 |
+| asa automática (bater asas como impulso periódico) | o documento confirma **salto** automático, não a asa automática da proposta |
+| planar | o documento não trata |
+| temperatura/cera | o documento não trata como mecânica; só cita o sol derretendo as asas no término |
+| vento; plataformas de vento, quente, estreita, nuvem temporária | o documento não trata |
+| morte reinicia a tentativa | o documento define a derrota, não o que acontece depois dela |
+| coletáveis (penas, fragmentos de cera, relíquias) | o documento traz itens de poder temporário, que não estavam na proposta; os coletáveis da proposta não aparecem |
+| cutscene inicial e final | o documento lista animações e telas, não cutscenes |
+| ordem de produção (física → graybox → arte) | o documento não trata |

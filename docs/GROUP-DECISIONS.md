@@ -22,11 +22,43 @@ Regras:
 
 ## Confirmado
 
-Nada ainda.
+~~Nada ainda.~~ *(estado até 2026-09-21; ver a entrada de 2026-09-25 abaixo)*
 
 Único ponto que o grupo já sabe:
 
 - o projeto será **dividido entre os integrantes** — a divisão concreta ainda será discutida.
+
+### 2026-09-25 — escopo do jogo (documento do grupo)
+
+| Campo | Valor |
+|---|---|
+| Data | 2026-09-25 (data da confirmação; o documento não traz data própria) |
+| Presentes | não registrado — o documento não traz autores nem ata |
+| Procedência | **confirmado pelo Gabriel em 2026-09-25 como decisão do grupo; sujeito a alteração** |
+| Fonte | transcrição fiel em [`GROUP_SCOPE.md`](GROUP_SCOPE.md) |
+| Registro técnico | [`DECISIONS.md`](DECISIONS.md) ICR-016 |
+
+Entra aqui **só o que o documento afirma sem ambiguidade**. Contradições e lacunas do próprio
+documento estão em [A discutir](#a-discutir), e nenhuma `GABRIEL-PROPOSAL` anterior foi promovida
+por tabela.
+
+- **CONFIRMED** jogo de subida vertical por plataformas até o céu.
+- **CONFIRMED** derrota ao cair; vitória ao atingir a altura final.
+- **CONFIRMED** salto automático.
+- **CONFIRMED** tipos de plataforma: fixas, móveis e instáveis/que quebram.
+- **CONFIRMED** poderes temporários, incluindo velocidade e altura de salto.
+- **CONFIRMED** score pela altura.
+- **CONFIRMED** progressão temática de Terra (Creta) até o Céu, com dificuldade crescente.
+- **CONFIRMED** Python na lógica; Blender nos elementos 3D; base 2D com elementos 3D.
+- **CONFIRMED** telas: inicial, por fase, HUD, vitória e derrota.
+- **CONFIRMED** animações listadas no documento: quebra das plataformas, quebra das asas, queda de
+  Ícaro ao errar um salto, efeitos de poder temporário.
+- **CONFIRMED** sons listados no documento: plataformas quebrando, pulo, poderes especiais,
+  movimento das asas.
+- **CONFIRMED** flechas e inimigos estão no escopo; o comportamento deles **ainda não foi definido**
+  (pendência 5).
+- **CONFIRMED** o trabalho se divide em três áreas: Arte, Programação e Design (quem faz cada uma é
+  a pendência 6).
 
 ## A discutir
 
@@ -39,6 +71,26 @@ Nada ainda.
 - [ ] cronograma
 - [ ] critério para considerar o GDD aprovado
 - [ ] o que fazer com os documentos de proposta já escritos: adotar, adaptar ou recomeçar
+
+> 2026-09-25: parte de escopo, gameplay, mecânicas e fases foi respondida pelo documento do grupo
+> (ver [Confirmado](#confirmado)). Os itens acima ficam como estavam; o que o documento deixou em
+> aberto está logo abaixo.
+
+### Pendências do documento de escopo (2026-09-25) — NEEDS-GROUP-APPROVAL
+
+Contradições e lacunas do próprio documento do grupo ([`GROUP_SCOPE.md`](GROUP_SCOPE.md)).
+Nenhuma foi respondida por suposição.
+
+1. [ ] **Número de fases**: 5 temas, "quatro fases principais" ou 5 cenários de fundo? Fase e
+       cenário são a mesma coisa?
+2. [ ] **Final**: a queda pelo sol é uma cutscene depois da vitória, ou é a derrota?
+3. [ ] **"Jump de impulso"** é o quê: plataforma-trampolim, salto carregado ou outra coisa? Como
+       convive com o salto automático?
+4. [ ] **Engine**: "gamepy" não existe com esse nome. Qual é a engine? *(nenhuma engine foi
+       escolhida nem instalada por causa desta pendência)*
+5. [ ] **Flechas e inimigos**: quem dispara, contra quem, e como isso afeta vitória e derrota?
+6. [ ] **Quem faz cada área** (Arte, Programação, Design): divisão concreta entre integrantes.
+7. [ ] **Checkpoints, duração-alvo, lista final de poderes e controles**: o documento não trata.
 
 ## Divisão de responsabilidades
 

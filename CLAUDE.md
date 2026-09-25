@@ -24,6 +24,7 @@ Projeto oficial do jogo Icarus (Python 3.12 + Panda3D). Leia só o que a tarefa 
 - arquitetura do código: `docs/TECHNICAL_DESIGN.md`
 - decisões técnicas/infra: `docs/DECISIONS.md` (registre decisões novas aqui)
 - **decisões do grupo: `docs/GROUP-DECISIONS.md`** — só ali algo vira decisão coletiva
+- escopo aprovado pelo grupo (transcrição fiel, 2026-09-25): `docs/GROUP_SCOPE.md`
 - procedência dos docs: `docs/SOURCES.md`
 - `docs/archive/` é histórico: consultar, não seguir como regra
 

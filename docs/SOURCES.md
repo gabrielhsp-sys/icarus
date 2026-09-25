@@ -26,3 +26,6 @@ Legenda de status:
   (pacote de migração v1.2.0).
 - Documentos criados do zero no bootstrap (sem origem externa): `ASSET_PIPELINE.md`, `TECHNICAL_DESIGN.md`, `DECISIONS.md`,
   `ROADMAP.md`, `CURRENT_STATE.md`, `TODO.md`, `CHANGELOG.md`, `SOURCES.md`.
+- `GROUP_SCOPE.md` (2026-09-25): transcrição fiel do documento de escopo escrito pelo grupo num Google Doc.
+  O documento não traz data, autores nem ata; procedência: "confirmado pelo Gabriel em 2026-09-25 como
+  decisão do grupo; sujeito a alteração". Não é cópia de arquivo local, por isso não tem SHA-256 de origem.

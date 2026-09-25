@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-09-25 — escopo do grupo registrado
+
+- novo `GROUP_SCOPE.md`: transcrição fiel do documento de escopo do grupo, com procedência
+  ("confirmado pelo Gabriel em 2026-09-25 como decisão do grupo; sujeito a alteração")
+- `GROUP-DECISIONS.md`: primeira entrada em **Confirmado** (só o que o documento afirma sem
+  ambiguidade) e 7 pendências `NEEDS-GROUP-APPROVAL` com as contradições e lacunas do documento;
+  mudança aditiva
+- `DECISIONS.md`: ICR-016 e o cruzamento das `GABRIEL-PROPOSAL` anteriores (confirmadas,
+  contrariadas, pendentes); os documentos de proposta não foram editados
+- `CURRENT_STATE.md`: estado do escopo atualizado; `CLAUDE.md` e `SOURCES.md` apontam para a
+  transcrição
+- nenhum código alterado; nenhuma engine escolhida ou instalada
+
 ## 2026-09-21 — status documental corrigido: design é proposta, não decisão
 
 - `GDD.md`, `LEVEL_DESIGN.md`, `ASSETS.md`, `CUTSCENES.md`, `ROADMAP.md` e `TECHNICAL_DESIGN.md`
