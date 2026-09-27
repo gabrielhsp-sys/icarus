@@ -111,3 +111,10 @@ Git costuma gerar um conflito difícil de resolver. Antes de mexer numa cena, co
 
 **Quem revisa e aprova os Pull Requests:** Gabriel e Guilherme Falcucci (G-012, em
 [`DECISIONS.md`](DECISIONS.md)).
+
+## 7. Onde salvar os seus arquivos
+
+Cada tipo de arquivo tem uma pasta e um padrão (modelos em `.glb`, fundos em PNG de 1920×1080,
+sons em `assets/audio/`). A tabela está no README, em
+[Guia rápido → Onde colocar cada coisa](../README.md#onde-colocar-cada-coisa). Quem faz cada parte
+está logo abaixo, em [Quem faz o quê](../README.md#quem-faz-o-quê).
