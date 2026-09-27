@@ -1,0 +1,62 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/telas/creditos.gd" id="1_script"]
+
+[node name="Creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.06, 0.15, 1)
+
+[node name="Centro" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Linhas" type="VBoxContainer" parent="Centro"]
+layout_mode = 2
+theme_override_constants/separation = 36
+
+[node name="Titulo" type="Label" parent="Centro/Linhas"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Créditos"
+horizontal_alignment = 1
+
+[node name="Equipe" type="Label" parent="Centro/Linhas"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Modelos 3D: Danilo e Luiz
+Visual 2D: Diogo e Gabriela
+Programação: Gabriel e Guilherme Falcucci
+Sons: Gabriel"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="Centro/Linhas"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 64
+text = "Seu score: 0"
+horizontal_alignment = 1
+
+[node name="Voltar" type="Button" parent="Centro/Linhas"]
+custom_minimum_size = Vector2(420, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 44
+text = "Voltar ao início"
