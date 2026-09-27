@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-27 — guia de instalação
+
+- `COMO-COMECAR.md`: o guia do Windows que o grupo recebeu virou a parte principal (GitHub Desktop
+  ou Git Bash, Godot 4.7.2, abrir o projeto, dia a dia em branch); ficaram o convite do GitHub e o
+  passo que aponta para a tabela do README; quem aprova os Pull Requests: Gabriel e Guilherme
+  Falcucci (G-012)
+- `README.md`: "Para quem usa o terminal" dividido em Linux (Flathub, comandos completos,
+  conferidos em 2026-09-27) e Windows (Git Bash, pelo caminho do `.exe`, opcional)
+
 ## 2026-09-27 — decisões finais do grupo (G-013 a G-024)
 
 - `DECISIONS.md`: G-013 a G-024 — divisão de tarefas, câmera em perspectiva, modelos em `.glb`,
