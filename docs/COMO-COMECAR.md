@@ -7,8 +7,8 @@ mudança enviada para o grupo revisar. Quem usa Linux encontra os comandos no
 ## 1. Peça acesso ao repositório
 
 O repositório é privado. Para ver e baixar o projeto, você precisa ser convidado como colaborador
-pelo dono do repositório no GitHub e aceitar o convite, que chega por e-mail. Sem o convite, o
-GitHub mostra a página como se ela não existisse (erro 404).
+pelo dono do repositório no GitHub e aceitar o convite. Sem o convite, o GitHub mostra a página como se ela não existisse
+(erro 404).
 
 ## 2. Instale o Git e baixe o projeto
 
@@ -78,6 +78,16 @@ Com o projeto aberto, **F5** roda o jogo e **ESC** fecha.
 Cada pessoa trabalha na sua própria **branch** (uma linha de trabalho separada). A `main` é a
 versão principal do projeto e só muda por Pull Request.
 
+Três palavras aparecem em todo passo:
+
+- **commit**: um registro da sua mudança, com uma mensagem curta dizendo o que você fez;
+- **push**: enviar os seus commits para o GitHub (no GitHub Desktop, **Publish branch** ou
+  **Push origin**);
+- **Pull Request**: o pedido para o grupo revisar a sua mudança e juntá-la à `main`.
+
+**Fetch origin** e **Pull origin** buscam no GitHub o que os outros já juntaram à `main`, para você
+começar da versão mais nova.
+
 ### No GitHub Desktop
 
 1. Em **Current branch**, escolha `main`, clique em **Fetch origin** e depois em **Pull origin**.
@@ -95,6 +105,7 @@ git switch main
 git pull
 git switch -c nome-da-sua-branch
 # trabalhe no projeto e salve
+git status          # mostra o que mudou
 git add .
 git commit -m "descreve o que você fez"
 git push -u origin nome-da-sua-branch
@@ -106,7 +117,8 @@ Depois, abra o Pull Request no GitHub, da sua branch para a `main`, e avise no g
 
 - Ninguém junta nada na `main` por conta própria.
 - Duas pessoas não mexem na mesma cena (arquivo `.tscn`) ao mesmo tempo. Combine antes com o grupo.
-- Gabriel e Guilherme Falcucci revisam e aprovam os Pull Requests (G-012).
+- Gabriel e Guilherme Falcucci revisam e aprovam os Pull Requests
+  ([G-012](DECISIONS.md)).
 
 ## 6. Onde salvar os seus arquivos
 

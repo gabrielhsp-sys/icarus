@@ -8,6 +8,8 @@
   Falcucci (G-012)
 - `README.md`: "Para quem usa o terminal" dividido em Linux (Flathub, comandos completos,
   conferidos em 2026-09-27) e Windows (Git Bash, pelo caminho do `.exe`, opcional)
+- `README.md`: "Guia rápido → Todo dia" passou a só apontar para o passo a passo do
+  `COMO-COMECAR.md`, com as mesmas três regras
 
 ## 2026-09-27 — decisões finais do grupo (G-013 a G-024)
 
