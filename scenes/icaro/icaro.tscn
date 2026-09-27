@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/icaro/icaro.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://assets/models/_provisorio/icaro_provisorio.glb" id="2_modelo"]
+
+[sub_resource type="CapsuleShape3D" id="forma"]
+radius = 0.35
+height = 1.6
+
+[node name="Icaro" type="CharacterBody3D" groups=["icaro"]]
+collision_mask = 2
+axis_lock_linear_z = true
+floor_snap_length = 0.0
+script = ExtResource("1_script")
+
+[node name="Colisao" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("forma")
+
+[node name="Visual" parent="." instance=ExtResource("2_modelo")]
+
+[node name="SaidaDaFlecha" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
