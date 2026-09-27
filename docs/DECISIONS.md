@@ -22,6 +22,18 @@ Decisões novas entram no fim. Uma decisão não é reescrita: outra entrada a s
 | G-010 | 2026-09-25 | Checkpoint: não há checkpoint; a partida dura até chegar ao fim ou perder | **DECIDIDO (grupo)**, pelo complemento | [`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md), "Checkpoint" |
 | G-011 | 2026-09-25 | Organização: cada integrante trabalha em uma branch separada no Git, para não quebrar a `main`. Como as branches são juntadas na `main` (quem revisa e aprova) continua **PENDENTE (grupo)** | **DECIDIDO (grupo)**, pelo complemento | [`GROUP_SCOPE_COMPLEMENT.md`](GROUP_SCOPE_COMPLEMENT.md), "Organização" |
 | G-012 | 2026-09-25 | Revisão de Pull Requests: Gabriel e Guilherme Falcucci revisam e aprovam os Pull Requests para a `main`. Os dois ficam com a Programação. Responde a parte de G-011 que continuava pendente (quem revisa e aprova). A divisão dos outros 4 integrantes continua **PENDENTE (grupo)** | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#2026-09-25--revisão-de-pull-requests-e-programação-g-012) |
+| G-013 | 2026-09-25 | Divisão de tarefas: **Modelos 3D** (Blender) — Danilo e Luiz: Ícaro, plataformas (fixa, móvel, instável, pula-pula), inimigos e flecha. **Visual 2D** — Diogo e Gabriela: os 5 fundos, o desenho da tela inicial e da tela final, e os itens de poder. **Programação** (Godot) — Gabriel e Guilherme Falcucci: movimento e salto, plataformas, flechas e inimigos, câmera, score e derrota, troca dos fundos, telas e HUD, cutscene final. **Sons** — Gabriel. Responde a pendência "Divisão das tarefas por pessoa" do complemento e a parte de G-012 que continuava pendente | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-014 | 2026-09-25 | Câmera em perspectiva | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-015 | 2026-09-25 | Modelos 3D: exportados do Blender em `.glb` (File → Export → glTF 2.0, formato `.glb`); nome em minúsculo e sem espaço (ex.: `icaro.glb`); escala real, 1 unidade = 1 metro | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-016 | 2026-09-25 | Duração da partida: sem limite de tempo. A partida dura até chegar ao céu ou cair | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-017 | 2026-09-25 | Poderes temporários: exatamente três — **velocidade** (Ícaro se move mais rápido para os lados), **pulo alto** (o salto fica mais alto) e **escudo** (o próximo inimigo que encostar em Ícaro não causa dano; o escudo some ao ser usado ou quando o tempo acaba). Os itens de poder são 2D. A duração de cada poder é ajuste da Programação em teste. **Substitui** os "outros bônus" do documento original | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-018 | 2026-09-25 | Inimigo encosta em Ícaro: Ícaro perde pontos do score, é empurrado para baixo e fica invulnerável por um instante (piscando). Não há barra de vida. Os valores de pontos e de tempo são ajuste da Programação em teste. Completa G-008 | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-019 | 2026-09-25 | Final: cutscene final de Ícaro caindo de costas com as asas queimando, depois os créditos e o score do jogador. O final expressa a lição do mito (a arrogância leva à queda); não é vitória. Responde a pendência "O que aparece depois da cutscene final" de G-006 | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-020 | 2026-09-25 | Cair durante a subida: tela preta e a partida reinicia. Não existe tela de derrota desenhada. **Substitui** a tela de derrota do documento original ("telas de vitória e derrota", em "Interfaces") | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-25 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-021 | 2026-09-26 | Estilo visual: low poly cartoon, com referência no Mario antigo (estilo Mario 64): formas simples, cores fortes e saturadas, texturas simples. A referência é só de estilo: nenhum personagem, modelo ou textura da Nintendo entra no jogo | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-26 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-022 | 2026-09-26 | Fundos 2D: 1920×1080, em PNG, uma imagem por cenário (5 no total); a troca entre cenários é com fade. A janela do jogo é 1920×1080 (16:9), decisão da Programação; ela é configurada no projeto quando a Programação começar | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-26 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-023 | 2026-09-26 | Animações de Ícaro (asas, queda de costas) e da plataforma quebrando: equipe de Modelos 3D (Danilo e Luiz) | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-26 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
+| G-024 | 2026-09-26 | Sons: produzidos por Gabriel no FL Studio. São autorais, sem licença de terceiros | **DECIDIDO (grupo)**, confirmado por Gabriel em 2026-09-26 | [abaixo](#g-013-a-g-024--decisões-finais-do-grupo) |
 
 ## G-002 — Godot 4 + GDScript
 
@@ -67,3 +79,23 @@ substitui:
 | fases ("fases/temas", "quatro fases principais", "Quantidade de Fases") | G-005 — não há fases; o jogo é contínuo e o fundo muda ao longo da subida |
 | "Vitória: completar todos os cenários e fases, alcançando o céu" | G-006 — não existe vitória; ao chegar ao céu, cutscene da queda |
 | tela de vitória ("Interfaces"; "mostra a tela de vitória", em "Programação") | G-006 — o jogo termina com a cutscene; o que aparece depois é pendente |
+
+## G-013 a G-024 — decisões finais do grupo
+
+Confirmadas por Gabriel: G-013 a G-020 em 2026-09-25, G-021 a G-024 em 2026-09-26. O texto
+consolidado do grupo está no Google Doc "Guia 1 — Icarus", que não foi transcrito aqui. Com elas,
+as pendências do complemento e as de G-006, G-008, G-011 e G-012 ficam respondidas; a única que
+sobra está em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente).
+
+Os trechos anteriores que elas substituem ou completam:
+
+| Antes | Agora |
+|---|---|
+| "outros bônus" nos poderes temporários (documento original) | G-017 — exatamente três poderes: velocidade, pulo alto e escudo |
+| tela de derrota ("telas de vitória e derrota", em "Interfaces") | G-020 — tela preta e reinício; não existe tela de derrota desenhada |
+| G-006 — o que aparece depois da cutscene final era pendente | G-019 — créditos e o score do jogador |
+| G-008 — o que acontece quando um inimigo atinge Ícaro era pendente | G-018 — perde pontos, é empurrado para baixo e fica invulnerável por um instante |
+| G-012 — a divisão dos outros 4 integrantes era pendente | G-013 — Modelos 3D, Visual 2D, Programação e Sons |
+
+Valores de tempo e de pontos (duração dos poderes, pontos perdidos, tempo de invulnerabilidade)
+são ajuste da Programação em teste e não entram neste registro.
