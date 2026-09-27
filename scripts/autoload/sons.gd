@@ -20,6 +20,9 @@ func _ready() -> void:
 
 
 func tocar(nome: String) -> void:
+	if not nome in NOMES:
+		push_warning("Som sem nome registrado em Sons.NOMES: %s" % nome)
+		return
 	var som: AudioStream = _sons.get(nome)
 	if som == null:
 		return
@@ -28,7 +31,3 @@ func tocar(nome: String) -> void:
 	add_child(tocador)
 	tocador.finished.connect(tocador.queue_free)
 	tocador.play()
-
-
-func tem_arquivo(nome: String) -> bool:
-	return _sons.has(nome)

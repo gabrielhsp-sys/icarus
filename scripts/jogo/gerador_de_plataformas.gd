@@ -11,9 +11,6 @@ const CENAS := {
 }
 const CENA_DO_INIMIGO := preload("res://scenes/inimigos/inimigo.tscn")
 const CENA_DO_ITEM := preload("res://scenes/itens/item_de_poder.tscn")
-const ALCANCE_ACIMA := 14.0
-const ALCANCE_ABAIXO := 12.0
-const MARGEM_DA_BORDA := 1.5
 
 var _sorteio := RandomNumberGenerator.new()
 var _ultima_altura := 0.0
@@ -27,10 +24,10 @@ func _ready() -> void:
 
 ## Chamado pela cena do jogo a cada quadro, com a altura da câmera e da borda de baixo.
 func atualizar(altura_da_camera: float, borda_de_baixo: float) -> void:
-	while _ultima_altura < altura_da_camera + ALCANCE_ACIMA and _ultima_altura < Ajustes.ALTURA_DO_CEU:
+	while _ultima_altura < altura_da_camera + Ajustes.ALCANCE_DA_GERACAO_ACIMA and _ultima_altura < Ajustes.ALTURA_DO_CEU:
 		_criar_proxima()
 	for filho in get_children():
-		if filho is Node3D and filho.position.y < borda_de_baixo - ALCANCE_ABAIXO:
+		if filho is Node3D and filho.position.y < borda_de_baixo - Ajustes.DISTANCIA_PARA_APAGAR_ABAIXO:
 			filho.queue_free()
 
 
@@ -38,7 +35,7 @@ func _criar_proxima() -> void:
 	var fator := Dificuldade.fator(_ultima_altura, Ajustes.ALTURA_DO_CEU, Ajustes.EXPOENTE_DA_DIFICULDADE)
 	var y := _ultima_altura + Dificuldade.valor(
 		Ajustes.DISTANCIA_VERTICAL_NO_COMECO, Ajustes.DISTANCIA_VERTICAL_NO_FIM, fator)
-	var limite := Ajustes.LIMITE_LATERAL - MARGEM_DA_BORDA
+	var limite := Ajustes.LIMITE_LATERAL - Ajustes.MARGEM_DAS_PLATAFORMAS_NA_BORDA
 	var x := clampf(_ultimo_x + _sorteio.randf_range(-1.0, 1.0) * Ajustes.DISTANCIA_LATERAL_MAXIMA, -limite, limite)
 	var pesos := Dificuldade.pesos(
 		Ajustes.PESOS_DAS_PLATAFORMAS_NO_COMECO, Ajustes.PESOS_DAS_PLATAFORMAS_NO_FIM, fator)
@@ -58,11 +55,12 @@ func _criar_proxima() -> void:
 		var inimigo: Inimigo = CENA_DO_INIMIGO.instantiate()
 		inimigo.velocidade = Dificuldade.valor(
 			Ajustes.VELOCIDADE_DO_INIMIGO_NO_COMECO, Ajustes.VELOCIDADE_DO_INIMIGO_NO_FIM, fator)
-		_colocar(inimigo, Vector3(_sorteio.randf_range(-limite, limite), y + 1.4, 0.0))
+		_colocar(inimigo, Vector3(_sorteio.randf_range(-limite, limite), y + Ajustes.ALTURA_DO_INIMIGO_ACIMA_DA_PLATAFORMA, 0.0))
 	elif _sorteio.randf() < Ajustes.CHANCE_DE_ITEM_DE_PODER:
 		var item: ItemDePoder = CENA_DO_ITEM.instantiate()
-		item.tipo = [Poderes.Tipo.VELOCIDADE, Poderes.Tipo.PULO_ALTO, Poderes.Tipo.ESCUDO][_sorteio.randi_range(0, 2)]
-		_colocar(item, Vector3(x, y + 1.0, 0.0))
+		var tipos := Ajustes.DURACAO_DOS_PODERES.keys()
+		item.tipo = tipos[_sorteio.randi_range(0, tipos.size() - 1)]
+		_colocar(item, Vector3(x, y + Ajustes.ALTURA_DO_ITEM_ACIMA_DA_PLATAFORMA, 0.0))
 
 
 func _colocar(no: Node3D, posicao: Vector3) -> void:

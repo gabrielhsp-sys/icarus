@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	position.x = clampf(position.x, -Ajustes.LIMITE_LATERAL, Ajustes.LIMITE_LATERAL)
 	position.z = 0.0
 
-	Partida.placar.registrar_altura(position.y)
+	Partida.registrar_altura(position.y)
 	_tocar_asas(direcao != 0.0)
 	_piscar()
 
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 func inimigo_encostou() -> void:
 	match contato.inimigo_encostou(Partida.poderes):
 		Contato.Resultado.DANO:
-			Partida.placar.perder_pontos(Ajustes.PONTOS_PERDIDOS)
+			Partida.perder_pontos()
 			velocity.y = -Ajustes.EMPURRAO_PARA_BAIXO
 			Sons.tocar("dano")
 		Contato.Resultado.ABSORVIDO_PELO_ESCUDO:

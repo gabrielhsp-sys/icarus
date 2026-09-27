@@ -1,8 +1,10 @@
 class_name Ajustes
 extends RefCounted
-## TODOS os números de ajuste do jogo ficam aqui. São valores iniciais da Programação,
-## feitos para testar e mudar: altere, rode o jogo (F5) e veja. Distâncias em metros
-## (1 unidade = 1 metro, G-015), tempos em segundos, velocidades em metros por segundo.
+## Todos os números de ajuste da jogabilidade ficam aqui. São valores iniciais da
+## Programação, feitos para testar e mudar: altere, rode o jogo (F5) e veja. Distâncias em
+## metros (1 unidade = 1 metro, G-015), tempos em segundos, velocidades em metros por segundo.
+## As animações provisórias (plataforma quebrando, pula-pula, Ícaro piscando, cutscene) têm
+## os números no próprio script, porque vão ser trocadas pela arte.
 
 # --- Ícaro -----------------------------------------------------------------------------
 const VELOCIDADE_LATERAL := 7.0          ## A e D (G-009)
@@ -56,6 +58,12 @@ const CHANCE_DE_INIMIGO_NO_FIM := 0.18
 const VELOCIDADE_DO_INIMIGO_NO_COMECO := 2.0
 const VELOCIDADE_DO_INIMIGO_NO_FIM := 4.5
 const CHANCE_DE_ITEM_DE_PODER := 0.06
+const ALTURA_DO_INIMIGO_ACIMA_DA_PLATAFORMA := 1.4
+const ALTURA_DO_ITEM_ACIMA_DA_PLATAFORMA := 1.0
+const MARGEM_DAS_PLATAFORMAS_NA_BORDA := 1.5  ## plataformas não nascem coladas na borda lateral
+const ALCANCE_DA_GERACAO_ACIMA := 14.0       ## cria plataformas até esta distância acima da câmera
+const DISTANCIA_PARA_APAGAR_ABAIXO := 12.0   ## apaga o que ficou esta distância abaixo da tela
+const MARGEM_DA_QUEDA := 1.0                 ## Ícaro abaixo da borda de baixo da tela + isto = caiu
 
 # --- Câmera (G-014) ---------------------------------------------------------------------
 const CAMPO_DE_VISAO_DA_CAMERA := 55.0   ## graus, perspectiva
