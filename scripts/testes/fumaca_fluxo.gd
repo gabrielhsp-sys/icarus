@@ -99,8 +99,16 @@ func _rodar() -> void:
 	await create_timer(Ajustes.TEMPO_DO_FADE_DO_FUNDO + 0.2).timeout
 	confere(jogo.get_node("Fundo/Cenario2").modulate.a > 0.99, "o fundo troca para o 2º cenário com fade")
 
-	icaro.position.y = Ajustes.ALTURA_DO_CEU + 1.0
-	confere(await _esperar_cena("CutsceneFinal"), "chegar ao céu leva à cutscene final")
+	# Com o reinício desligado, Ícaro pode estar caindo há tempo e muito rápido: zera a
+	# velocidade para o primeiro quadro depois do teleporte não descer abaixo do céu.
+	icaro.velocity = Vector3.ZERO
+	icaro.position.y = Ajustes.ALTURA_DO_CEU + 5.0
+	var chegou := await _esperar_cena("CutsceneFinal")
+	confere(chegou, "chegar ao céu leva à cutscene final")
+	if not chegou:
+		print("        estado: altura registrada %.1f m, Ícaro em y = %.1f, partida em andamento: %s, cena: %s"
+			% [partida.placar.altura_maxima(), icaro.position.y if is_instance_valid(icaro) else -1.0,
+			partida.em_andamento, current_scene.name])
 	confere(await _esperar_cena("Creditos", Ajustes.DURACAO_DA_CUTSCENE_FINAL + 3.0), "depois da cutscene vêm os créditos")
 	var score_final: int = partida.placar.score()
 	confere(current_scene.get_node("Centro/Linhas/Score").text.ends_with(str(score_final)), "os créditos mostram o score (%d)" % score_final)
