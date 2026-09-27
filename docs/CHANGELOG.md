@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-09-27 — decisões finais do grupo (G-013 a G-024)
+
+- `DECISIONS.md`: G-013 a G-024 — divisão de tarefas, câmera em perspectiva, modelos em `.glb`,
+  sem limite de tempo, três poderes (velocidade, pulo alto, escudo), inimigo que encosta em Ícaro,
+  cutscene final com créditos e score, tela preta e reinício ao cair, estilo low poly cartoon,
+  fundos PNG 1920×1080 com fade, animações com a equipe de Modelos 3D, sons autorais. Marcado o que
+  foi substituído: os "outros bônus" e a tela de derrota do documento original
+- `GROUP-DECISIONS.md`: as decisões foram para Decidido; Pendente ficou só com os inimigos (tipo,
+  quantidade e movimento), que a equipe de Modelos 3D decide
+- `README.md`: "Guia rápido" no topo (primeira vez, uso diário no GitHub Desktop e no Git Bash,
+  onde colocar cada coisa, estilo visual, quem faz o quê); saíram "Áreas de trabalho" e "Como
+  contribuir", que o guia substitui; resumo do jogo atualizado
+- `COMO-COMECAR.md`: passo 7 aponta para a tabela de pastas e padrões no README
+- `CURRENT_STATE.md` e `CLAUDE.md`: resumo das decisões e a única pendência
+
 ## 2026-09-25 — base técnica e revisores de Pull Request
 
 - `project.godot` e `scenes/main.tscn` salvos pelo Godot 4.7.2 (sem janela, `ResourceSaver.save` e
