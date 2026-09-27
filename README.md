@@ -99,8 +99,8 @@ tomadas depois (G-013 a G-024) estão em [`docs/DECISIONS.md`](docs/DECISIONS.md
 
 ## Estado atual
 
-**Projeto base.** O repositório tem um projeto Godot 4.7.2 mínimo: uma cena principal sem nada
-do jogo, que só fecha com ESC. Nenhuma mecânica do jogo foi implementada ainda. Detalhes em
+**Protótipo jogável.** O que o grupo decidiu já funciona com arte provisória (formas simples e
+cores), pronto para a Arte e os Sons trocarem as peças. Detalhes em
 [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md).
 
 ## Onde está cada coisa
@@ -111,6 +111,7 @@ do jogo, que só fecha com ESC. Nenhuma mecânica do jogo foi implementada ainda
 | O que o grupo já decidiu e o que falta decidir? | [`docs/GROUP-DECISIONS.md`](docs/GROUP-DECISIONS.md) |
 | Por que cada decisão foi tomada, em ordem? | [`docs/DECISIONS.md`](docs/DECISIONS.md) |
 | O que já existe no projeto? | [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) |
+| Como o protótipo está montado e como trocar uma peça provisória? | [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) |
 | O que mudou e quando? | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) |
 | O texto original do grupo | [`docs/GROUP_SCOPE.md`](docs/GROUP_SCOPE.md) e [`docs/GROUP_SCOPE_COMPLEMENT.md`](docs/GROUP_SCOPE_COMPLEMENT.md) |
 | Regras para agentes de IA (Claude Code) | [`CLAUDE.md`](CLAUDE.md) |

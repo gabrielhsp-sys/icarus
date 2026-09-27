@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-09-27 — protótipo base
+
+- protótipo jogável com arte provisória, com tudo o que o grupo decidiu: tela inicial com "Jogar",
+  Ícaro com A e D e salto automático, plataformas fixa, móvel, instável e pula-pula geradas até o
+  céu com dificuldade crescente, flecha com o clique do mouse, inimigo provisório, contato com
+  perda de pontos, empurrão e invulnerabilidade, três poderes em itens 2D, HUD com score e poder,
+  5 fundos com fade, tela preta e reinício ao cair, cutscene final, créditos com o score
+- `project.godot`: janela 1920×1080, autoloads, Input Map, nomes das camadas de física, cena
+  principal na tela inicial; `scenes/main.tscn` e `scripts/main.gd` removidos
+- `scripts/ajustes.gd`: todos os números de ajuste num lugar só
+- `scripts/logica/` com testes de regra em `scripts/testes/` (18) e um teste de fumaça do fluxo
+  inteiro (23 etapas), todos sem janela
+- `assets/models/_provisorio/icaro_provisorio.glb`: Ícaro provisório low poly feito no Blender por
+  script
+- `docs/ARQUITETURA.md` novo; README, `CLAUDE.md` e `CURRENT_STATE.md` apontam para ele
+
 ## 2026-09-27 — decisões finais do grupo (G-013 a G-024)
 
 - `DECISIONS.md`: G-013 a G-024 — divisão de tarefas, câmera em perspectiva, modelos em `.glb`,
