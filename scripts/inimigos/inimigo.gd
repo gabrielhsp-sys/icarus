@@ -6,6 +6,7 @@ extends Area3D
 
 var velocidade := Ajustes.VELOCIDADE_DO_INIMIGO_NO_COMECO
 var _sentido := 1.0
+var _encostado := false
 
 
 func _ready() -> void:
@@ -14,9 +15,15 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_mover(delta)
+	# Um contato por encontro: avisa quando começa a encostar, não a cada quadro. Assim o
+	# inimigo que o escudo absorveu não causa dano enquanto continua encostado.
+	var icaro: Icaro = null
 	for corpo in get_overlapping_bodies():
 		if corpo is Icaro:
-			corpo.inimigo_encostou()
+			icaro = corpo
+	if icaro != null and not _encostado:
+		icaro.inimigo_encostou()
+	_encostado = icaro != null
 
 
 ## Atingido por uma flecha: morre (G-008).

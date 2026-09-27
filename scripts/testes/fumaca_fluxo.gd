@@ -13,7 +13,13 @@ var partida: Node
 var telas: Node
 
 
+const LIMITE_DE_TEMPO := 90.0
+
+
 func _initialize() -> void:
+	create_timer(LIMITE_DE_TEMPO).timeout.connect(func() -> void:
+		print("FALHOU  o teste passou de %d s (etapa travada ou erro de script)" % LIMITE_DE_TEMPO)
+		quit(1))
 	_rodar.call_deferred()
 
 
@@ -26,6 +32,7 @@ func _rodar() -> void:
 	current_scene.get_node("Centro/Linhas/Jogar").pressed.emit()
 	confere(await _esperar_cena("Jogo"), "\"Jogar\" abre a cena do jogo")
 	var jogo := current_scene
+	jogo.reiniciar_ao_cair = false
 	var icaro: Node3D = jogo.get_node("Icaro")
 	await create_timer(2.0).timeout
 	confere(partida.placar.altura_maxima() > 1.0, "Ícaro salta sozinho (altura %.1f m)" % partida.placar.altura_maxima())
@@ -65,6 +72,11 @@ func _rodar() -> void:
 	confere(partida.poderes.ativo() == Poderes.Tipo.NENHUM, "o escudo some ao ser usado")
 	confere(partida.placar.score() == score_antes, "o escudo absorve o inimigo, sem perder pontos")
 	confere(not icaro.contato.invulneravel(), "o escudo não deixa Ícaro piscando")
+	var seguir := func() -> bool:
+		inimigo.global_position = icaro.global_position + Vector3(0.0, 0.8, 0.0)
+		return false
+	await _esperar(seguir, 0.5)
+	confere(partida.placar.score() == score_antes, "o inimigo absorvido não causa dano enquanto continua encostado")
 	inimigo.queue_free()
 
 	var item: Node3D = load("res://scenes/itens/item_de_poder.tscn").instantiate()
@@ -100,6 +112,7 @@ func _rodar() -> void:
 	var primeira_partida := current_scene
 	var primeiro_placar: RefCounted = partida.placar
 	await create_timer(0.5).timeout
+	current_scene.reiniciar_ao_cair = true
 	current_scene.get_node("Icaro").position.y = -40.0
 	await create_timer(Ajustes.TEMPO_DA_TELA_PRETA * 2.0 + 0.5).timeout
 	confere(current_scene != primeira_partida and current_scene.name == "Jogo", "cair leva à tela preta e a partida recomeça")

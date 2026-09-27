@@ -2,6 +2,9 @@ extends Node3D
 ## Cena principal do jogo: junta Ícaro, câmera, plataformas, fundo e HUD, e decide o fim:
 ## cair é tela preta e reinício (G-020); chegar ao céu leva à cutscene final (G-006, G-019).
 
+## Com false, cair não reinicia a partida. Serve ao teste de fumaça, que confere as
+## mecânicas sem depender de Ícaro acertar as plataformas sorteadas.
+var reiniciar_ao_cair := true
 var _acabou := false
 
 @onready var _icaro: Icaro = $Icaro
@@ -25,7 +28,7 @@ func _physics_process(_delta: float) -> void:
 		_acabou = true
 		Partida.encerrar()
 		Telas.trocar_para(Telas.CUTSCENE_FINAL)
-	elif _icaro.position.y < borda_de_baixo - 1.0:
+	elif reiniciar_ao_cair and _icaro.position.y < borda_de_baixo - Ajustes.MARGEM_DA_QUEDA:
 		_acabou = true
 		Partida.encerrar()
 		Telas.reiniciar_partida()
