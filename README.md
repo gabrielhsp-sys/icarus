@@ -158,17 +158,39 @@ arquivos do projeto.
 
 ## Para quem usa o terminal
 
-No Linux (Fedora), o Godot 4.7.2 pode vir do Flathub (`org.godotengine.Godot`). Confira a versão
-com `flatpak run org.godotengine.Godot --version`.
+### Linux (Fedora, Godot do Flathub)
+
+O Godot 4.7.2 vem do Flathub (`org.godotengine.Godot`).
 
 ```bash
 git lfs install
 git clone https://github.com/gabrielhsp-sys/icarus.git
 cd icarus
-godot --path . --editor            # abre o editor
-godot --path .                     # roda o jogo
-godot --headless --path . --import # importa recursos e gera .uid/.import
-godot --headless --path . --quit   # validação sem janela (deve sair com código 0)
+flatpak run org.godotengine.Godot --version                    # deve mostrar 4.7.2.stable
+flatpak run org.godotengine.Godot --path . --editor            # abre o editor
+flatpak run org.godotengine.Godot --path .                     # roda o jogo
+flatpak run org.godotengine.Godot --headless --path . --import # importa recursos e gera .uid/.import
+flatpak run org.godotengine.Godot --headless --path . --quit   # valida sem janela; deve sair com código 0
 ```
 
-Com o Godot do Flathub, troque `godot` por `flatpak run org.godotengine.Godot`.
+Para ver o código de saída da validação, rode `echo $?` logo depois dela.
+
+### Windows (Git Bash)
+
+No Windows, o comum é abrir o projeto pelo próprio Godot, como no
+[Como começar](docs/COMO-COMECAR.md#4-abra-o-projeto). O terminal é opcional.
+
+Para usar o terminal, chame o Godot pelo caminho da pasta onde você extraiu o `.zip`. No exemplo,
+ele está em `C:\Godot`:
+
+```bash
+cd ~/projetos/icarus
+/c/Godot/Godot_v4.7.2-stable_win64.exe --version                    # deve mostrar 4.7.2.stable
+/c/Godot/Godot_v4.7.2-stable_win64.exe --path . --editor            # abre o editor
+/c/Godot/Godot_v4.7.2-stable_win64.exe --path .                     # roda o jogo
+/c/Godot/Godot_v4.7.2-stable_win64.exe --headless --path . --import # importa recursos
+/c/Godot/Godot_v4.7.2-stable_win64.exe --headless --path . --quit   # valida sem janela; deve sair com código 0
+```
+
+Se o `.zip` trouxer também um arquivo terminado em `_console.exe`, use esse no terminal: ele mostra
+as mensagens do Godot na mesma janela.
