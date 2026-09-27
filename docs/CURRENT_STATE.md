@@ -1,6 +1,6 @@
 # Estado atual
 
-Atualizado em: 2026-09-25
+Atualizado em: 2026-09-27
 
 ## Escopo e engine
 
@@ -9,15 +9,27 @@ Atualizado em: 2026-09-25
   diferem ([`DECISIONS.md`](DECISIONS.md) G-004 a G-011)
 - o jogo: subida vertical contínua, **sem fases** e sem checkpoint; o cenário de fundo muda ao
   longo da subida (Terra/Creta, Cidade, Subida para o céu, Nuvens, Céu). Salto automático; A e D
-  movem Ícaro; clique do mouse dispara flechas. Cair é derrota; **não existe vitória**: ao chegar
-  ao céu, cutscene em que o sol derrete as asas e Ícaro cai
+  movem Ícaro; clique do mouse dispara flechas; câmera em perspectiva (G-014); sem limite de tempo
+  (G-016). Três poderes temporários: velocidade, pulo alto e escudo (G-017). Inimigo que encosta
+  tira pontos, empurra Ícaro para baixo e o deixa invulnerável por um instante; sem barra de vida
+  (G-018). Cair leva a uma tela preta e ao reinício, sem tela de derrota (G-020). **Não existe
+  vitória**: ao chegar ao céu, cutscene final de Ícaro caindo de costas com as asas queimando,
+  depois créditos e score (G-019)
 - 3D: Ícaro, plataformas e inimigos são objetos 3D; os cenários de fundo são 2D (G-004)
+- estilo visual: low poly cartoon, referência Mario 64, só de estilo (G-021)
+- assets: modelos em `.glb`, nome minúsculo sem espaço, 1 unidade = 1 metro (G-015); um fundo PNG
+  1920×1080 por cenário, troca com fade (G-022); sons autorais de Gabriel, no FL Studio (G-024).
+  Pastas e resumo de uso: [README → Guia rápido](../README.md#guia-rápido)
 - engine e linguagem: **Godot 4 + GDScript**, DECIDIDO (grupo) por delegação — [`DECISIONS.md`](DECISIONS.md) G-002;
   o complemento do grupo também a registra
 - versão do projeto: **Godot 4.7.2**, a mesma para todos
 - trabalho em branch por integrante (G-011); Gabriel e Guilherme Falcucci revisam e aprovam os
-  Pull Requests e ficam com a Programação (G-012)
-- 7 pendências do grupo em [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)
+  Pull Requests (G-012)
+- equipes (G-013, G-023): Modelos 3D (Danilo e Luiz, com as animações de Ícaro e da plataforma
+  quebrando), Visual 2D (Diogo e Gabriela), Programação (Gabriel e Guilherme Falcucci), Sons
+  (Gabriel)
+- 1 pendência do grupo: inimigos (tipo, quantidade e movimento), que a equipe de Modelos 3D decide
+  — [`GROUP-DECISIONS.md`](GROUP-DECISIONS.md#pendente)
 - guia para integrantes novos (Windows, Git, Godot 4.7.2, branch e Pull Request):
   [`COMO-COMECAR.md`](COMO-COMECAR.md)
 
@@ -48,12 +60,9 @@ Em 2026-09-25, com Godot 4.7.2 (Flathub), sem janela:
 
 ## Próximos passos
 
-Dependem do grupo — ver [Pendências](GROUP-DECISIONS.md#pendente):
-
-- dividir as tarefas dos outros 4 integrantes (1)
-- definir os poderes temporários (3), a duração da partida (2), o que aparece depois da cutscene
-  final (4) e o que acontece quando um inimigo atinge Ícaro (5)
-- decidir a câmera (6) e o formato do modelo 3D (7)
+- equipe de Modelos 3D: decidir os inimigos (a única [pendência](GROUP-DECISIONS.md#pendente))
+- Programação, ao começar: configurar a janela 1920×1080 (G-022) no `project.godot`, que ainda não
+  a define
 
 Ainda não definido: a cena principal tem nó raiz `Node`, que não é 2D nem 3D. O tipo do nó raiz
 ainda não foi definido.

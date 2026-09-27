@@ -22,26 +22,27 @@ Regras:
 ### 2026-09-25 — escopo do jogo (G-001)
 
 Fonte: [`GROUP_SCOPE.md`](GROUP_SCOPE.md). Sujeito a alteração. Entra aqui só o que o documento
-afirma sem ambiguidade, já com o que o complemento (G-004 a G-011) substituiu.
+afirma sem ambiguidade, já com o que o complemento (G-004 a G-011) e as decisões finais (G-013 a
+G-024) substituíram.
 
 - jogo de subida vertical por plataformas até o céu
 - derrota ao cair. A vitória ao atingir a altura final foi **substituída**: não existe vitória
   (G-006)
 - salto automático
 - plataformas fixas, móveis e instáveis (que quebram)
-- poderes temporários, incluindo velocidade e altura de salto; a lista final é pendente
+- poderes temporários: exatamente três, velocidade, pulo alto e escudo (G-017)
 - score pela altura alcançada
 - obstáculos e desafios cada vez mais difíceis
 - cenários de fundo de Terra (Creta) até o Céu. As fases do documento original foram
   **substituídas**: não há fases, o jogo é contínuo (G-005)
-- telas: inicial, HUD e derrota. A tela de vitória foi **substituída** pela cutscene final
-  (G-006); as "interfaces específicas por fase" do documento original ficaram sem fases a que se
-  referir (G-005)
+- telas: inicial e HUD. A tela de vitória foi **substituída** pela cutscene final (G-006); a tela
+  de derrota foi **substituída** por tela preta e reinício (G-020); as "interfaces específicas por
+  fase" do documento original ficaram sem fases a que se referir (G-005)
 - animações: quebra das plataformas, quebra das asas, queda de Ícaro ao errar um salto, efeitos de
   poder temporário
 - sons: plataformas quebrando, pulo, poderes especiais, movimento das asas
-- o trabalho se divide em três áreas: Arte, Programação e Design. A Programação fica com Gabriel
-  e Guilherme Falcucci (G-012); a divisão dos outros 4 integrantes é pendente
+- o trabalho se divide em três áreas: Arte, Programação e Design. A divisão por pessoa está em
+  G-013
 
 ### 2026-09-25 — engine e linguagem (G-002)
 
@@ -76,7 +77,50 @@ Confirmado por Gabriel em 2026-09-25.
 - **revisão e aprovação:** Gabriel e Guilherme Falcucci revisam e aprovam os Pull Requests para a
   `main`. Responde a pendência "como as branches são juntadas na `main`" do complemento
 - **Programação:** fica com Gabriel e Guilherme Falcucci. A divisão dos outros 4 integrantes
-  continua pendente (item 1 abaixo)
+  ficou para G-013
+
+### 2026-09-25 — decisões finais (G-013 a G-020)
+
+Confirmado por Gabriel em 2026-09-25. O texto consolidado do grupo está no Google Doc "Guia 1 —
+Icarus".
+
+- **divisão de tarefas (G-013):**
+
+  | Equipe | Quem | O quê |
+  |---|---|---|
+  | Modelos 3D (Blender) | Danilo e Luiz | Ícaro, plataformas (fixa, móvel, instável, pula-pula), inimigos, flecha |
+  | Visual 2D | Diogo e Gabriela | os 5 fundos, o desenho da tela inicial e da tela final, os itens de poder |
+  | Programação (Godot) | Gabriel e Guilherme Falcucci | movimento e salto, plataformas, flechas e inimigos, câmera, score e derrota, troca dos fundos, telas e HUD, cutscene final |
+  | Sons | Gabriel | os sons do jogo (G-024) |
+
+- **câmera (G-014):** perspectiva
+- **modelos 3D (G-015):** exportados do Blender em `.glb` (File → Export → glTF 2.0, formato
+  `.glb`); nome em minúsculo e sem espaço (ex.: `icaro.glb`); escala real, 1 unidade = 1 metro
+- **duração (G-016):** sem limite de tempo; a partida dura até chegar ao céu ou cair
+- **poderes temporários (G-017):** exatamente três. **Velocidade**: Ícaro se move mais rápido para
+  os lados. **Pulo alto**: o salto fica mais alto. **Escudo**: o próximo inimigo que encostar em
+  Ícaro não causa dano; o escudo some ao ser usado ou quando o tempo acaba. Os itens de poder são
+  2D. A duração de cada poder é ajuste da Programação em teste
+- **inimigo encosta em Ícaro (G-018):** Ícaro perde pontos do score, é empurrado para baixo e fica
+  invulnerável por um instante (piscando). Não há barra de vida. Pontos e tempo são ajuste da
+  Programação em teste
+- **final (G-019):** cutscene final de Ícaro caindo de costas com as asas queimando, depois os
+  créditos e o score do jogador. O final expressa a lição do mito (a arrogância leva à queda); não
+  é vitória
+- **cair (G-020):** tela preta e a partida reinicia. Não existe tela de derrota desenhada
+
+### 2026-09-26 — estilo e assets (G-021 a G-024)
+
+Confirmado por Gabriel em 2026-09-26.
+
+- **estilo visual (G-021):** low poly cartoon, com referência no Mario antigo (estilo Mario 64):
+  formas simples, cores fortes e saturadas, texturas simples. A referência é só de estilo: nenhum
+  personagem, modelo ou textura da Nintendo entra no jogo
+- **fundos e janela (G-022):** um fundo 2D por cenário (5 no total), em PNG, 1920×1080; a troca
+  entre cenários é com fade. A janela do jogo é 1920×1080 (16:9), decisão da Programação
+- **animações (G-023):** as de Ícaro (asas, queda de costas) e a da plataforma quebrando ficam com
+  a equipe de Modelos 3D (Danilo e Luiz)
+- **sons (G-024):** produzidos por Gabriel no FL Studio; autorais, sem licença de terceiros
 
 ### Pendências anteriores resolvidas
 
@@ -87,25 +131,23 @@ Confirmado por Gabriel em 2026-09-25.
 | fases × cenários | não há fases; 5 cenários de fundo ao longo da subida (G-005) |
 | final: cutscene ou derrota | cutscene; não existe vitória (G-006) |
 | "jump de impulso" | plataforma pula-pula (G-007) |
-| flechas e inimigos | G-008; o dano a Ícaro continua pendente (item 5 abaixo) |
-| checkpoints e controles | G-010 e G-009; duração e poderes continuam pendentes (itens 2 e 3) |
+| flechas e inimigos | G-008; o dano a Ícaro em G-018 |
+| checkpoints e controles | G-010 e G-009; duração e poderes em G-016 e G-017 |
 | como os elementos 3D entram no jogo | G-004 |
 | modelo de branches | uma branch por integrante (G-011) |
 | como as branches são juntadas na `main` (quem revisa e aprova) | Gabriel e Guilherme Falcucci (G-012) |
+| divisão das tarefas por pessoa | Modelos 3D, Visual 2D, Programação e Sons (G-013) |
+| duração da partida | sem limite de tempo (G-016) |
+| quais são os poderes temporários | velocidade, pulo alto e escudo (G-017) |
+| o que aparece depois da cutscene final | créditos e o score do jogador (G-019) |
+| o que acontece quando um inimigo atinge Ícaro | perde pontos, é empurrado para baixo e fica invulnerável por um instante (G-018) |
+| câmera | perspectiva (G-014) |
+| formato do modelo 3D | `.glb` (G-015) |
 
 ## Pendente
 
-Os itens 1 a 5 são o que o próprio grupo listou como "Ainda em aberto" no complemento. Os itens 6
-e 7 estão em discussão no grupo; a proposta feita aparece entre parênteses e **não** é decisão.
-
-1. [ ] **Divisão das tarefas por pessoa.** Parcialmente decidida: a Programação fica com Gabriel e
-   Guilherme Falcucci (G-012); falta a divisão dos outros 4 integrantes.
-2. [ ] **Duração da partida.**
-3. [ ] **Quais são os poderes temporários.**
-4. [ ] **O que aparece depois da cutscene final** (ex.: tela com o score).
-5. [ ] **O que acontece quando um inimigo atinge Ícaro.**
-6. [ ] **Câmera** (proposta: perspectiva).
-7. [ ] **Formato do modelo 3D** (proposta: `.glb`; a alternativa é `.blend`).
+1. [ ] **Inimigos: tipo, quantidade e movimento** — decide a equipe de Modelos 3D (Danilo e Luiz).
+   O que acontece quando um inimigo encosta em Ícaro já está decidido (G-018).
 
 ## Para levar ao grupo
 

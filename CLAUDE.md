@@ -7,7 +7,10 @@ pedir.
 
 - escopo do jogo: `docs/GROUP_SCOPE.md` e o complemento `docs/GROUP_SCOPE_COMPLEMENT.md`, que vale
   onde os dois diferem — transcrições fiéis; não editar o texto do grupo
-- o que está decidido e o que está pendente: `docs/GROUP-DECISIONS.md`
+- o que está decidido e o que está pendente: `docs/GROUP-DECISIONS.md`. Hoje a única pendência são os
+  inimigos (tipo, quantidade e movimento), que a equipe de Modelos 3D decide
+- pastas e padrões de assets (`.glb`, fundos PNG 1920×1080, sons), estilo visual e quem faz o
+  quê: `README.md`, "Guia rápido"
 - registro de decisões: `docs/DECISIONS.md` (decisões novas entram no fim)
 - estado atual e mudanças: `docs/CURRENT_STATE.md`, `docs/CHANGELOG.md`
 - como abrir, rodar e estrutura de pastas: `README.md`; passo a passo para integrantes:
@@ -24,7 +27,8 @@ o significado está em `docs/GROUP-DECISIONS.md`.
 2. Use o Godot 4.7.2, a versão fixada pelo grupo; outra versão pode reescrever os arquivos do projeto.
 3. Não decida pelo grupo: mecânicas, cenários, arte, divisão de tarefas, workflow Git e cronograma
    são decisões do grupo. O 3D já está decidido (G-004: Ícaro, plataformas e inimigos em 3D; fundos
-   em 2D); não mude essa divisão.
+   em 2D); não mude essa divisão. G-013 a G-024 fixam equipes, câmera, formato dos modelos,
+   poderes, final, estilo, fundos e sons.
 4. Valores de física, distâncias e tempos são tuning: implementar, testar, ajustar. Não registrar
    números "finais" nos docs.
 5. Binários (`*.blend`, `*.glb`, `*.png`, `*.wav`, `*.ogg`) só via Git LFS. Nunca commitar
