@@ -11,7 +11,7 @@
   principal na tela inicial; `scenes/main.tscn` e `scripts/main.gd` removidos
 - `scripts/ajustes.gd`: todos os números de ajuste num lugar só
 - `scripts/logica/` com testes de regra em `scripts/testes/` (18) e um teste de fumaça do fluxo
-  inteiro (23 etapas), todos sem janela
+  inteiro (24 etapas), todos sem janela
 - `assets/models/_provisorio/icaro_provisorio.glb`: Ícaro provisório low poly feito no Blender por
   script
 - `docs/ARQUITETURA.md` novo; README, `CLAUDE.md` e `CURRENT_STATE.md` apontam para ele

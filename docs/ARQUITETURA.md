@@ -51,11 +51,14 @@ As regras ficam em `scripts/logica/`, separadas das cenas, e têm testes: `placa
 
 ## Onde mudar os números
 
-Todos os números de ajuste estão num arquivo só: **`scripts/ajustes.gd`**. Cada linha tem um
-comentário dizendo o que ela muda. Ali estão as velocidades, a altura do salto, a força da
-pula-pula, os pontos perdidos, o tempo dos poderes e da invulnerabilidade, a distância entre
-plataformas, a altura total até o céu, a curva de dificuldade, a câmera e os tempos de tela preta,
-de fade e da cutscene. Mude, salve e rode o jogo (F5).
+Todos os números de ajuste da jogabilidade estão num arquivo só: **`scripts/ajustes.gd`**. Cada
+linha tem um comentário dizendo o que ela muda. Ali estão as velocidades, a altura do salto, a
+força da pula-pula, os pontos perdidos, o tempo dos poderes e da invulnerabilidade, a distância
+entre plataformas, a altura total até o céu, a curva de dificuldade, a câmera e os tempos de tela
+preta, de fade e da cutscene. Mude, salve e rode o jogo (F5).
+
+As animações provisórias (a plataforma instável caindo, a pula-pula afundando, Ícaro piscando, a
+queda na cutscene) têm os números no próprio script, porque vão ser trocadas pela arte.
 
 ## Como trocar as peças provisórias
 
@@ -77,7 +80,9 @@ ajuste também a forma dela.
 
 Ícaro já usa um modelo `.glb` provisório, feito por script no Blender
 (`assets/models/_provisorio/icaro_provisorio.glb`), que prova o caminho Blender → `.glb` → Godot. A
-cutscene final usa o mesmo modelo.
+cutscene final usa o mesmo modelo e pinta de cor de fogo as malhas cujo nome começa com `asa_`
+(`asa_esquerda`, `asa_direita`). No modelo novo de Ícaro, use esses nomes para as asas; com outros
+nomes, a cutscene roda, mas as asas não ficam cor de fogo.
 
 ### A cor provisória do fundo por um PNG
 

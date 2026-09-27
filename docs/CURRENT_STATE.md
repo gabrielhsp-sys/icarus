@@ -44,7 +44,8 @@ Atualizado em: 2026-09-27
   nomes das camadas de física
 - mundo 3D travado no plano do jogo (z = 0), câmera em perspectiva que só sobe (G-014)
 - uma cena por elemento; cada elemento 3D tem um nó `Visual` com a forma provisória
-- todos os números de ajuste em `scripts/ajustes.gd` — valores iniciais, para testar e mudar
+- todos os números de ajuste da jogabilidade em `scripts/ajustes.gd` — valores iniciais, para
+  testar e mudar; as animações provisórias têm os números no próprio script
 - regras sem cena em `scripts/logica/`, com testes em `scripts/testes/`
 - Ícaro usa um modelo provisório low poly feito por script no Blender:
   `assets/models/_provisorio/icaro_provisorio.glb` (1,62 m, origem nos pés, Git LFS)
@@ -66,6 +67,7 @@ O grupo não decidiu estes pontos. Estão implementados para o protótipo funcio
   intervalo; a flecha vai na direção do cursor
 - plataformas atravessáveis por baixo; Ícaro não passa das bordas laterais
 - um poder por vez: pegar outro item substitui o poder ativo
+- cada inimigo causa um contato por encontro (ao começar a encostar), não um por quadro
 - o score nunca fica abaixo de zero
 - os 5 cenários dividem a subida em trechos iguais
 - o som `asas` toca quando Ícaro começa a andar para o lado e no início da cutscene final
@@ -80,13 +82,16 @@ Em 2026-09-27, com Godot 4.7.2 (Flathub), sem janela:
 
 - `--headless --path . --import` e `--headless --path . --quit`: código 0, sem ERROR/WARNING
 - `--script res://scripts/testes/rodar_testes.gd`: 18 testes de regra, 0 falhas, código 0
-- `--script res://scripts/testes/fumaca_fluxo.gd`: 23 etapas, 0 falhas, código 0, em 3 execuções
+- `--script res://scripts/testes/fumaca_fluxo.gd`: 24 etapas, 0 falhas, código 0, em 3 execuções
   seguidas
+- jogo, cutscene e tela inicial rodados com janela por alguns segundos: código 0, sem ERROR/WARNING
 - cada cena rodada com `--quit-after 600`: código 0, sem ERROR/WARNING
 - o `.glb` provisório importado sem erro; medido no Godot: 1,62 m de altura, pés em y = 0
 
 Só dá para conferir jogando: a sensação do salto e do movimento, a dificuldade, o visual (cores,
-câmera, fundo atrás do 3D) e a leitura do HUD.
+câmera, fundo atrás do 3D) e a leitura do HUD. Um caso conhecido para testar jogando: se Ícaro leva
+dano logo acima de uma plataforma, o empurrão para baixo o põe nela e o salto automático o joga
+para cima de novo.
 
 ## Próximos passos
 
