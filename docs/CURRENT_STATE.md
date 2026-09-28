@@ -59,7 +59,11 @@ Atualizado em: 2026-09-28
   [`GAME-FEEL.md`](GAME-FEEL.md)
 - recorde em `user://recorde.cfg` (onde fica em cada sistema:
   [`ARQUITETURA.md`](ARQUITETURA.md#onde-fica-o-recorde))
-- sons: 10 nomes e a música prontos para arquivos em `assets/audio/`; nenhum som ainda (silêncio)
+- sons: 10 nomes prontos para arquivos em `assets/audio/`; nenhum som ainda (silêncio)
+- música tema (`assets/audio/musica_tema.ogg`, 4 min 9 s, do FL Studio, G-024) tocando da tela
+  inicial aos créditos, sem recomeçar na troca de cena. Loop decidido por Gabriel em 2026-09-28:
+  repete o arquivo inteiro, e o silêncio de 1,2 s do fim foi cortado no próprio `.ogg`, então o
+  fade-out emenda direto no fade-in
 - fundos: 5 nomes prontos para PNG em `assets/textures/`; nenhum PNG ainda (degradê provisório)
 - `.gitignore` do Godot 4 (`.godot/`, `/android/`, saídas de exportação: `/build/`, `/export/`,
   `*.pck`, `*.exe`, `*.x86_64`, `*.apk`, `*.aab`, `*.dmg`, `/*.zip`), backups do Blender,
@@ -100,10 +104,18 @@ O grupo não decidiu estes pontos. Estão implementados para o protótipo funcio
 
 Em 2026-09-28, com Godot 4.7.2 (Flathub):
 
-- `--headless --path . --import` e `--headless --path . --quit`: código 0, sem ERROR/WARNING
+- `--headless --path . --import`: código 0, sem ERROR/WARNING
+- `--headless --path . --quit`: código 0. Com a música tocando, o Godot imprime ao fechar 1
+  WARNING (4 instâncias vazadas) e 1 ERROR (2 recursos em uso): a reprodução ainda está presa no
+  servidor de áudio, que só a solta uns quadros depois de a música parar. Aparece em qualquer saída
+  com a música tocando: no `--quit`, no fim do teste de fumaça e também no ESC (conferido com e sem
+  janela). Fica só no console, com código de saída 0; aceito por Gabriel em 2026-09-28
 - `--script res://scripts/testes/rodar_testes.gd`: 33 testes de regra, 0 falhas, código 0
-- `--script res://scripts/testes/fumaca_fluxo.gd`: 29 etapas, 0 falhas, código 0, em 10 execuções
-  seguidas
+- `--script res://scripts/testes/fumaca_fluxo.gd`: 31 etapas, 0 falhas, código 0, em 5 execuções
+  seguidas (mesmo aviso ao fechar que o `--quit`)
+- música: sem janela, o mixer do Godot produziu som não nulo, a posição continuou na troca da tela
+  inicial para o jogo e para os créditos, e passou do fim do arquivo para o início sem parar; os
+  picos medidos batem com os do `ffmpeg` no mesmo trecho
 - recorde salvo numa execução e lido igual numa segunda execução separada
 - 7 `.glb` provisórios validados (`validate_glb.py`), importados sem erro e medidos no Godot
 - com janela, todos os efeitos ligados, numa AMD Radeon RX 580 com monitor de 180 Hz e V-Sync: jogo
@@ -117,5 +129,5 @@ ajudam ou cansam, a leitura do HUD e das faixas, e o desempenho em computadores 
 - equipe de Modelos 3D: decidir os inimigos (a única [pendência](GROUP-DECISIONS.md#pendente)) e
   trocar as formas provisórias pelos `.glb`
 - equipe de Visual 2D: os 5 fundos, as telas e os itens de poder
-- Sons: os 10 arquivos de som e a música
+- Sons: os 10 arquivos de som
 - Programação: ajustar os números jogando

@@ -32,9 +32,18 @@ func _rodar() -> void:
 	partida.usar_arquivo_de_recorde(ARQUIVO_DE_RECORDE)
 	change_scene_to_file(telas.TELA_INICIAL)
 	confere(await _esperar_cena("TelaInicial"), "o jogo abre na tela inicial")
+	var musica: AudioStreamPlayer = root.get_node("Sons/Musica")
+	var musica_adiantada := 60.0
+	if Ajustes.MUSICA:
+		confere(musica.playing, "a música tema toca na tela inicial")
+		# Adianta a música: se a troca de cena a recomeçasse, ela voltaria para perto do 0.
+		musica.seek(musica_adiantada)
 
 	current_scene.get_node("Centro/Linhas/Jogar").pressed.emit()
 	confere(await _esperar_cena("Jogo"), "\"Jogar\" abre a cena do jogo")
+	if Ajustes.MUSICA:
+		confere(musica.playing and musica.get_playback_position() > musica_adiantada,
+			"a música continua no jogo, sem recomeçar")
 	var jogo := current_scene
 	jogo.reiniciar_ao_cair = false
 	var icaro: Node3D = jogo.get_node("Icaro")
