@@ -1,0 +1,108 @@
+[gd_resource type="Theme" format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/LilitaOne-Regular.ttf" id="1_yn1t8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlur8"]
+content_margin_left = 36.0
+content_margin_top = 14.0
+content_margin_right = 36.0
+content_margin_bottom = 18.0
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0.13, 0.05, 0.16, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgnbm"]
+content_margin_left = 36.0
+content_margin_top = 14.0
+content_margin_right = 36.0
+content_margin_bottom = 18.0
+bg_color = Color(1, 0.85, 0.3, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.13, 0.05, 0.16, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0.13, 0.05, 0.16, 0.6)
+shadow_size = 12
+shadow_offset = Vector2(0, 12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdaix"]
+content_margin_left = 36.0
+content_margin_top = 14.0
+content_margin_right = 36.0
+content_margin_bottom = 18.0
+bg_color = Color(1, 0.72, 0.1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.13, 0.05, 0.16, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0.13, 0.05, 0.16, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdm2b"]
+content_margin_left = 36.0
+content_margin_top = 14.0
+content_margin_right = 36.0
+content_margin_bottom = 18.0
+bg_color = Color(0.95, 0.5, 0.05, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.13, 0.05, 0.16, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+shadow_color = Color(0.13, 0.05, 0.16, 0.6)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urduc"]
+bg_color = Color(0.13, 0.05, 0.16, 0.6)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cw8dm"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+default_font = ExtResource("1_yn1t8")
+default_font_size = 40
+Button/colors/font_color = Color(0.13, 0.05, 0.16, 1)
+Button/colors/font_focus_color = Color(0.13, 0.05, 0.16, 1)
+Button/colors/font_hover_color = Color(0.13, 0.05, 0.16, 1)
+Button/colors/font_pressed_color = Color(0.13, 0.05, 0.16, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_wlur8")
+Button/styles/hover = SubResource("StyleBoxFlat_kgnbm")
+Button/styles/normal = SubResource("StyleBoxFlat_hdaix")
+Button/styles/pressed = SubResource("StyleBoxFlat_sdm2b")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0.13, 0.05, 0.16, 1)
+Label/constants/outline_size = 12
+ProgressBar/styles/background = SubResource("StyleBoxFlat_urduc")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_cw8dm")
