@@ -30,6 +30,7 @@ const AMPLITUDE_DA_PLATAFORMA_MOVEL := 2.5  ## quanto a plataforma móvel anda p
 const PONTOS_PERDIDOS := 50
 const TEMPO_INVULNERAVEL := 1.5          ## Ícaro fica piscando
 const EMPURRAO_PARA_BAIXO := 9.0         ## velocidade para baixo logo depois do dano
+const TEMPO_SEM_QUIQUE_DEPOIS_DO_DANO := 0.3   ## Ícaro atravessa as plataformas, sem quicar
 
 # --- Flecha (G-008) ---------------------------------------------------------------------
 const VELOCIDADE_DA_FLECHA := 28.0

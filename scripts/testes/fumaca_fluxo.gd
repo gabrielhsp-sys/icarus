@@ -64,6 +64,21 @@ func _rodar() -> void:
 	confere(icaro.contato.invulneravel(), "depois do dano Ícaro fica invulnerável")
 	inimigo.queue_free()
 
+	# Dano logo acima de uma plataforma: o empurrão tem de levar Ícaro para baixo dela (G-018).
+	await create_timer(Ajustes.TEMPO_INVULNERAVEL + 0.2).timeout
+	var chao: Node3D = load("res://scenes/plataformas/plataforma_fixa.tscn").instantiate()
+	jogo.add_child(chao)
+	var altura_do_dano: float = icaro.position.y
+	chao.global_position = Vector3(icaro.position.x, altura_do_dano - 0.3, 0.0)
+	icaro.inimigo_encostou()
+	var mais_baixo := altura_do_dano
+	var fim_da_queda := Time.get_ticks_msec() + 600
+	while Time.get_ticks_msec() < fim_da_queda:
+		await physics_frame
+		mais_baixo = minf(mais_baixo, icaro.position.y)
+	confere(mais_baixo < altura_do_dano - 1.0, "o empurrão leva Ícaro para baixo da plataforma (%.1f m)" % (altura_do_dano - mais_baixo))
+	chao.queue_free()
+
 	await create_timer(Ajustes.TEMPO_INVULNERAVEL + 0.2).timeout
 	partida.poderes.ativar(Poderes.Tipo.ESCUDO)
 	score_antes = partida.placar.score()

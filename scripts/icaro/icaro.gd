@@ -5,8 +5,9 @@ extends CharacterBody3D
 ## A origem da cena fica nos pés de Ícaro.
 
 const CENA_DA_FLECHA := preload("res://scenes/flecha/flecha.tscn")
+const CAMADA_DAS_PLATAFORMAS := 2
 
-var contato := Contato.new(Ajustes.TEMPO_INVULNERAVEL)
+var contato := Contato.new(Ajustes.TEMPO_INVULNERAVEL, Ajustes.TEMPO_SEM_QUIQUE_DEPOIS_DO_DANO)
 var _espera_do_tiro := 0.0
 var _andando := false
 var _tempo := 0.0
@@ -24,9 +25,11 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direcao * _velocidade_lateral()
 	velocity.y -= Ajustes.GRAVIDADE * delta
 	velocity.z = 0.0
+	# Logo depois do dano, as plataformas não seguram Ícaro: o empurrão leva ele para baixo.
+	set_collision_mask_value(CAMADA_DAS_PLATAFORMAS, contato.pode_quicar())
 	move_and_slide()
 
-	if is_on_floor():
+	if is_on_floor() and contato.pode_quicar():
 		_saltar()
 	position.x = clampf(position.x, -Ajustes.LIMITE_LATERAL, Ajustes.LIMITE_LATERAL)
 	position.z = 0.0
