@@ -13,7 +13,8 @@ var partida: Node
 var telas: Node
 
 
-const LIMITE_DE_TEMPO := 90.0
+const LIMITE_DE_TEMPO := 120.0
+const ARQUIVO_DE_RECORDE := "user://recorde_fumaca.cfg"
 
 
 func _initialize() -> void:
@@ -26,6 +27,9 @@ func _initialize() -> void:
 func _rodar() -> void:
 	partida = root.get_node("Partida")
 	telas = root.get_node("Telas")
+	# Arquivo de recorde só do teste, para não mexer no recorde de quem joga.
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(ARQUIVO_DE_RECORDE))
+	partida.usar_arquivo_de_recorde(ARQUIVO_DE_RECORDE)
 	change_scene_to_file(telas.TELA_INICIAL)
 	confere(await _esperar_cena("TelaInicial"), "o jogo abre na tela inicial")
 
@@ -124,10 +128,14 @@ func _rodar() -> void:
 		print("        estado: altura registrada %.1f m, Ícaro em y = %.1f, partida em andamento: %s, cena: %s"
 			% [partida.placar.altura_maxima(), icaro.position.y if is_instance_valid(icaro) else -1.0,
 			partida.em_andamento, current_scene.name])
-	confere(await _esperar_cena("Creditos", Ajustes.DURACAO_DA_CUTSCENE_FINAL + 3.0), "depois da cutscene vêm os créditos")
+	var duracao_da_cutscene := Ajustes.DURACAO_DA_CUTSCENE_FINAL / Ajustes.CAMERA_LENTA_NA_CUTSCENE \
+		+ Ajustes.TEMPO_DA_FRASE_FINAL + 4.0
+	confere(await _esperar_cena("Creditos", duracao_da_cutscene), "depois da cutscene vêm os créditos")
+	confere(Engine.time_scale == 1.0, "a câmera lenta da cutscene termina")
 	var score_final: int = partida.placar.score()
-	confere(current_scene.get_node("Centro/Linhas/Score").text.ends_with(str(score_final)), "os créditos mostram o score (%d)" % score_final)
-	current_scene.get_node("Centro/Linhas/Voltar").pressed.emit()
+	confere(current_scene.get_node("Topo/Score").text.ends_with(str(score_final)), "os créditos mostram o score (%d)" % score_final)
+	confere(ArquivoDeRecorde.ler(ARQUIVO_DE_RECORDE).melhor_score == score_final, "o recorde foi salvo no arquivo")
+	current_scene.get_node("Voltar").pressed.emit()
 	confere(await _esperar_cena("TelaInicial"), "\"Voltar ao início\" leva à tela inicial")
 
 	current_scene.get_node("Centro/Linhas/Jogar").pressed.emit()
@@ -137,10 +145,12 @@ func _rodar() -> void:
 	await create_timer(0.5).timeout
 	current_scene.reiniciar_ao_cair = true
 	current_scene.get_node("Icaro").position.y = -40.0
-	await create_timer(Ajustes.TEMPO_DA_TELA_PRETA * 2.0 + 0.5).timeout
+	await create_timer(Ajustes.TEMPO_DA_TELA_PRETA_AO_CAIR * 2.0 + Ajustes.TEMPO_DO_TEXTO_NA_TELA_PRETA + 1.0).timeout
 	confere(current_scene != primeira_partida and current_scene.name == "Jogo", "cair leva à tela preta e a partida recomeça")
 	confere(partida.placar != primeiro_placar, "a partida nova começa com um placar novo")
 
+	confere(current_scene.get_node_or_null("MarcaDeAltura") != null, "a partida nova mostra a marca do recorde")
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(ARQUIVO_DE_RECORDE))
 	print("\n%s" % ("fumaça ok" if _falhas == 0 else "%d etapa(s) falharam" % _falhas))
 	quit(0 if _falhas == 0 else 1)
 
