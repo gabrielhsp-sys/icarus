@@ -111,7 +111,7 @@ muda nenhuma regra do grupo. Cada camada tem um liga/desliga em `scripts/ajustes
 | créditos rolando | `CREDITOS_ROLANDO` | `scripts/telas/creditos.gd` |
 | botões que respondem ao mouse | `BOTOES_VIVOS` | `scripts/interface/botao_vivo.gd` |
 | título e Ícaro animados na tela inicial | `TELA_INICIAL_ANIMADA` | `scripts/telas/tela_inicial.gd` |
-| música de fundo | `MUSICA` | `scripts/autoload/sons.gd` |
+| música tema | `MUSICA` (volume em `VOLUME_DA_MUSICA`) | `scripts/autoload/sons.gd` |
 | câmera lenta, clarão, sol crescendo e câmera que acompanha a queda na cutscene | `CAMERA_LENTA_NA_CUTSCENE` (1 = sem câmera lenta), `CLARAO_DO_SOL`, `SOL_CRESCE_NA_CUTSCENE`, `CAMERA_ACOMPANHA_A_QUEDA` | `scripts/cutscene/cutscene_final.gd` |
 
 Os `.glb` que a equipe 3D mandar também ganham o toon e o contorno sozinhos: o estilo lê a cor e a
@@ -201,7 +201,7 @@ Salve o som em `assets/audio/` com um destes nomes, em `.ogg`, `.wav` ou `.mp3`:
 | `acerto` | a flecha acerta um inimigo |
 | `recorde` | Ícaro passa uma marca de altura |
 | `clique` | um botão é apertado |
-| `musica` | música de fundo, em loop, na tela inicial e no jogo |
+| `musica_tema` | música tema, em loop, da tela inicial aos créditos, sem recomeçar na troca de cena |
 
 Exemplo: `assets/audio/pulo.ogg`. Sem o arquivo, o jogo fica em silêncio, sem erro. Um som novo
 precisa entrar também na lista `NOMES` de `scripts/autoload/sons.gd`.

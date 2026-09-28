@@ -190,7 +190,8 @@ const CREDITOS_ROLANDO := true
 const VELOCIDADE_DOS_CREDITOS := 60.0    ## pixels por segundo
 const BOTOES_VIVOS := true               ## botão cresce ao passar o mouse
 const TELA_INICIAL_ANIMADA := true       ## título e Ícaro se mexendo na tela inicial
-const MUSICA := true                     ## música de fundo em loop (se existir assets/audio/musica.*)
+const MUSICA := true                     ## música tema em loop (assets/audio/musica_tema.ogg)
+const VOLUME_DA_MUSICA := 0.0            ## em dB; 0 = volume do arquivo, negativo abaixa
 const FRACAO_PERTO_DO_SOL := 0.9         ## fração da subida em que aparece a frase "perto do sol"
 
 # --- Cutscene final ---------------------------------------------------------------------

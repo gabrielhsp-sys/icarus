@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-28 — música tema
+
+- música tema `assets/audio/musica_tema.ogg` (Vorbis q5, feita de um único `.mp3`) no gancho
+  de música do autoload `Sons`: toca da tela inicial aos créditos, sem recomeçar na troca de cena
+- o loop repete o arquivo inteiro, provisório até o Gabriel decidir a emenda
+- `VOLUME_DA_MUSICA` em `scripts/ajustes.gd`, ao lado do liga/desliga `MUSICA`
+- teste de fumaça: confere que a música toca na tela inicial e continua no jogo sem recomeçar
+
 ## 2026-09-28 — vibe indie: apresentação, game feel e recorde (provisório)
 
 - correção de G-018: por um instante depois do dano (`TEMPO_SEM_QUIQUE_DEPOIS_DO_DANO`), Ícaro não
