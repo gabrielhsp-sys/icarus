@@ -16,37 +16,14 @@ instalar o Git e o Godot 4.7.2 e baixar o projeto (clone).
 ### Todo dia
 
 Sempre na mesma ordem: atualizar a `main`, criar uma branch, trabalhar, fazer commit, enviar a
-branch (push) e abrir um Pull Request.
-
-No **GitHub Desktop**:
-
-1. Em **Current branch**, escolha `main` e clique em **Fetch origin** (e depois em **Pull origin**,
-   se o botão aparecer).
-2. Em **Current branch → New branch**, crie a branch da sua tarefa.
-3. Trabalhe e salve. Escreva uma mensagem curta no campo **Summary** e clique em **Commit to** (o
-   nome da sua branch).
-4. Clique em **Publish branch** (ou **Push origin**, nas próximas vezes).
-5. Clique em **Create Pull Request** e confirme no GitHub.
-
-No **Git Bash**:
-
-```bash
-git switch main
-git pull
-git switch -c nome-da-sua-branch
-# trabalhe e salve
-git add .
-git commit -m "o que você mudou"
-git push -u origin nome-da-sua-branch
-```
-
-Depois do push, abra o Pull Request no GitHub, da sua branch para a `main`.
+branch (push) e abrir um Pull Request. O passo a passo, no GitHub Desktop e no Git Bash, está em
+[Como começar → O dia a dia](docs/COMO-COMECAR.md#5-o-dia-a-dia).
 
 Três regras:
 
-- nunca faça push na `main`;
-- duas pessoas não editam a mesma cena (`.tscn`) ao mesmo tempo; combine antes com o grupo;
-- Gabriel e Guilherme Falcucci revisam e aprovam os Pull Requests.
+- ninguém junta nada na `main` por conta própria;
+- duas pessoas não mexem na mesma cena (arquivo `.tscn`) ao mesmo tempo; combine antes com o grupo;
+- Gabriel e Guilherme Falcucci revisam e aprovam os Pull Requests (G-012).
 
 ### Onde colocar cada coisa
 
@@ -159,17 +136,42 @@ arquivos do projeto.
 
 ## Para quem usa o terminal
 
-No Linux (Fedora), o Godot 4.7.2 pode vir do Flathub (`org.godotengine.Godot`). Confira a versão
-com `flatpak run org.godotengine.Godot --version`.
+### Linux (Fedora, Godot do Flathub)
+
+O Godot 4.7.2 vem do Flathub (`org.godotengine.Godot`).
 
 ```bash
 git lfs install
 git clone https://github.com/gabrielhsp-sys/icarus.git
 cd icarus
-godot --path . --editor            # abre o editor
-godot --path .                     # roda o jogo
-godot --headless --path . --import # importa recursos e gera .uid/.import
-godot --headless --path . --quit   # validação sem janela (deve sair com código 0)
+flatpak run org.godotengine.Godot --version                    # deve começar com 4.7.2.stable
+flatpak run org.godotengine.Godot --path . --editor            # abre o editor
+flatpak run org.godotengine.Godot --path .                     # roda o jogo
+flatpak run org.godotengine.Godot --headless --path . --import # importa recursos e gera .uid/.import
+flatpak run org.godotengine.Godot --headless --path . --quit   # valida sem janela; deve sair com código 0
 ```
 
-Com o Godot do Flathub, troque `godot` por `flatpak run org.godotengine.Godot`.
+Para ver o código de saída da validação, rode `echo $?` logo depois dela.
+
+### Windows (Git Bash)
+
+No Windows, o comum é abrir o projeto pelo próprio Godot, como no
+[Como começar](docs/COMO-COMECAR.md#4-abra-o-projeto). O terminal é opcional.
+
+Para usar o terminal, chame o Godot pelo caminho da pasta onde você extraiu o `.zip`. No exemplo,
+ele está em `C:\Godot`:
+
+```bash
+git lfs install
+cd ~/projetos
+git clone https://github.com/gabrielhsp-sys/icarus.git
+cd icarus
+/c/Godot/Godot_v4.7.2-stable_win64.exe --version                    # deve começar com 4.7.2.stable
+/c/Godot/Godot_v4.7.2-stable_win64.exe --path . --editor            # abre o editor
+/c/Godot/Godot_v4.7.2-stable_win64.exe --path .                     # roda o jogo
+/c/Godot/Godot_v4.7.2-stable_win64.exe --headless --path . --import # importa recursos
+/c/Godot/Godot_v4.7.2-stable_win64.exe --headless --path . --quit   # valida sem janela; deve sair com código 0
+```
+
+Se o `.zip` trouxer também um arquivo terminado em `_console.exe`, use esse no terminal: ele mostra
+as mensagens do Godot na mesma janela.
