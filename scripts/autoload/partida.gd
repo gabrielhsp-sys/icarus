@@ -8,7 +8,8 @@ var poderes := Poderes.new(Ajustes.DURACAO_DOS_PODERES)
 var em_andamento := false
 ## Recorde salvo no computador (Ajustes.RECORDE). Onde fica: ArquivoDeRecorde.
 var recorde := Recorde.new()
-var ultima_foi_recorde := false
+var ultima_foi_recorde := false            ## recorde de score
+var ultima_altura_foi_recorde := false
 var _caminho_do_recorde := ArquivoDeRecorde.CAMINHO_PADRAO
 
 
@@ -36,6 +37,7 @@ func encerrar() -> void:
 	em_andamento = false
 	if Ajustes.RECORDE:
 		ultima_foi_recorde = recorde.registrar_partida(placar.score(), placar.altura_maxima())
+		ultima_altura_foi_recorde = recorde.ultima_altura_foi_recorde
 		ArquivoDeRecorde.salvar(recorde, _caminho_do_recorde)
 
 

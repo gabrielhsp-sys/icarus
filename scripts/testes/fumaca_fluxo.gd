@@ -42,6 +42,16 @@ func _rodar() -> void:
 	confere(partida.placar.altura_maxima() > 1.0, "Ícaro salta sozinho (altura %.1f m)" % partida.placar.altura_maxima())
 	confere(jogo.get_node("Plataformas").get_child_count() > 8, "plataformas criadas acima")
 
+	# A antecipação da câmera só desloca a imagem: a altura da câmera (que decide a queda)
+	# nunca passa da maior altura de Ícaro mais o deslocamento normal.
+	var camera: Camera3D = jogo.get_node("Camera")
+	var passou_do_alvo := 0.0
+	var fim_da_subida := Time.get_ticks_msec() + 1200
+	while Time.get_ticks_msec() < fim_da_subida:
+		await physics_frame
+		passou_do_alvo = maxf(passou_do_alvo, camera.position.y - (partida.placar.altura_maxima() + Ajustes.CAMERA_ACIMA_DE_ICARO))
+	confere(passou_do_alvo < 0.05, "a antecipação não sobe a altura que decide a queda (%.2f m)" % passou_do_alvo)
+
 	var x_antes := icaro.position.x
 	Input.action_press("mover_direita")
 	await create_timer(0.5).timeout

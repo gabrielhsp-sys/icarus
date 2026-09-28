@@ -51,3 +51,13 @@ func teste_salvar_e_ler_do_arquivo() -> void:
 func teste_sem_arquivo_o_recorde_comeca_zerado() -> void:
 	var lido := ArquivoDeRecorde.ler("user://nao_existe_recorde.cfg")
 	igual(lido.melhor_score, 0, "sem arquivo, score 0")
+
+
+func teste_diz_se_a_altura_da_partida_foi_recorde() -> void:
+	var recorde := Recorde.new()
+	recorde.registrar_partida(320, 31.5)
+	verdadeiro(recorde.ultima_altura_foi_recorde, "a primeira partida com altura é recorde de altura")
+	recorde.registrar_partida(900, 20.0)
+	verdadeiro(not recorde.ultima_altura_foi_recorde, "score recorde com altura menor não é recorde de altura")
+	recorde.registrar_partida(10, 40.0)
+	verdadeiro(recorde.ultima_altura_foi_recorde, "altura maior é recorde de altura mesmo com score baixo")

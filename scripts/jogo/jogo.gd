@@ -34,7 +34,7 @@ func _ready() -> void:
 	var alturas := {}
 	if Ajustes.RECORDE and Ajustes.MARCAS_DE_ALTURA:
 		alturas["recorde"] = recorde.melhor_altura
-		if absf(recorde.altura_anterior - recorde.melhor_altura) > 2.0:
+		if absf(recorde.altura_anterior - recorde.melhor_altura) > Ajustes.DISTANCIA_MINIMA_ENTRE_MARCAS:
 			alturas["anterior"] = recorde.altura_anterior
 	_marcas = Marcas.new(alturas)
 	for nome in alturas:
@@ -70,7 +70,7 @@ func _physics_process(_delta: float) -> void:
 	elif reiniciar_ao_cair and _icaro.position.y < borda_de_baixo - Ajustes.MARGEM_DA_QUEDA:
 		_acabou = true
 		Partida.encerrar()
-		var texto := Textos.tela_preta(altura, Partida.recorde.melhor_altura, Partida.ultima_foi_recorde)
+		var texto := Textos.tela_preta(altura, Partida.recorde.melhor_altura, Partida.ultima_altura_foi_recorde)
 		Telas.reiniciar_partida(texto)
 
 

@@ -55,9 +55,9 @@ func reiniciar_partida(texto := "") -> void:
 	if texto != "" and Ajustes.TEXTO_NA_TELA_PRETA:
 		_texto.text = texto
 		var mostrar := create_tween()
-		mostrar.tween_property(_texto, "modulate:a", 1.0, 0.12)
+		mostrar.tween_property(_texto, "modulate:a", 1.0, Ajustes.TEMPO_DO_FADE_DO_TEXTO)
 		mostrar.tween_interval(Ajustes.TEMPO_DO_TEXTO_NA_TELA_PRETA)
-		mostrar.tween_property(_texto, "modulate:a", 0.0, 0.12)
+		mostrar.tween_property(_texto, "modulate:a", 0.0, Ajustes.TEMPO_DO_FADE_DO_TEXTO)
 		await mostrar.finished
 	get_tree().change_scene_to_file(JOGO)
 	await get_tree().process_frame

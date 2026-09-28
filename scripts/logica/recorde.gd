@@ -6,11 +6,14 @@ extends RefCounted
 var melhor_score := 0
 var melhor_altura := 0.0
 var altura_anterior := 0.0
+## Se a última partida registrada bateu o recorde de altura.
+var ultima_altura_foi_recorde := false
 
 
 ## Guarda o resultado de uma partida. Devolve true se o score for um recorde novo.
 func registrar_partida(score: int, altura: float) -> bool:
 	var novo := score > melhor_score
+	ultima_altura_foi_recorde = altura > melhor_altura
 	melhor_score = maxi(melhor_score, score)
 	melhor_altura = maxf(melhor_altura, altura)
 	altura_anterior = altura
