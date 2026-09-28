@@ -6,23 +6,50 @@
 [ext_resource type="PackedScene" path="res://scenes/fundo/fundo.tscn" id="4_fundo"]
 [ext_resource type="PackedScene" path="res://scenes/icaro/icaro.tscn" id="5_icaro"]
 [ext_resource type="PackedScene" path="res://scenes/hud/hud.tscn" id="6_hud"]
+[ext_resource type="Script" path="res://scripts/efeitos/ambiente_da_subida.gd" id="7_ambiente"]
+[ext_resource type="PackedScene" path="res://scenes/efeitos/vinheta.tscn" id="8_vinheta"]
 
 [sub_resource type="Environment" id="ambiente"]
 background_mode = 3
 background_canvas_max_layer = -1
 ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.6
+ambient_light_color = Color(1, 0.95, 0.9, 1)
+ambient_light_energy = 0.3
+glow_enabled = true
+glow_intensity = 0.0
+glow_bloom = 0.15
+glow_hdr_threshold = 0.9
+fog_enabled = true
+fog_light_color = Color(1, 0.85, 0.6, 1)
+fog_density = 0.005
+fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_saturation = 1.15
+
+[sub_resource type="StandardMaterial3D" id="cor_das_particulas"]
+shading_mode = 0
+transparency = 1
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+
+[sub_resource type="QuadMesh" id="malha_das_particulas"]
+material = SubResource("cor_das_particulas")
+size = Vector2(0.18, 0.18)
 
 [node name="Jogo" type="Node3D"]
 script = ExtResource("1_jogo")
 
-[node name="Ambiente" type="WorldEnvironment" parent="."]
+[node name="Ambiente" type="WorldEnvironment" parent="." node_paths=PackedStringArray("sol", "particulas")]
 environment = SubResource("ambiente")
+script = ExtResource("7_ambiente")
+sol = NodePath("../Sol")
+particulas = NodePath("../Camera/ParticulasAmbiente")
 
 [node name="Sol" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 10, 0)
-light_energy = 1.2
+light_energy = 1.0
 
 [node name="Fundo" parent="." instance=ExtResource("4_fundo")]
 
@@ -36,5 +63,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 current = true
 script = ExtResource("2_camera")
 alvo = NodePath("../Icaro")
+
+[node name="ParticulasAmbiente" type="CPUParticles3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+amount = 40
+lifetime = 6.0
+preprocess = 6.0
+mesh = SubResource("malha_das_particulas")
+emission_shape = 3
+emission_box_extents = Vector3(16, 10, 1)
+direction = Vector3(0.3, 1, 0)
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 1.0
+scale_amount_min = 0.6
+scale_amount_max = 1.6
+
+[node name="Vinheta" parent="." instance=ExtResource("8_vinheta")]
 
 [node name="Hud" parent="." instance=ExtResource("6_hud")]

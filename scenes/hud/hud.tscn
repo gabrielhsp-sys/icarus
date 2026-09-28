@@ -3,26 +3,81 @@
 [ext_resource type="Script" path="res://scripts/hud/hud.gd" id="1_script"]
 
 [node name="Hud" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_script")
 
 [node name="Margem" type="MarginContainer" parent="."]
-offset_right = 600.0
-offset_bottom = 200.0
+offset_right = 640.0
+offset_bottom = 300.0
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 30
 
 [node name="Linhas" type="VBoxContainer" parent="Margem"]
 layout_mode = 2
+theme_override_constants/separation = 4
 
 [node name="Score" type="Label" parent="Margem/Linhas"]
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 64
 text = "Score: 0"
+
+[node name="Recorde" type="Label" parent="Margem/Linhas"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 34
+text = "Recorde: 0"
 
 [node name="Poder" type="Label" parent="Margem/Linhas"]
 layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 8
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 38
+
+[node name="BarraDoPoder" type="ProgressBar" parent="Margem/Linhas"]
+visible = false
+custom_minimum_size = Vector2(320, 22)
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 10.0
+value = 5.0
+show_percentage = false
+
+[node name="Faixa" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 260.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 60
+
+[node name="Linhas" type="VBoxContainer" parent="Faixa"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Nome" type="Label" parent="Faixa/Linhas"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.35, 1)
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 96
+text = "Terra (Creta)"
+horizontal_alignment = 1
+
+[node name="Frase" type="Label" parent="Faixa/Linhas"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Frase"
+horizontal_alignment = 1
+
+[node name="Aviso" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 88
+text = "Novo recorde!"
+horizontal_alignment = 1
+vertical_alignment = 1
