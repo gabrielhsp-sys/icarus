@@ -25,8 +25,9 @@
 - sons: ganchos novos (`pula_pula`, `acerto`, `recorde`, `clique`) e música de fundo em loop
   (`musica`), todos em silêncio sem arquivo
 - cada camada tem liga/desliga em `scripts/ajustes.gd`, incluindo reduzir tremor e reduzir flashes
-- testes: 14 novos de regra (janela sem quique, recorde, arquivo do recorde, marcas, contagem do
-  score), 32 no total; o teste de fumaça confere também o empurrão, o recorde salvo e a marca
+- testes: 15 novos de regra (janela sem quique, recorde de score e de altura, arquivo do recorde,
+  marcas, contagem do score), 33 no total; o teste de fumaça confere também o empurrão, o recorde
+  salvo, a marca e que a antecipação da câmera não muda a linha da queda
 - `docs/GAME-FEEL.md` novo (referências e o que cada uma ensina); `ARQUITETURA.md` com a tabela de
   efeitos e como desligar, textos, fonte, tema e onde fica o recorde
 - este registro restaura as entradas "protótipo base" e "guia de instalação", que tinham saído do

@@ -101,8 +101,8 @@ O grupo não decidiu estes pontos. Estão implementados para o protótipo funcio
 Em 2026-09-28, com Godot 4.7.2 (Flathub):
 
 - `--headless --path . --import` e `--headless --path . --quit`: código 0, sem ERROR/WARNING
-- `--script res://scripts/testes/rodar_testes.gd`: 32 testes de regra, 0 falhas, código 0
-- `--script res://scripts/testes/fumaca_fluxo.gd`: 28 etapas, 0 falhas, código 0, em 10 execuções
+- `--script res://scripts/testes/rodar_testes.gd`: 33 testes de regra, 0 falhas, código 0
+- `--script res://scripts/testes/fumaca_fluxo.gd`: 29 etapas, 0 falhas, código 0, em 10 execuções
   seguidas
 - recorde salvo numa execução e lido igual numa segunda execução separada
 - 7 `.glb` provisórios validados (`validate_glb.py`), importados sem erro e medidos no Godot
