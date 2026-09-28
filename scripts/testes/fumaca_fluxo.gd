@@ -70,16 +70,26 @@ func _rodar() -> void:
 	await create_timer(0.5).timeout
 	confere(not is_instance_valid(inimigo), "a flecha mata o inimigo atingido")
 
+	# Os inimigos que o jogo sorteou podem atingir Ícaro antes da etapa e deixá-lo invulnerável;
+	# o teste tira esses inimigos e espera a invulnerabilidade acabar.
+	_tirar_inimigos_sorteados(jogo)
+	await _esperar(func() -> bool: return not icaro.contato.invulneravel(), Ajustes.TEMPO_INVULNERAVEL + 0.5)
 	partida.placar.registrar_altura(20.0)
 	var score_antes: int = partida.placar.score()
 	inimigo = _novo_inimigo(jogo, icaro.global_position + Vector3(0.0, 0.8, 0.0))
 	await _esperar(func() -> bool: return icaro.contato.invulneravel())
-	confere(partida.placar.score() == score_antes - Ajustes.PONTOS_PERDIDOS, "inimigo que encosta tira pontos")
+	var tirou: bool = partida.placar.score() == score_antes - Ajustes.PONTOS_PERDIDOS
+	confere(tirou, "inimigo que encosta tira pontos")
+	if not tirou:
+		print("        estado: inimigo vivo %s, distância %.2f m, velocidade de Ícaro %s, invulnerável %s, partida em andamento %s, time_scale %.2f, score %d → %d"
+			% [is_instance_valid(inimigo), icaro.global_position.distance_to(inimigo.global_position) if is_instance_valid(inimigo) else -1.0,
+			icaro.velocity, icaro.contato.invulneravel(), partida.em_andamento, Engine.time_scale, score_antes, partida.placar.score()])
 	confere(icaro.contato.invulneravel(), "depois do dano Ícaro fica invulnerável")
 	inimigo.queue_free()
 
 	# Dano logo acima de uma plataforma: o empurrão tem de levar Ícaro para baixo dela (G-018).
 	await create_timer(Ajustes.TEMPO_INVULNERAVEL + 0.2).timeout
+	_tirar_inimigos_sorteados(jogo)
 	var chao: Node3D = load("res://scenes/plataformas/plataforma_fixa.tscn").instantiate()
 	jogo.add_child(chao)
 	var altura_do_dano: float = icaro.position.y
@@ -94,6 +104,8 @@ func _rodar() -> void:
 	chao.queue_free()
 
 	await create_timer(Ajustes.TEMPO_INVULNERAVEL + 0.2).timeout
+	_tirar_inimigos_sorteados(jogo)
+	await _esperar(func() -> bool: return not icaro.contato.invulneravel(), Ajustes.TEMPO_INVULNERAVEL + 0.5)
 	partida.poderes.ativar(Poderes.Tipo.ESCUDO)
 	score_antes = partida.placar.score()
 	inimigo = _novo_inimigo(jogo, icaro.global_position + Vector3(0.0, 0.8, 0.0))
@@ -169,6 +181,13 @@ func confere(condicao: bool, descricao: String) -> void:
 	print(("ok      " if condicao else "FALHOU  ") + descricao)
 	if not condicao:
 		_falhas += 1
+
+
+func _tirar_inimigos_sorteados(jogo: Node) -> void:
+	for no in jogo.get_node("Plataformas").get_children():
+		var script: Script = no.get_script()
+		if script != null and script.resource_path == "res://scripts/inimigos/inimigo.gd":
+			no.free()
 
 
 func _novo_inimigo(jogo: Node, posicao: Vector3) -> Node3D:
