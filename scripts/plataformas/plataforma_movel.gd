@@ -10,6 +10,7 @@ var _tempo := 0.0
 
 
 func _ready() -> void:
+	super()
 	_centro_x = position.x
 	_tempo = randf() * TAU
 
