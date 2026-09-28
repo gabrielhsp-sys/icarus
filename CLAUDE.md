@@ -13,7 +13,8 @@ pedir.
   quê: `README.md`, "Guia rápido"
 - registro de decisões: `docs/DECISIONS.md` (decisões novas entram no fim)
 - estado atual e mudanças: `docs/CURRENT_STATE.md`, `docs/CHANGELOG.md`
-- cenas, scripts, números de ajuste (`scripts/ajustes.gd`) e testes: `docs/ARQUITETURA.md`
+- cenas, scripts, números de ajuste (`scripts/ajustes.gd`), efeitos e como desligar, e testes:
+  `docs/ARQUITETURA.md`; referências de game feel: `docs/GAME-FEEL.md`
 - como abrir, rodar e estrutura de pastas: `README.md`; passo a passo para integrantes:
   `docs/COMO-COMECAR.md`
 
@@ -35,7 +36,9 @@ o significado está em `docs/GROUP-DECISIONS.md`.
 5. Binários (`*.blend`, `*.glb`, `*.png`, `*.wav`, `*.ogg`) só via Git LFS. Nunca commitar
    `.godot/`, `.blend1`, builds exportados ou `.env`.
 6. Arquivos `.import` e `.uid` gerados pelo Godot são versionados junto com o recurso.
-7. Scripts em GDScript, em `scripts/`; cenas em `scenes/`; assets em `assets/{models,textures,audio}/`.
+7. Scripts em GDScript, em `scripts/`; cenas em `scenes/`; assets em
+   `assets/{models,textures,audio,fonts,shaders,interface}/`. Fonte e asset só com licença livre,
+   registrada nos créditos e no repositório.
 8. Não instalar pacotes de sistema, plugins ou serviços; não criar remoto, fazer push, alterar
    configurações do GitHub nem reescrever histórico sem pedido explícito.
 9. Trabalhe numa branch e entregue por Pull Request; nunca commite nem faça push direto na `main`

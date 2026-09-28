@@ -1,6 +1,6 @@
 # Estado atual
 
-Atualizado em: 2026-09-27
+Atualizado em: 2026-09-28
 
 ## Escopo e engine
 
@@ -39,7 +39,8 @@ Atualizado em: 2026-09-27
   tela inicial; mapa das cenas, números de ajuste e como trocar cada peça em
   [`ARQUITETURA.md`](ARQUITETURA.md)
 - `project.godot`: cena principal `res://scenes/telas/tela_inicial.tscn`; janela 1920×1080 (G-022),
-  escala `canvas_items`, proporção mantida; autoloads `Partida`, `Sons` e `Telas`; ações
+  escala `canvas_items`, proporção mantida; autoloads `Partida`, `Sons`, `Telas` e `Efeitos`; tema
+  da interface `assets/interface/tema.tres`; ações
   `mover_esquerda` (A), `mover_direita` (D) e `atirar` (botão esquerdo **e** direito do mouse);
   nomes das camadas de física
 - mundo 3D travado no plano do jogo (z = 0), câmera em perspectiva que só sobe (G-014)
@@ -47,10 +48,19 @@ Atualizado em: 2026-09-27
 - todos os números de ajuste da jogabilidade em `scripts/ajustes.gd` — valores iniciais, para
   testar e mudar; as animações provisórias têm os números no próprio script
 - regras sem cena em `scripts/logica/`, com testes em `scripts/testes/`
-- Ícaro usa um modelo provisório low poly feito por script no Blender:
-  `assets/models/_provisorio/icaro_provisorio.glb` (1,62 m, origem nos pés, Git LFS)
-- sons: 6 nomes prontos para arquivos em `assets/audio/`; nenhum som ainda (o jogo fica em silêncio)
-- fundos: 5 nomes prontos para PNG em `assets/textures/`; nenhum PNG ainda (cores provisórias)
+- formas provisórias low poly feitas por script no Blender, em `assets/models/_provisorio/` (Git
+  LFS): Ícaro (1,61 m, origem nos pés), as quatro plataformas chanfradas (topo em y = 0), o
+  inimigo genérico com olhos e a flecha
+- **apresentação provisória** (branch `feat/vibe-indie`): toon shading e contorno, paleta por
+  cenário, luz e bloom na subida, game feel (squash, poeira, boing, tremor, hit stop, partículas),
+  recorde salvo, marcas de altura, faixa de cenário, fonte Lilita One (OFL), frases do mito e
+  cutscene com câmera lenta. Cada camada tem liga/desliga em `scripts/ajustes.gd`; a tabela está
+  em [`ARQUITETURA.md`](ARQUITETURA.md#efeitos-e-como-desligar) e as referências em
+  [`GAME-FEEL.md`](GAME-FEEL.md)
+- recorde em `user://recorde.cfg` (onde fica em cada sistema:
+  [`ARQUITETURA.md`](ARQUITETURA.md#onde-fica-o-recorde))
+- sons: 10 nomes e a música prontos para arquivos em `assets/audio/`; nenhum som ainda (silêncio)
+- fundos: 5 nomes prontos para PNG em `assets/textures/`; nenhum PNG ainda (degradê provisório)
 - `.gitignore` do Godot 4 (`.godot/`, `/android/`, saídas de exportação: `/build/`, `/export/`,
   `*.pck`, `*.exe`, `*.x86_64`, `*.apk`, `*.aab`, `*.dmg`, `/*.zip`), backups do Blender,
   `renders/`, `tmp/`, `*.log`, editores e `.env`
@@ -75,28 +85,37 @@ O grupo não decidiu estes pontos. Estão implementados para o protótipo funcio
 - ESC fecha o jogo em qualquer tela
 - nomes dos arquivos de fundo (`fundo_1_terra_creta.png` …) e de som (`pulo.ogg` …)
 - todos os números de `scripts/ajustes.gd`
+- depois do dano, Ícaro atravessa as plataformas por um instante (`TEMPO_SEM_QUIQUE_DEPOIS_DO_DANO`),
+  para o empurrão de G-018 ter efeito
+- toda a apresentação e a meta da branch `feat/vibe-indie` (tabela em `ARQUITETURA.md`)
+
+### Para o grupo aprovar
+
+- o texto curto sobre a tela preta ao cair (altura e recorde); G-020 fala só de tela preta e
+  reinício. Desliga com `TEXTO_NA_TELA_PRETA = false`
+- as frases do mito em `scripts/textos.gd` (desliga com `FRASES = false`)
+- a fonte Lilita One (OFL) e o estilo toon com contorno
 
 ## Validação — TÉCNICO (verificado)
 
-Em 2026-09-27, com Godot 4.7.2 (Flathub), sem janela:
+Em 2026-09-28, com Godot 4.7.2 (Flathub):
 
 - `--headless --path . --import` e `--headless --path . --quit`: código 0, sem ERROR/WARNING
-- `--script res://scripts/testes/rodar_testes.gd`: 18 testes de regra, 0 falhas, código 0
-- `--script res://scripts/testes/fumaca_fluxo.gd`: 24 etapas, 0 falhas, código 0, em 3 execuções
+- `--script res://scripts/testes/rodar_testes.gd`: 32 testes de regra, 0 falhas, código 0
+- `--script res://scripts/testes/fumaca_fluxo.gd`: 28 etapas, 0 falhas, código 0, em 10 execuções
   seguidas
-- jogo, cutscene e tela inicial rodados com janela por alguns segundos: código 0, sem ERROR/WARNING
-- cada cena rodada com `--quit-after 600`: código 0, sem ERROR/WARNING
-- o `.glb` provisório importado sem erro; medido no Godot: 1,62 m de altura, pés em y = 0
+- recorde salvo numa execução e lido igual numa segunda execução separada
+- 7 `.glb` provisórios validados (`validate_glb.py`), importados sem erro e medidos no Godot
+- com janela, todos os efeitos ligados, numa AMD Radeon RX 580 com monitor de 180 Hz e V-Sync: jogo
+  entre 171 e 180 FPS, cutscene com mínimo de 177, tela inicial em 180
 
-Só dá para conferir jogando: a sensação do salto e do movimento, a dificuldade, o visual (cores,
-câmera, fundo atrás do 3D) e a leitura do HUD. Um caso conhecido para testar jogando: se Ícaro leva
-dano logo acima de uma plataforma, o empurrão para baixo o põe nela e o salto automático o joga
-para cima de novo.
+Só dá para conferir jogando: a sensação do salto e do movimento, a dificuldade, se os efeitos
+ajudam ou cansam, a leitura do HUD e das faixas, e o desempenho em computadores mais fracos.
 
 ## Próximos passos
 
 - equipe de Modelos 3D: decidir os inimigos (a única [pendência](GROUP-DECISIONS.md#pendente)) e
   trocar as formas provisórias pelos `.glb`
 - equipe de Visual 2D: os 5 fundos, as telas e os itens de poder
-- Sons: os 6 arquivos de som
+- Sons: os 10 arquivos de som e a música
 - Programação: ajustar os números jogando

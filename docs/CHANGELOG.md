@@ -1,6 +1,63 @@
 # Changelog
 
+## 2026-09-28 — vibe indie: apresentação, game feel e recorde (provisório)
 
+- correção de G-018: por um instante depois do dano (`TEMPO_SEM_QUIQUE_DEPOIS_DO_DANO`), Ícaro não
+  quica nas plataformas, então o empurrão leva ele para baixo de verdade
+- identidade visual: toon shading e contorno próprios (sem plugin), paleta por cenário no fundo
+  provisório, na luz, na névoa e na saturação, sol mais quente e forte na subida, bloom perto do
+  céu, vinheta, partículas ao fundo
+- formas provisórias novas em `.glb`, feitas por script no Blender: Ícaro com asas de penas, as
+  quatro plataformas chanfradas, inimigo genérico com olhos e flecha
+- game feel: squash & stretch, inclinação e virada de Ícaro, rastro e aura dos poderes, poeira e
+  afundada no pouso, "boing" do pula-pula, instável que treme e se parte, câmera que antecipa a
+  subida, tremor por trauma, FOV no impulso, rastro da flecha, hit stop, inimigo que estoura,
+  flash vermelho e "-50" no dano, "pop" na coleta, barra de tempo do poder
+- vontade de jogar de novo: recorde de score e de altura salvo no computador, marcas no cenário na
+  altura do recorde e da partida anterior, faixa com o nome do cenário, aviso de novo recorde,
+  reinício rápido depois da tela preta com texto de altura e recorde (provisório, para o grupo
+  aprovar)
+- interface e texto: fonte Lilita One (OFL), tema com botões que respondem ao mouse, tela inicial
+  com título animado, Ícaro em loop e recorde, score em contagem animada, créditos rolando, frases
+  curtas do mito num arquivo só (`scripts/textos.gd`)
+- cutscene final: câmera lenta, clarão do sol, chamas maiores, câmera acompanhando a queda e uma
+  frase final
+- sons: ganchos novos (`pula_pula`, `acerto`, `recorde`, `clique`) e música de fundo em loop
+  (`musica`), todos em silêncio sem arquivo
+- cada camada tem liga/desliga em `scripts/ajustes.gd`, incluindo reduzir tremor e reduzir flashes
+- testes: 14 novos de regra (janela sem quique, recorde, arquivo do recorde, marcas, contagem do
+  score), 32 no total; o teste de fumaça confere também o empurrão, o recorde salvo e a marca
+- `docs/GAME-FEEL.md` novo (referências e o que cada uma ensina); `ARQUITETURA.md` com a tabela de
+  efeitos e como desligar, textos, fonte, tema e onde fica o recorde
+- este registro restaura as entradas "protótipo base" e "guia de instalação", que tinham saído do
+  arquivo na resolução do conflito do merge do PR #5
+
+## 2026-09-27 — protótipo base
+
+- protótipo jogável com arte provisória, com tudo o que o grupo decidiu: tela inicial com "Jogar",
+  Ícaro com A e D e salto automático, plataformas fixa, móvel, instável e pula-pula geradas até o
+  céu com dificuldade crescente, flecha com o clique do mouse, inimigo provisório, contato com
+  perda de pontos, empurrão e invulnerabilidade, três poderes em itens 2D, HUD com score e poder,
+  5 fundos com fade, tela preta e reinício ao cair, cutscene final, créditos com o score
+- `project.godot`: janela 1920×1080, autoloads, Input Map, nomes das camadas de física, cena
+  principal na tela inicial; `scenes/main.tscn` e `scripts/main.gd` removidos
+- `scripts/ajustes.gd`: todos os números de ajuste num lugar só
+- `scripts/logica/` com testes de regra em `scripts/testes/` (18) e um teste de fumaça do fluxo
+  inteiro (24 etapas), todos sem janela
+- `assets/models/_provisorio/icaro_provisorio.glb`: Ícaro provisório low poly feito no Blender por
+  script
+- `docs/ARQUITETURA.md` novo; README, `CLAUDE.md` e `CURRENT_STATE.md` apontam para ele
+
+## 2026-09-27 — guia de instalação
+
+- `COMO-COMECAR.md`: o guia do Windows que o grupo recebeu virou a parte principal (GitHub Desktop
+  ou Git Bash, Godot 4.7.2, abrir o projeto, dia a dia em branch); ficaram o convite do GitHub e o
+  passo que aponta para a tabela do README; quem aprova os Pull Requests: Gabriel e Guilherme
+  Falcucci (G-012)
+- `README.md`: "Para quem usa o terminal" dividido em Linux (Flathub, comandos completos,
+  conferidos em 2026-09-27) e Windows (Git Bash, pelo caminho do `.exe`, opcional)
+- `README.md`: "Guia rápido → Todo dia" passou a só apontar para o passo a passo do
+  `COMO-COMECAR.md`, com as mesmas três regras
 
 ## 2026-09-27 — decisões finais do grupo (G-013 a G-024)
 

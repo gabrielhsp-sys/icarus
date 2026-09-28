@@ -30,10 +30,13 @@ Cada elemento tem a sua cena, para duas pessoas não editarem a mesma cena ao me
 | `scenes/hud/hud.tscn` | HUD: score e poder ativo | `scripts/hud/hud.gd` |
 | `scenes/fundo/fundo.tscn` | fundo 2D dos 5 cenários, com fade | `scripts/fundo/fundo.gd` |
 | `scenes/cutscene/cutscene_final.tscn` | cutscene final provisória: Ícaro caindo de costas, asas queimando | `scripts/cutscene/cutscene_final.gd` |
-| `scenes/telas/creditos.tscn` | créditos e score; "Voltar ao início" | `scripts/telas/creditos.gd` |
+| `scenes/telas/creditos.tscn` | créditos rolando, score e recorde; "Voltar ao início" | `scripts/telas/creditos.gd` |
+| `scenes/efeitos/marca_de_altura.tscn` | linha no cenário na altura do recorde ou da partida anterior | `scripts/efeitos/marca_de_altura.gd` |
+| `scenes/efeitos/vinheta.tscn` | vinheta nas bordas e flash vermelho de dano | `scripts/efeitos/vinheta.gd` |
 
-A câmera (`scripts/jogo/camera_da_subida.gd`) e o gerador de plataformas
-(`scripts/jogo/gerador_de_plataformas.gd`) são nós da cena do jogo.
+A câmera (`scripts/jogo/camera_da_subida.gd`), o gerador de plataformas
+(`scripts/jogo/gerador_de_plataformas.gd`) e o clima da subida
+(`scripts/efeitos/ambiente_da_subida.gd`, no nó `Ambiente`) são nós da cena do jogo.
 
 ### O que roda sempre (autoloads)
 
@@ -42,12 +45,17 @@ A câmera (`scripts/jogo/camera_da_subida.gd`) e o gerador de plataformas
 | `Partida` | score e poder ativo da partida em andamento | `scripts/autoload/partida.gd` |
 | `Sons` | toca um som pelo nome | `scripts/autoload/sons.gd` |
 | `Telas` | troca de tela com tela preta no meio; ESC fecha o jogo | `scripts/autoload/telas.gd` |
+| `Efeitos` | efeitos de resposta: tremor, hit stop, estouro, poeira, anel, número flutuante | `scripts/autoload/efeitos.gd` |
+
+A `Partida` também guarda o recorde (veja [Onde fica o recorde](#onde-fica-o-recorde)).
 
 ### As regras do jogo (sem cenas)
 
 As regras ficam em `scripts/logica/`, separadas das cenas, e têm testes: `placar.gd` (score),
 `poderes.gd` (os três poderes), `contato.gd` (inimigo que encosta, escudo, invulnerabilidade),
-`dificuldade.gd` (curva de dificuldade) e `cenarios.gd` (qual cenário em cada altura).
+`dificuldade.gd` (curva de dificuldade), `cenarios.gd` (qual cenário em cada altura),
+`recorde.gd` e `arquivo_de_recorde.gd` (recorde e o arquivo onde ele fica), `marcas.gd` (marcas a
+superar, cada uma avisa uma vez) e `contador_animado.gd` (score subindo aos poucos no HUD).
 
 ## Onde mudar os números
 
@@ -59,6 +67,74 @@ preta, de fade e da cutscene. Mude, salve e rode o jogo (F5).
 
 As animações provisórias (a plataforma instável caindo, a pula-pula afundando, Ícaro piscando, a
 queda na cutscene) têm os números no próprio script, porque vão ser trocadas pela arte.
+
+## Efeitos e como desligar
+
+Tudo o que é apresentação (visual, game feel, recorde, textos) é provisório da Programação e não
+muda nenhuma regra do grupo. Cada camada tem um liga/desliga em `scripts/ajustes.gd`, na parte
+"APRESENTAÇÃO E META": `true` liga, `false` desliga. As referências de cada técnica estão em
+[`GAME-FEEL.md`](GAME-FEEL.md).
+
+| Camada | Liga/desliga em `ajustes.gd` | Onde fica |
+|---|---|---|
+| toon shading e contorno nos objetos 3D | `TOON_E_CONTORNO` | `scripts/efeitos/estilo_toon.gd`, `assets/shaders/toon.gdshader`, `assets/shaders/contorno.gdshader` |
+| paleta por cenário (fundo provisório, luz, névoa, saturação) | `PALETA_POR_CENARIO` | `scripts/efeitos/ambiente_da_subida.gd`, `scripts/fundo/fundo.gd` |
+| sol mais quente e forte na subida | `LUZ_ESQUENTA_NA_SUBIDA` | `scripts/efeitos/ambiente_da_subida.gd` |
+| bloom perto do céu | `BLOOM_PERTO_DO_CEU` | `scripts/efeitos/ambiente_da_subida.gd` |
+| vinheta | `VINHETA` | `scenes/efeitos/vinheta.tscn`, `assets/shaders/vinheta.gdshader` |
+| partículas ao fundo | `PARTICULAS_AMBIENTE` | nó `Camera/ParticulasAmbiente` de `scenes/jogo/jogo.tscn` |
+| squash & stretch de Ícaro | `SQUASH_E_STRETCH` | `scripts/icaro/icaro.gd` |
+| inclinação e virada de Ícaro | `INCLINACAO_E_VIRADA` | `scripts/icaro/icaro.gd` |
+| rastro no poder de velocidade | `RASTRO_NA_VELOCIDADE` | nó `Rastro` de `scenes/icaro/icaro.tscn` |
+| aura na cor do poder | `AURA_DO_PODER` | nó `Aura` de `scenes/icaro/icaro.tscn` |
+| poeira e afundada no pouso | `POEIRA_NO_POUSO`, `PLATAFORMA_AFUNDA` | `scripts/plataformas/plataforma.gd` |
+| "boing" do pula-pula | `BOING_DO_PULA_PULA` | `scripts/plataformas/plataforma_pula_pula.gd` |
+| instável treme e se parte em pedaços | `INSTAVEL_TREME_E_QUEBRA` | `scripts/plataformas/plataforma_instavel.gd` |
+| câmera que antecipa a subida | `ANTECIPACAO_DA_CAMERA` | `scripts/jogo/camera_da_subida.gd` |
+| tremor de tela (dano e quebra) | `TREMOR_DE_TELA`; mais fraco: `REDUZIR_TREMOR_DE_TELA` | `scripts/jogo/camera_da_subida.gd`, `Efeitos.tremer()` |
+| campo de visão maior no impulso | `FOV_NO_IMPULSO` | `scripts/jogo/camera_da_subida.gd` |
+| rastro na flecha | `RASTRO_NA_FLECHA` | nó `Rastro` de `scenes/flecha/flecha.tscn` |
+| hit stop no acerto | `HIT_STOP` | `Efeitos.hit_stop()` |
+| inimigo estoura em partículas | `ESTOURO_DO_INIMIGO` | `scripts/inimigos/inimigo.gd` |
+| flash vermelho no dano | `FLASH_DE_DANO`; mais fraco: `REDUZIR_FLASHES` | `scripts/efeitos/vinheta.gd` |
+| "-50" flutuando | `NUMERO_FLUTUANTE` | `Efeitos.numero_flutuante()` |
+| "pop" na coleta do item | `POP_NA_COLETA` | `scripts/itens/item_de_poder.gd` |
+| barra de tempo do poder | `BARRA_DO_PODER` | `scripts/hud/hud.gd` |
+| recorde salvo e mostrado | `RECORDE` | `scripts/autoload/partida.gd` |
+| marcas de altura no cenário | `MARCAS_DE_ALTURA` | `scripts/jogo/jogo.gd`, `scenes/efeitos/marca_de_altura.tscn` |
+| faixa com o nome do cenário | `FAIXA_DO_CENARIO` | `scripts/hud/hud.gd` |
+| aviso de "novo recorde!" | `AVISO_DE_NOVO_RECORDE` | `scripts/jogo/jogo.gd` |
+| texto sobre a tela preta (**para o grupo aprovar**) | `TEXTO_NA_TELA_PRETA` | `scripts/autoload/telas.gd`, `Textos.tela_preta()` |
+| frases do mito | `FRASES` | `scripts/textos.gd` |
+| score em contagem animada | `CONTAGEM_DO_SCORE` | `scripts/hud/hud.gd` |
+| créditos rolando | `CREDITOS_ROLANDO` | `scripts/telas/creditos.gd` |
+| botões que respondem ao mouse | `BOTOES_VIVOS` | `scripts/interface/botao_vivo.gd` |
+| câmera lenta e clarão na cutscene | `CAMERA_LENTA_NA_CUTSCENE` (1 = sem câmera lenta), `CLARAO_DO_SOL` | `scripts/cutscene/cutscene_final.gd` |
+
+Os `.glb` que a equipe 3D mandar também ganham o toon e o contorno sozinhos: o estilo lê a cor
+do material de cada peça.
+
+## Textos, fonte e tema
+
+- **Textos:** todas as frases do jogo estão em **`scripts/textos.gd`** (tela inicial, entrada de
+  cada cenário, perto do sol, frase final, texto da tela preta). Edite ali; para tirar as frases,
+  `FRASES = false` em `ajustes.gd`.
+- **Fonte:** Lilita One, de Juan Montoreano, licença SIL Open Font License 1.1
+  (`assets/fonts/LilitaOne-Regular.ttf` e `assets/fonts/OFL.txt`). Veio do repositório
+  `google/fonts` (pasta `ofl/lilitaone`, commit `b9f4a43`). Está nos créditos.
+- **Tema da interface:** `assets/interface/tema.tres` (fonte, botões, barra). É o tema padrão do
+  projeto; mude pelo editor do Godot.
+
+## Onde fica o recorde
+
+O recorde (melhor score, melhor altura e a altura da partida anterior) fica num arquivo do
+computador de quem joga, `user://recorde.cfg`:
+
+- Linux, Godot do Flathub: `~/.var/app/org.godotengine.Godot/data/godot/app_userdata/Icarus/recorde.cfg`
+- Windows: `%APPDATA%\Godot\app_userdata\Icarus\recorde.cfg`
+
+Apagar o arquivo zera o recorde. Os testes usam arquivos próprios e não mexem no recorde de quem
+joga.
 
 ## Como trocar as peças provisórias
 
@@ -78,10 +154,12 @@ A origem do modelo tem de ficar onde a forma provisória estava: **nos pés** de
 das plataformas. A colisão (nó `Colisao`) continua a mesma; se o modelo novo tiver outro tamanho,
 ajuste também a forma dela.
 
-Ícaro já usa um modelo `.glb` provisório, feito por script no Blender
-(`assets/models/_provisorio/icaro_provisorio.glb`), que prova o caminho Blender → `.glb` → Godot. A
-cutscene final usa o mesmo modelo e pinta de cor de fogo as malhas cujo nome começa com `asa_`
-(`asa_esquerda`, `asa_direita`). No modelo novo de Ícaro, use esses nomes para as asas; com outros
+Todas as formas provisórias já são `.glb` low poly feitos por script no Blender, em
+`assets/models/_provisorio/`: Ícaro (`icaro_provisorio.glb`), as quatro plataformas
+(`plataforma_fixa.glb`, `plataforma_movel.glb`, `plataforma_instavel.glb`,
+`plataforma_pula_pula.glb`), o inimigo genérico (`inimigo_provisorio.glb`) e a flecha
+(`flecha_provisoria.glb`). A cutscene final usa o modelo de Ícaro e pinta de cor de fogo as malhas
+cujo nome começa com `asa_`. No modelo novo de Ícaro, comece o nome das asas com `asa_`; com outros
 nomes, a cutscene roda, mas as asas não ficam cor de fogo.
 
 ### A cor provisória do fundo por um PNG
@@ -96,7 +174,8 @@ Salve cada fundo (PNG, 1920×1080, G-022) em `assets/textures/` com exatamente e
 | Nuvens | `fundo_4_nuvens.png` |
 | Céu | `fundo_5_ceu.png` |
 
-O jogo usa o PNG quando ele existe e a cor provisória quando não. Não precisa mudar código.
+O jogo usa o PNG quando ele existe e, quando não, um degradê provisório com a paleta do cenário
+(`FUNDO_EM_CIMA` e `FUNDO_EMBAIXO` em `ajustes.gd`). Não precisa mudar código.
 
 ### O silêncio por um som
 
@@ -110,6 +189,11 @@ Salve o som em `assets/audio/` com um destes nomes, em `.ogg`, `.wav` ou `.mp3`:
 | `asas` | Ícaro começa a andar para o lado; início da cutscene final |
 | `poder` | Ícaro pega um item de poder; o escudo absorve um inimigo |
 | `dano` | um inimigo encosta em Ícaro |
+| `pula_pula` | Ícaro pisa numa plataforma pula-pula |
+| `acerto` | a flecha acerta um inimigo |
+| `recorde` | Ícaro passa uma marca de altura |
+| `clique` | um botão é apertado |
+| `musica` | música de fundo, em loop, na tela inicial e no jogo |
 
 Exemplo: `assets/audio/pulo.ogg`. Sem o arquivo, o jogo fica em silêncio, sem erro. Um som novo
 precisa entrar também na lista `NOMES` de `scripts/autoload/sons.gd`.
