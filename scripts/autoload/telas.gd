@@ -7,6 +7,7 @@ const CUTSCENE_FINAL := "res://scenes/cutscene/cutscene_final.tscn"
 const CREDITOS := "res://scenes/telas/creditos.tscn"
 
 var _preto := ColorRect.new()
+var _texto := Label.new()
 var _trocando := false
 
 
@@ -18,6 +19,13 @@ func _ready() -> void:
 	_preto.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_preto.set_anchors_preset(Control.PRESET_FULL_RECT)
 	add_child(_preto)
+	_texto.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_texto.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_texto.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_texto.add_theme_font_size_override("font_size", 72)
+	_texto.modulate.a = 0.0
+	_texto.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_texto)
 
 
 func trocar_para(caminho_da_cena: String) -> void:
@@ -35,9 +43,28 @@ func trocar_para(caminho_da_cena: String) -> void:
 	_trocando = false
 
 
-## Ícaro caiu durante a subida: tela preta e a partida recomeça (G-020).
-func reiniciar_partida() -> void:
-	trocar_para(JOGO)
+## Ícaro caiu durante a subida: tela preta e a partida recomeça (G-020), rápido e sem menu.
+## `texto` aparece sobre a tela preta (PROVISÓRIO: Ajustes.TEXTO_NA_TELA_PRETA).
+func reiniciar_partida(texto := "") -> void:
+	if _trocando:
+		return
+	_trocando = true
+	var escurecer := create_tween()
+	escurecer.tween_property(_preto, "modulate:a", 1.0, Ajustes.TEMPO_DA_TELA_PRETA_AO_CAIR)
+	await escurecer.finished
+	if texto != "" and Ajustes.TEXTO_NA_TELA_PRETA:
+		_texto.text = texto
+		var mostrar := create_tween()
+		mostrar.tween_property(_texto, "modulate:a", 1.0, Ajustes.TEMPO_DO_FADE_DO_TEXTO)
+		mostrar.tween_interval(Ajustes.TEMPO_DO_TEXTO_NA_TELA_PRETA)
+		mostrar.tween_property(_texto, "modulate:a", 0.0, Ajustes.TEMPO_DO_FADE_DO_TEXTO)
+		await mostrar.finished
+	get_tree().change_scene_to_file(JOGO)
+	await get_tree().process_frame
+	var clarear := create_tween()
+	clarear.tween_property(_preto, "modulate:a", 0.0, Ajustes.TEMPO_DA_TELA_PRETA_AO_CAIR)
+	await clarear.finished
+	_trocando = false
 
 
 func trocando() -> bool:

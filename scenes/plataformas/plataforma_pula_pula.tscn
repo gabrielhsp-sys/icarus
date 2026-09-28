@@ -1,16 +1,9 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/plataformas/plataforma_pula_pula.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://assets/models/_provisorio/plataforma_pula_pula.glb" id="2_modelo"]
 
 [sub_resource type="BoxShape3D" id="forma"]
-size = Vector3(3, 0.4, 1.5)
-
-[sub_resource type="StandardMaterial3D" id="cor"]
-albedo_color = Color(1.0, 0.25, 0.7, 1)
-roughness = 0.8
-
-[sub_resource type="BoxMesh" id="malha"]
-material = SubResource("cor")
 size = Vector3(3, 0.4, 1.5)
 
 [node name="PlataformaPulaPula" type="AnimatableBody3D"]
@@ -22,6 +15,4 @@ script = ExtResource("1_script")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 shape = SubResource("forma")
 
-[node name="Visual" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("malha")
+[node name="Visual" parent="." instance=ExtResource("2_modelo")]

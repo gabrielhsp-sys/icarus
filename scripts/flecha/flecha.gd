@@ -14,6 +14,8 @@ func lancar(saida: Vector3, direcao: Vector3) -> void:
 
 func _ready() -> void:
 	area_entered.connect(_ao_tocar)
+	EstiloToon.aplicar($Visual)
+	$Rastro.emitting = Ajustes.RASTRO_NA_FLECHA
 
 
 func _physics_process(delta: float) -> void:

@@ -89,6 +89,7 @@ cores), pronto para a Arte e os Sons trocarem as peças. Detalhes em
 | Por que cada decisão foi tomada, em ordem? | [`docs/DECISIONS.md`](docs/DECISIONS.md) |
 | O que já existe no projeto? | [`docs/CURRENT_STATE.md`](docs/CURRENT_STATE.md) |
 | Como o protótipo está montado e como trocar uma peça provisória? | [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md) |
+| De onde vêm os efeitos e o game feel? | [`docs/GAME-FEEL.md`](docs/GAME-FEEL.md) |
 | O que mudou e quando? | [`docs/CHANGELOG.md`](docs/CHANGELOG.md) |
 | O texto original do grupo | [`docs/GROUP_SCOPE.md`](docs/GROUP_SCOPE.md) e [`docs/GROUP_SCOPE_COMPLEMENT.md`](docs/GROUP_SCOPE_COMPLEMENT.md) |
 | Regras para agentes de IA (Claude Code) | [`CLAUDE.md`](CLAUDE.md) |
@@ -114,6 +115,9 @@ scripts/          scripts GDScript (.gd)
 assets/models/    modelos 3D do Blender (.blend, .glb) — Git LFS
 assets/textures/  texturas e imagens 2D (.png) — Git LFS
 assets/audio/     sons (.wav, .ogg) — Git LFS
+assets/fonts/     fonte da interface (.ttf, licença OFL) — Git LFS
+assets/shaders/   shaders do visual provisório (toon, contorno, vinheta)
+assets/interface/ tema da interface (.tres)
 docs/             guia, escopo, decisões e estado do projeto
 ```
 

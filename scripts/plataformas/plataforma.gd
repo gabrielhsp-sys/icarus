@@ -9,22 +9,47 @@ extends AnimatableBody3D
 
 const FOLGA := 0.05
 
+const COR_DA_POEIRA := Color(1.0, 0.97, 0.9, 0.85)
+
 var _icaro: Icaro
 var _atravessavel := false
+
+
+func _ready() -> void:
+	EstiloToon.aplicar(get_node_or_null("Visual"))
 
 
 func _physics_process(_delta: float) -> void:
 	_atualizar_passagem()
 
 
-## Ícaro pisou nesta plataforma e vai saltar.
-func ao_ser_pisada() -> void:
+## Ícaro pisou nesta plataforma (em `onde`) e vai saltar. A resposta comum a todas (poeira
+## e afundar) fica aqui; cada tipo acrescenta a sua em _quando_pisada().
+func ao_ser_pisada(onde := global_position) -> void:
+	if Ajustes.POEIRA_NO_POUSO:
+		Efeitos.poeira(Vector3(onde.x, global_position.y, 0.3), COR_DA_POEIRA)
+	if Ajustes.PLATAFORMA_AFUNDA:
+		_afundar()
+	_quando_pisada()
+
+
+## Cada tipo de plataforma muda só isto.
+func _quando_pisada() -> void:
 	pass
 
 
 ## Quanto o salto sai mais forte desta plataforma (1 = normal).
 func multiplicador_do_salto() -> float:
 	return 1.0
+
+
+func _afundar() -> void:
+	var visual := get_node_or_null("Visual") as Node3D
+	if visual == null:
+		return
+	var afunda := create_tween()
+	afunda.tween_property(visual, "position:y", -Ajustes.QUANTO_A_PLATAFORMA_AFUNDA, 0.06)
+	afunda.tween_property(visual, "position:y", 0.0, 0.22).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
 
 
 func _atualizar_passagem() -> void:

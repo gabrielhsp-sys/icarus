@@ -1,6 +1,17 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/telas/creditos.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/interface/botao_vivo.gd" id="2_botao"]
+
+[sub_resource type="Gradient" id="cores_do_fundo"]
+colors = PackedColorArray(0.08, 0.05, 0.2, 1, 0.45, 0.12, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="fundo"]
+gradient = SubResource("cores_do_fundo")
+width = 16
+height = 256
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
 
 [node name="Creditos" type="Control"]
 layout_mode = 3
@@ -11,52 +22,101 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Fundo" type="ColorRect" parent="."]
+[node name="Fundo" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.08, 0.06, 0.15, 1)
+texture = SubResource("fundo")
+expand_mode = 1
 
-[node name="Centro" type="CenterContainer" parent="."]
+[node name="Topo" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_top = 50.0
+offset_bottom = 230.0
 grow_horizontal = 2
-grow_vertical = 2
 
-[node name="Linhas" type="VBoxContainer" parent="Centro"]
-layout_mode = 2
-theme_override_constants/separation = 36
-
-[node name="Titulo" type="Label" parent="Centro/Linhas"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 96
-text = "Créditos"
-horizontal_alignment = 1
-
-[node name="Equipe" type="Label" parent="Centro/Linhas"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Modelos 3D: Danilo e Luiz
-Visual 2D: Diogo e Gabriela
-Programação: Gabriel e Guilherme Falcucci
-Sons: Gabriel"
-horizontal_alignment = 1
-
-[node name="Score" type="Label" parent="Centro/Linhas"]
+[node name="Score" type="Label" parent="Topo"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
-theme_override_font_sizes/font_size = 64
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 96
 text = "Seu score: 0"
 horizontal_alignment = 1
 
-[node name="Voltar" type="Button" parent="Centro/Linhas"]
-custom_minimum_size = Vector2(420, 90)
+[node name="Recorde" type="Label" parent="Topo"]
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 44
+text = "Recorde"
+horizontal_alignment = 1
+
+[node name="Janela" type="Control" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.26
+anchor_right = 0.8
+anchor_bottom = 0.82
+
+[node name="Rolo" type="VBoxContainer" parent="Janela"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/separation = 26
+
+[node name="Titulo" type="Label" parent="Janela/Rolo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 84
+text = "Créditos"
+horizontal_alignment = 1
+
+[node name="Equipe" type="Label" parent="Janela/Rolo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Modelos 3D
+Danilo e Luiz
+
+Visual 2D
+Diogo e Gabriela
+
+Programação
+Gabriel e Guilherme Falcucci
+
+Sons
+Gabriel"
+horizontal_alignment = 1
+
+[node name="Notas" type="Label" parent="Janela/Rolo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.7, 1)
+theme_override_font_sizes/font_size = 30
+text = "Fonte Lilita One, de Juan Montoreano
+SIL Open Font License 1.1 (assets/fonts/OFL.txt)
+
+Feito com Godot 4.7.2 e Blender
+Computação Gráfica, UNIFAL-MG"
+horizontal_alignment = 1
+
+[node name="Voltar" type="Button" parent="."]
+custom_minimum_size = Vector2(460, 96)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -230.0
+offset_top = -150.0
+offset_right = 230.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
 text = "Voltar ao início"
+script = ExtResource("2_botao")

@@ -1,17 +1,25 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/flecha/flecha.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://assets/models/_provisorio/flecha_provisoria.glb" id="2_modelo"]
 
 [sub_resource type="BoxShape3D" id="forma"]
 size = Vector3(0.8, 0.15, 0.15)
 
-[sub_resource type="StandardMaterial3D" id="cor"]
-albedo_color = Color(0.45, 0.25, 0.08, 1)
-roughness = 0.8
+[sub_resource type="StandardMaterial3D" id="cor_do_rastro"]
+shading_mode = 0
+transparency = 1
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
 
-[sub_resource type="BoxMesh" id="malha"]
-material = SubResource("cor")
-size = Vector3(0.8, 0.08, 0.08)
+[sub_resource type="QuadMesh" id="malha_do_rastro"]
+material = SubResource("cor_do_rastro")
+size = Vector2(0.14, 0.14)
+
+[sub_resource type="Gradient" id="cores_do_rastro"]
+colors = PackedColorArray(1, 1, 0.8, 0.9, 1, 0.5, 0.2, 0)
 
 [node name="Flecha" type="Area3D"]
 collision_layer = 8
@@ -22,5 +30,14 @@ script = ExtResource("1_script")
 [node name="Colisao" type="CollisionShape3D" parent="."]
 shape = SubResource("forma")
 
-[node name="Visual" type="MeshInstance3D" parent="."]
-mesh = SubResource("malha")
+[node name="Visual" parent="." instance=ExtResource("2_modelo")]
+
+[node name="Rastro" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+emitting = false
+amount = 24
+lifetime = 0.25
+local_coords = false
+mesh = SubResource("malha_do_rastro")
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("cores_do_rastro")

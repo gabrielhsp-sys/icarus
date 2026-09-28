@@ -13,7 +13,8 @@ var partida: Node
 var telas: Node
 
 
-const LIMITE_DE_TEMPO := 90.0
+const LIMITE_DE_TEMPO := 120.0
+const ARQUIVO_DE_RECORDE := "user://recorde_fumaca.cfg"
 
 
 func _initialize() -> void:
@@ -26,6 +27,9 @@ func _initialize() -> void:
 func _rodar() -> void:
 	partida = root.get_node("Partida")
 	telas = root.get_node("Telas")
+	# Arquivo de recorde só do teste, para não mexer no recorde de quem joga.
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(ARQUIVO_DE_RECORDE))
+	partida.usar_arquivo_de_recorde(ARQUIVO_DE_RECORDE)
 	change_scene_to_file(telas.TELA_INICIAL)
 	confere(await _esperar_cena("TelaInicial"), "o jogo abre na tela inicial")
 
@@ -37,6 +41,16 @@ func _rodar() -> void:
 	await create_timer(2.0).timeout
 	confere(partida.placar.altura_maxima() > 1.0, "Ícaro salta sozinho (altura %.1f m)" % partida.placar.altura_maxima())
 	confere(jogo.get_node("Plataformas").get_child_count() > 8, "plataformas criadas acima")
+
+	# A antecipação da câmera só desloca a imagem: a altura da câmera (que decide a queda)
+	# nunca passa da maior altura de Ícaro mais o deslocamento normal.
+	var camera: Camera3D = jogo.get_node("Camera")
+	var passou_do_alvo := 0.0
+	var fim_da_subida := Time.get_ticks_msec() + 1200
+	while Time.get_ticks_msec() < fim_da_subida:
+		await physics_frame
+		passou_do_alvo = maxf(passou_do_alvo, camera.position.y - (partida.placar.altura_maxima() + Ajustes.CAMERA_ACIMA_DE_ICARO))
+	confere(passou_do_alvo < 0.05, "a antecipação não sobe a altura que decide a queda (%.2f m)" % passou_do_alvo)
 
 	var x_antes := icaro.position.x
 	Input.action_press("mover_direita")
@@ -56,15 +70,42 @@ func _rodar() -> void:
 	await create_timer(0.5).timeout
 	confere(not is_instance_valid(inimigo), "a flecha mata o inimigo atingido")
 
+	# Os inimigos que o jogo sorteou podem atingir Ícaro antes da etapa e deixá-lo invulnerável;
+	# o teste tira esses inimigos e espera a invulnerabilidade acabar.
+	_tirar_inimigos_sorteados(jogo)
+	await _esperar(func() -> bool: return not icaro.contato.invulneravel(), Ajustes.TEMPO_INVULNERAVEL + 0.5)
 	partida.placar.registrar_altura(20.0)
 	var score_antes: int = partida.placar.score()
 	inimigo = _novo_inimigo(jogo, icaro.global_position + Vector3(0.0, 0.8, 0.0))
 	await _esperar(func() -> bool: return icaro.contato.invulneravel())
-	confere(partida.placar.score() == score_antes - Ajustes.PONTOS_PERDIDOS, "inimigo que encosta tira pontos")
+	var tirou: bool = partida.placar.score() == score_antes - Ajustes.PONTOS_PERDIDOS
+	confere(tirou, "inimigo que encosta tira pontos")
+	if not tirou:
+		print("        estado: inimigo vivo %s, distância %.2f m, velocidade de Ícaro %s, invulnerável %s, partida em andamento %s, time_scale %.2f, score %d → %d"
+			% [is_instance_valid(inimigo), icaro.global_position.distance_to(inimigo.global_position) if is_instance_valid(inimigo) else -1.0,
+			icaro.velocity, icaro.contato.invulneravel(), partida.em_andamento, Engine.time_scale, score_antes, partida.placar.score()])
 	confere(icaro.contato.invulneravel(), "depois do dano Ícaro fica invulnerável")
 	inimigo.queue_free()
 
+	# Dano logo acima de uma plataforma: o empurrão tem de levar Ícaro para baixo dela (G-018).
 	await create_timer(Ajustes.TEMPO_INVULNERAVEL + 0.2).timeout
+	_tirar_inimigos_sorteados(jogo)
+	var chao: Node3D = load("res://scenes/plataformas/plataforma_fixa.tscn").instantiate()
+	jogo.add_child(chao)
+	var altura_do_dano: float = icaro.position.y
+	chao.global_position = Vector3(icaro.position.x, altura_do_dano - 0.3, 0.0)
+	icaro.inimigo_encostou()
+	var mais_baixo := altura_do_dano
+	var fim_da_queda := Time.get_ticks_msec() + 600
+	while Time.get_ticks_msec() < fim_da_queda:
+		await physics_frame
+		mais_baixo = minf(mais_baixo, icaro.position.y)
+	confere(mais_baixo < altura_do_dano - 1.0, "o empurrão leva Ícaro para baixo da plataforma (%.1f m)" % (altura_do_dano - mais_baixo))
+	chao.queue_free()
+
+	await create_timer(Ajustes.TEMPO_INVULNERAVEL + 0.2).timeout
+	_tirar_inimigos_sorteados(jogo)
+	await _esperar(func() -> bool: return not icaro.contato.invulneravel(), Ajustes.TEMPO_INVULNERAVEL + 0.5)
 	partida.poderes.ativar(Poderes.Tipo.ESCUDO)
 	score_antes = partida.placar.score()
 	inimigo = _novo_inimigo(jogo, icaro.global_position + Vector3(0.0, 0.8, 0.0))
@@ -109,10 +150,14 @@ func _rodar() -> void:
 		print("        estado: altura registrada %.1f m, Ícaro em y = %.1f, partida em andamento: %s, cena: %s"
 			% [partida.placar.altura_maxima(), icaro.position.y if is_instance_valid(icaro) else -1.0,
 			partida.em_andamento, current_scene.name])
-	confere(await _esperar_cena("Creditos", Ajustes.DURACAO_DA_CUTSCENE_FINAL + 3.0), "depois da cutscene vêm os créditos")
+	var duracao_da_cutscene := Ajustes.DURACAO_DA_CUTSCENE_FINAL / Ajustes.CAMERA_LENTA_NA_CUTSCENE \
+		+ Ajustes.TEMPO_DA_FRASE_FINAL + 4.0
+	confere(await _esperar_cena("Creditos", duracao_da_cutscene), "depois da cutscene vêm os créditos")
+	confere(Engine.time_scale == 1.0, "a câmera lenta da cutscene termina")
 	var score_final: int = partida.placar.score()
-	confere(current_scene.get_node("Centro/Linhas/Score").text.ends_with(str(score_final)), "os créditos mostram o score (%d)" % score_final)
-	current_scene.get_node("Centro/Linhas/Voltar").pressed.emit()
+	confere(current_scene.get_node("Topo/Score").text.ends_with(str(score_final)), "os créditos mostram o score (%d)" % score_final)
+	confere(ArquivoDeRecorde.ler(ARQUIVO_DE_RECORDE).melhor_score == score_final, "o recorde foi salvo no arquivo")
+	current_scene.get_node("Voltar").pressed.emit()
 	confere(await _esperar_cena("TelaInicial"), "\"Voltar ao início\" leva à tela inicial")
 
 	current_scene.get_node("Centro/Linhas/Jogar").pressed.emit()
@@ -122,10 +167,12 @@ func _rodar() -> void:
 	await create_timer(0.5).timeout
 	current_scene.reiniciar_ao_cair = true
 	current_scene.get_node("Icaro").position.y = -40.0
-	await create_timer(Ajustes.TEMPO_DA_TELA_PRETA * 2.0 + 0.5).timeout
+	await create_timer(Ajustes.TEMPO_DA_TELA_PRETA_AO_CAIR * 2.0 + Ajustes.TEMPO_DO_TEXTO_NA_TELA_PRETA + 1.0).timeout
 	confere(current_scene != primeira_partida and current_scene.name == "Jogo", "cair leva à tela preta e a partida recomeça")
 	confere(partida.placar != primeiro_placar, "a partida nova começa com um placar novo")
 
+	confere(current_scene.get_node_or_null("MarcaDeAltura") != null, "a partida nova mostra a marca do recorde")
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(ARQUIVO_DE_RECORDE))
 	print("\n%s" % ("fumaça ok" if _falhas == 0 else "%d etapa(s) falharam" % _falhas))
 	quit(0 if _falhas == 0 else 1)
 
@@ -134,6 +181,13 @@ func confere(condicao: bool, descricao: String) -> void:
 	print(("ok      " if condicao else "FALHOU  ") + descricao)
 	if not condicao:
 		_falhas += 1
+
+
+func _tirar_inimigos_sorteados(jogo: Node) -> void:
+	for no in jogo.get_node("Plataformas").get_children():
+		var script: Script = no.get_script()
+		if script != null and script.resource_path == "res://scripts/inimigos/inimigo.gd":
+			no.free()
 
 
 func _novo_inimigo(jogo: Node, posicao: Vector3) -> Node3D:

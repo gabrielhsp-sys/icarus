@@ -39,4 +39,7 @@ func _process(delta: float) -> void:
 func _ao_encostar(corpo: Node3D) -> void:
 	if corpo is Icaro:
 		corpo.pegar_poder(tipo)
+		if Ajustes.POP_NA_COLETA:
+			Efeitos.estouro(global_position, CORES.get(tipo, Color.WHITE), 18, 3.5)
+			Efeitos.anel(global_position, Color(CORES.get(tipo, Color.WHITE), 0.9), 2.2)
 		queue_free()
