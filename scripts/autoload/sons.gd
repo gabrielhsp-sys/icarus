@@ -46,9 +46,8 @@ func tocar_musica() -> void:
 	var musica: AudioStream = _sons.get(MUSICA)
 	if not Ajustes.MUSICA or musica == null or _musica.playing:
 		return
-	# PROVISÓRIO: o loop repete o arquivo inteiro (do fim volta ao segundo 0). A faixa cresce
-	# ao longo do tempo, então a costura ideal (repetir só a parte final, ou um crossfade de
-	# volta ao início) fica para o Gabriel decidir depois de ouvir.
+	# Loop decidido por Gabriel em 2026-09-28: repete o arquivo inteiro, do fim ao segundo 0.
+	# O silêncio final foi cortado no próprio .ogg, então o fade-out emenda direto no fade-in.
 	if musica is AudioStreamOggVorbis or musica is AudioStreamMP3:
 		musica.loop = true
 		musica.loop_offset = 0.0

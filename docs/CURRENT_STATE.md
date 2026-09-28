@@ -60,11 +60,10 @@ Atualizado em: 2026-09-28
 - recorde em `user://recorde.cfg` (onde fica em cada sistema:
   [`ARQUITETURA.md`](ARQUITETURA.md#onde-fica-o-recorde))
 - sons: 10 nomes prontos para arquivos em `assets/audio/`; nenhum som ainda (silêncio)
-- música tema (`assets/audio/musica_tema.ogg`, 4 min 10 s, do FL Studio, G-024) tocando da tela
-  inicial aos créditos, sem recomeçar na troca de cena. O loop repete o arquivo inteiro: é
-  provisório, porque a faixa cresce ao longo do tempo e termina com 1,2 s de silêncio, que vira uma
-  pausa a cada volta; a emenda (repetir só a parte final ou crossfade) fica para o Gabriel decidir
-  ouvindo
+- música tema (`assets/audio/musica_tema.ogg`, 4 min 9 s, do FL Studio, G-024) tocando da tela
+  inicial aos créditos, sem recomeçar na troca de cena. Loop decidido por Gabriel em 2026-09-28:
+  repete o arquivo inteiro, e o silêncio de 1,2 s do fim foi cortado no próprio `.ogg`, então o
+  fade-out emenda direto no fade-in
 - fundos: 5 nomes prontos para PNG em `assets/textures/`; nenhum PNG ainda (degradê provisório)
 - `.gitignore` do Godot 4 (`.godot/`, `/android/`, saídas de exportação: `/build/`, `/export/`,
   `*.pck`, `*.exe`, `*.x86_64`, `*.apk`, `*.aab`, `*.dmg`, `/*.zip`), backups do Blender,
@@ -108,7 +107,9 @@ Em 2026-09-28, com Godot 4.7.2 (Flathub):
 - `--headless --path . --import`: código 0, sem ERROR/WARNING
 - `--headless --path . --quit`: código 0. Com a música tocando, o Godot imprime ao fechar 1
   WARNING (4 instâncias vazadas) e 1 ERROR (2 recursos em uso): a reprodução ainda está presa no
-  servidor de áudio, que só a solta uns quadros depois de a música parar. Só acontece ao fechar
+  servidor de áudio, que só a solta uns quadros depois de a música parar. Aparece em qualquer saída
+  com a música tocando: no `--quit`, no fim do teste de fumaça e também no ESC (conferido com e sem
+  janela). Fica só no console, com código de saída 0; aceito por Gabriel em 2026-09-28
 - `--script res://scripts/testes/rodar_testes.gd`: 33 testes de regra, 0 falhas, código 0
 - `--script res://scripts/testes/fumaca_fluxo.gd`: 31 etapas, 0 falhas, código 0, em 5 execuções
   seguidas (mesmo aviso ao fechar que o `--quit`)
@@ -128,5 +129,5 @@ ajudam ou cansam, a leitura do HUD e das faixas, e o desempenho em computadores 
 - equipe de Modelos 3D: decidir os inimigos (a única [pendência](GROUP-DECISIONS.md#pendente)) e
   trocar as formas provisórias pelos `.glb`
 - equipe de Visual 2D: os 5 fundos, as telas e os itens de poder
-- Sons: os 10 arquivos de som; ouvir a música no jogo e decidir a emenda do loop
+- Sons: os 10 arquivos de som
 - Programação: ajustar os números jogando
