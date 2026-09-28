@@ -2,10 +2,24 @@
 
 [ext_resource type="Script" path="res://scripts/cutscene/cutscene_final.gd" id="1_script"]
 [ext_resource type="PackedScene" path="res://assets/models/_provisorio/icaro_provisorio.glb" id="2_modelo"]
+[ext_resource type="FontFile" path="res://assets/fonts/LilitaOne-Regular.ttf" id="3_fonte"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ceu_do_por_do_sol"]
+sky_top_color = Color(0.35, 0.2, 0.75, 1)
+sky_horizon_color = Color(1, 0.55, 0.2, 1)
+ground_bottom_color = Color(0.85, 0.35, 0.25, 1)
+ground_horizon_color = Color(1, 0.55, 0.2, 1)
+sun_angle_max = 0.0
+
+[sub_resource type="Sky" id="ceu"]
+sky_material = SubResource("ceu_do_por_do_sol")
 
 [sub_resource type="Environment" id="ambiente"]
-background_mode = 1
-background_color = Color(1, 0.62, 0.3, 1)
+background_mode = 2
+sky = SubResource("ceu")
+glow_enabled = true
+glow_intensity = 1.2
+glow_bloom = 0.25
 ambient_light_source = 2
 ambient_light_color = Color(1, 0.9, 0.8, 1)
 ambient_light_energy = 0.7
@@ -58,18 +72,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Fogo" type="CPUParticles3D" parent="Icaro"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -0.1)
 emitting = false
-amount = 60
-lifetime = 0.8
+amount = 140
+lifetime = 1.0
 mesh = SubResource("malha_do_fogo")
 emission_shape = 3
-emission_box_extents = Vector3(0.9, 0.2, 0.1)
+emission_box_extents = Vector3(1.2, 0.35, 0.15)
 direction = Vector3(0, 1, 0)
 spread = 25.0
 initial_velocity_min = 1.0
-initial_velocity_max = 2.5
+initial_velocity_max = 3.5
+scale_amount_min = 0.8
+scale_amount_max = 2.2
 color_ramp = SubResource("cores_do_fogo")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.966, 0.259, 0, -0.259, 0.966, 0, 1, 9)
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 3.5, 5.5)
 current = true
 fov = 55.0
+
+[node name="Tela" type="CanvasLayer" parent="."]
+
+[node name="Clarao" type="ColorRect" parent="Tela"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.97, 0.85, 1)
+
+[node name="Frase" type="Label" parent="Tela"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -260.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_fonte")
+theme_override_font_sizes/font_size = 60
+text = "Frase final"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
