@@ -1,6 +1,28 @@
 [gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/telas/tela_inicial.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/interface/botao_vivo.gd" id="2_botao"]
+[ext_resource type="PackedScene" path="res://assets/models/_provisorio/icaro_provisorio.glb" id="3_icaro"]
+
+[sub_resource type="Gradient" id="cores_do_fundo"]
+colors = PackedColorArray(0.3, 0.6, 1, 1, 1, 0.8, 0.45, 1)
+
+[sub_resource type="GradientTexture2D" id="fundo"]
+gradient = SubResource("cores_do_fundo")
+width = 16
+height = 256
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Environment" id="ambiente"]
+background_mode = 1
+background_color = Color(0, 0, 0, 0)
+ambient_light_source = 2
+ambient_light_color = Color(1, 0.95, 0.9, 1)
+ambient_light_energy = 0.55
+
+[sub_resource type="World3D" id="mundo"]
+environment = SubResource("ambiente")
 
 [node name="TelaInicial" type="Control"]
 layout_mode = 3
@@ -11,39 +33,81 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Fundo" type="ColorRect" parent="."]
+[node name="Fundo" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.3, 0.55, 0.95, 1)
+texture = SubResource("fundo")
+expand_mode = 1
+
+[node name="Vista" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.95
+stretch = true
+mouse_filter = 2
+
+[node name="Mundo" type="SubViewport" parent="Vista"]
+own_world_3d = true
+world_3d = SubResource("mundo")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(864, 918)
+render_target_update_mode = 4
+
+[node name="Camera" type="Camera3D" parent="Vista/Mundo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 4.2)
+fov = 40.0
+
+[node name="Luz" type="DirectionalLight3D" parent="Vista/Mundo"]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 3, 0)
+light_energy = 1.2
+
+[node name="Icaro" parent="Vista/Mundo" instance=ExtResource("3_icaro")]
 
 [node name="Centro" type="CenterContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 0.6
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Linhas" type="VBoxContainer" parent="Centro"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = 30
 
 [node name="Titulo" type="Label" parent="Centro/Linhas"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
-theme_override_colors/font_outline_color = Color(0.2, 0.1, 0, 1)
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 160
+theme_override_colors/font_color = Color(1, 0.85, 0.15, 1)
+theme_override_constants/outline_size = 28
+theme_override_font_sizes/font_size = 200
 text = "Icarus"
 horizontal_alignment = 1
 
+[node name="Frase" type="Label" parent="Centro/Linhas"]
+custom_minimum_size = Vector2(760, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Frase"
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="Jogar" type="Button" parent="Centro/Linhas"]
-custom_minimum_size = Vector2(360, 100)
+custom_minimum_size = Vector2(380, 110)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 64
 text = "Jogar"
+script = ExtResource("2_botao")
+
+[node name="Recorde" type="Label" parent="Centro/Linhas"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.4, 1)
+theme_override_font_sizes/font_size = 40
+text = "Recorde"
+horizontal_alignment = 1
