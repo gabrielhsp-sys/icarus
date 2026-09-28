@@ -3,12 +3,6 @@ extends CanvasLayer
 ## provisória: contagem animada do score, recorde, barra do poder, faixa com o nome do
 ## cenário, aviso de novo recorde e frases. Lê a Partida.
 
-const NOMES_DOS_PODERES := {
-	Poderes.Tipo.VELOCIDADE: "Velocidade",
-	Poderes.Tipo.PULO_ALTO: "Pulo alto",
-	Poderes.Tipo.ESCUDO: "Escudo",
-}
-
 var _contador := ContadorAnimado.new(Ajustes.RAPIDEZ_DA_CONTAGEM)
 var _score_mostrado := -1
 
@@ -26,7 +20,7 @@ func _ready() -> void:
 	_faixa.modulate.a = 0.0
 	_aviso.modulate.a = 0.0
 	_recorde.visible = Ajustes.RECORDE and Partida.recorde.melhor_score > 0
-	_recorde.text = "Recorde: %d" % Partida.recorde.melhor_score
+	_recorde.text = Textos.RECORDE_NO_HUD % [Partida.recorde.melhor_score, roundi(Partida.recorde.melhor_altura)]
 
 
 func _process(delta: float) -> void:
@@ -38,7 +32,7 @@ func _process(delta: float) -> void:
 		if score > _score_mostrado and _score_mostrado >= 0 and Ajustes.CONTAGEM_DO_SCORE:
 			_score.scale = Vector2(1.08, 1.08)
 		_score_mostrado = score
-		_score.text = "Score: %d" % score
+		_score.text = Textos.SCORE_NO_HUD % score
 	_score.scale = _score.scale.lerp(Vector2.ONE, 1.0 - exp(-12.0 * delta))
 	var ativo := Partida.poderes.ativo()
 	if ativo == Poderes.Tipo.NENHUM:
@@ -46,7 +40,7 @@ func _process(delta: float) -> void:
 		_barra.visible = false
 	else:
 		var restante := Partida.poderes.tempo_restante()
-		_poder.text = "%s: %d s" % [NOMES_DOS_PODERES[ativo], ceili(restante)]
+		_poder.text = Textos.PODER_NO_HUD % [Textos.NOMES_DOS_PODERES[ativo], ceili(restante)]
 		_barra.visible = Ajustes.BARRA_DO_PODER
 		_barra.max_value = Ajustes.DURACAO_DOS_PODERES[ativo]
 		_barra.value = restante
@@ -65,7 +59,7 @@ func mostrar_cenario(nome: String, frase: String) -> void:
 	entrada.set_parallel()
 	entrada.tween_property(_faixa, "modulate:a", 1.0, 0.3)
 	entrada.tween_property(_faixa, "position:y", 0.0, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	entrada.chain().tween_interval(2.4)
+	entrada.chain().tween_interval(Ajustes.TEMPO_DA_FAIXA_DO_CENARIO)
 	entrada.chain().tween_property(_faixa, "modulate:a", 0.0, 0.6)
 
 
@@ -80,5 +74,5 @@ func avisar(texto: String) -> void:
 	aviso.set_parallel()
 	aviso.tween_property(_aviso, "modulate:a", 1.0, 0.15)
 	aviso.tween_property(_aviso, "scale", Vector2.ONE, 0.35).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	aviso.chain().tween_interval(1.4)
+	aviso.chain().tween_interval(Ajustes.TEMPO_DO_AVISO)
 	aviso.chain().tween_property(_aviso, "modulate:a", 0.0, 0.4)

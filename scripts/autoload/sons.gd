@@ -42,7 +42,7 @@ func tocar(nome: String) -> void:
 ## Começa a música de fundo em loop (se o arquivo existir). Chamar de novo não reinicia.
 func tocar_musica() -> void:
 	var musica: AudioStream = _sons.get(MUSICA)
-	if musica == null or _musica.playing:
+	if not Ajustes.MUSICA or musica == null or _musica.playing:
 		return
 	if musica is AudioStreamOggVorbis or musica is AudioStreamMP3:
 		musica.loop = true

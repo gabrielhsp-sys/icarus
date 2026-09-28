@@ -25,6 +25,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if not Ajustes.TELA_INICIAL_ANIMADA:
+		return
 	_tempo += delta
 	_titulo.pivot_offset = _titulo.size / 2.0
 	_titulo.rotation = sin(_tempo * 1.3) * 0.04

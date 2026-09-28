@@ -1,7 +1,8 @@
 extends Node
 ## Autoload "Efeitos": um lugar só para os efeitos de resposta (o "juice"). Qualquer cena
-## chama daqui; cada efeito respeita o liga/desliga de scripts/ajustes.gd. Nenhum efeito
-## muda regra do jogo: só aparece e some.
+## chama daqui. tremer, abrir_fov, flash_de_dano, hit_stop e numero_flutuante conferem o
+## próprio liga/desliga; estouro, poeira, estilhacos e anel são peças usadas por outras
+## camadas, e quem chama confere o liga/desliga dela. Nenhum efeito muda regra do jogo.
 
 signal trauma_somado(quantidade: float)  ## a câmera escuta e treme
 signal fov_extra_somado(graus: float)    ## a câmera escuta e abre o campo de visão
@@ -46,9 +47,14 @@ func flash_de_dano() -> void:
 func hit_stop() -> void:
 	if not Ajustes.HIT_STOP or Engine.time_scale < 1.0:
 		return
-	Engine.time_scale = 0.05
+	Engine.time_scale = Ajustes.ESCALA_DO_TEMPO_NO_HIT_STOP
 	await get_tree().create_timer(Ajustes.DURACAO_DO_HIT_STOP, true, false, true).timeout
 	Engine.time_scale = 1.0
+
+
+## Intensidade de um clarão, já reduzida se REDUZIR_FLASHES estiver ligado.
+func forca_do_flash(forca: float) -> float:
+	return forca * Ajustes.FATOR_DOS_FLASHES_REDUZIDOS if Ajustes.REDUZIR_FLASHES else forca
 
 
 ## Estouro de partículas coloridas (inimigo atingido, item coletado, marca superada).

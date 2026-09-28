@@ -23,8 +23,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_mover(delta)
 	_tempo += delta
-	_visual.position.y = sin(_tempo * 4.0) * 0.12
-	_visual.rotation.z = -_sentido * 0.15
+	if Ajustes.ANIMACAO_DO_INIMIGO:
+		_visual.position.y = sin(_tempo * 4.0) * 0.12
+		_visual.rotation.z = -_sentido * 0.15
 	# Um contato por encontro: avisa quando começa a encostar, não a cada quadro. Assim o
 	# inimigo que o escudo absorveu não causa dano enquanto continua encostado.
 	var icaro: Icaro = null

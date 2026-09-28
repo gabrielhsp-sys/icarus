@@ -2,7 +2,8 @@ extends Node3D
 ## Cutscene final PROVISÓRIA (G-006, G-019): Ícaro cai de costas com as asas queimando.
 ## A animação de verdade é da equipe de Modelos 3D (G-023). Apresentação provisória: câmera
 ## lenta (Ajustes.CAMERA_LENTA_NA_CUTSCENE), clarão do sol (CLARAO_DO_SOL, mais fraco com
-## REDUZIR_FLASHES), câmera que acompanha a queda e uma frase final (scripts/textos.gd).
+## REDUZIR_FLASHES), sol crescendo (SOL_CRESCE_NA_CUTSCENE), câmera que acompanha a queda
+## (CAMERA_ACOMPANHA_A_QUEDA) e uma frase final (scripts/textos.gd).
 ## Depois vêm os créditos.
 
 @onready var _icaro: Node3D = $Icaro
@@ -25,7 +26,8 @@ func _ready() -> void:
 	queda.tween_property(_icaro, "rotation:z", 0.6, Ajustes.DURACAO_DA_CUTSCENE_FINAL)
 	queda.tween_property(_icaro, "position:y", -14.0, Ajustes.DURACAO_DA_CUTSCENE_FINAL) \
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	queda.tween_property(_sol, "scale", Vector3.ONE * 1.5, Ajustes.DURACAO_DA_CUTSCENE_FINAL)
+	if Ajustes.SOL_CRESCE_NA_CUTSCENE:
+		queda.tween_property(_sol, "scale", Vector3.ONE * 1.5, Ajustes.DURACAO_DA_CUTSCENE_FINAL)
 	await get_tree().create_timer(Ajustes.DURACAO_DA_CUTSCENE_FINAL).timeout
 	Engine.time_scale = 1.0
 	await _mostrar_frase_final()
@@ -34,7 +36,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# a câmera acompanha a queda, um pouco acima e atrasada, olhando para baixo
-	_camera.position.y = lerpf(_camera.position.y, _icaro.position.y + 2.5, 1.0 - exp(-2.5 * delta))
+	if Ajustes.CAMERA_ACOMPANHA_A_QUEDA:
+		_camera.position.y = lerpf(_camera.position.y, _icaro.position.y + 2.5,
+			1.0 - exp(-Ajustes.SUAVIDADE_DA_CAMERA_DA_CUTSCENE * delta))
 
 
 func _exit_tree() -> void:
@@ -44,8 +48,7 @@ func _exit_tree() -> void:
 func _clarear_o_sol() -> void:
 	if not Ajustes.CLARAO_DO_SOL:
 		return
-	var forca := Ajustes.FATOR_DOS_FLASHES_REDUZIDOS if Ajustes.REDUZIR_FLASHES else 0.9
-	_clarao.modulate.a = forca
+	_clarao.modulate.a = Efeitos.forca_do_flash(Ajustes.FORCA_DO_CLARAO)
 	create_tween().tween_property(_clarao, "modulate:a", 0.0, 0.8)
 
 

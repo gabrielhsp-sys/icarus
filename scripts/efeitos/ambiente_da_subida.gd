@@ -27,6 +27,7 @@ func atualizar(altura: float) -> void:
 	if Ajustes.PALETA_POR_CENARIO:
 		environment.fog_light_color = misturar(Ajustes.COR_DA_NEVOA, trecho)
 		environment.adjustment_saturation = misturar_numero(Ajustes.SATURACAO, trecho)
+		environment.adjustment_contrast = misturar_numero(Ajustes.CONTRASTE, trecho)
 	if sol != null:
 		sol.light_color = misturar(Ajustes.COR_DA_LUZ, trecho) if Ajustes.PALETA_POR_CENARIO else Color.WHITE
 		sol.light_energy = lerpf(Ajustes.ENERGIA_DA_LUZ_NO_CHAO, Ajustes.ENERGIA_DA_LUZ_NO_CEU, fator) \

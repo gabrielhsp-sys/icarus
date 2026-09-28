@@ -139,9 +139,14 @@ func _amassar_e_esticar(impulso: float) -> void:
 	var amassado := Ajustes.AMASSAR_NO_POUSO
 	var esticado := 1.0 + (Ajustes.ESTICAR_NO_SALTO - 1.0) * impulso
 	_mola = create_tween()
-	_mola.tween_property(_visual, "scale", Vector3(1.0 / sqrt(amassado), amassado, 1.0 / sqrt(amassado)), 0.05)
-	_mola.tween_property(_visual, "scale", Vector3(1.0 / sqrt(esticado), esticado, 1.0 / sqrt(esticado)), 0.1)
+	_mola.tween_property(_visual, "scale", _escala_com_volume(amassado), 0.05)
+	_mola.tween_property(_visual, "scale", _escala_com_volume(esticado), 0.1)
 	_mola.tween_property(_visual, "scale", Vector3.ONE, 0.3).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+
+## Estica ou amassa na vertical e compensa nos lados, para o volume parecer o mesmo.
+func _escala_com_volume(vertical: float) -> Vector3:
+	return Vector3(1.0 / sqrt(vertical), vertical, 1.0 / sqrt(vertical))
 
 
 ## Inclina e vira o corpo para o lado em que anda.

@@ -83,6 +83,7 @@ muda nenhuma regra do grupo. Cada camada tem um liga/desliga em `scripts/ajustes
 | bloom perto do céu | `BLOOM_PERTO_DO_CEU` | `scripts/efeitos/ambiente_da_subida.gd` |
 | vinheta | `VINHETA` | `scenes/efeitos/vinheta.tscn`, `assets/shaders/vinheta.gdshader` |
 | partículas ao fundo | `PARTICULAS_AMBIENTE` | nó `Camera/ParticulasAmbiente` de `scenes/jogo/jogo.tscn` |
+| inimigo genérico balançando | `ANIMACAO_DO_INIMIGO` | `scripts/inimigos/inimigo.gd` |
 | squash & stretch de Ícaro | `SQUASH_E_STRETCH` | `scripts/icaro/icaro.gd` |
 | inclinação e virada de Ícaro | `INCLINACAO_E_VIRADA` | `scripts/icaro/icaro.gd` |
 | rastro no poder de velocidade | `RASTRO_NA_VELOCIDADE` | nó `Rastro` de `scenes/icaro/icaro.tscn` |
@@ -109,16 +110,23 @@ muda nenhuma regra do grupo. Cada camada tem um liga/desliga em `scripts/ajustes
 | score em contagem animada | `CONTAGEM_DO_SCORE` | `scripts/hud/hud.gd` |
 | créditos rolando | `CREDITOS_ROLANDO` | `scripts/telas/creditos.gd` |
 | botões que respondem ao mouse | `BOTOES_VIVOS` | `scripts/interface/botao_vivo.gd` |
-| câmera lenta e clarão na cutscene | `CAMERA_LENTA_NA_CUTSCENE` (1 = sem câmera lenta), `CLARAO_DO_SOL` | `scripts/cutscene/cutscene_final.gd` |
+| título e Ícaro animados na tela inicial | `TELA_INICIAL_ANIMADA` | `scripts/telas/tela_inicial.gd` |
+| música de fundo | `MUSICA` | `scripts/autoload/sons.gd` |
+| câmera lenta, clarão, sol crescendo e câmera que acompanha a queda na cutscene | `CAMERA_LENTA_NA_CUTSCENE` (1 = sem câmera lenta), `CLARAO_DO_SOL`, `SOL_CRESCE_NA_CUTSCENE`, `CAMERA_ACOMPANHA_A_QUEDA` | `scripts/cutscene/cutscene_final.gd` |
 
-Os `.glb` que a equipe 3D mandar também ganham o toon e o contorno sozinhos: o estilo lê a cor
-do material de cada peça.
+Os `.glb` que a equipe 3D mandar também ganham o toon e o contorno sozinhos: o estilo lê a cor e a
+textura do material de cada peça. Malha com `material_override` fica com o material dela.
+
+A antecipação e o tremor da câmera só deslocam a imagem: a altura da câmera que decide a queda e
+gera as plataformas é a mesma com ou sem esses efeitos. Na cutscene, a câmera lenta faz a queda
+durar `DURACAO_DA_CUTSCENE_FINAL / CAMERA_LENTA_NA_CUTSCENE` segundos reais, mais a frase final.
 
 ## Textos, fonte e tema
 
-- **Textos:** todas as frases do jogo estão em **`scripts/textos.gd`** (tela inicial, entrada de
-  cada cenário, perto do sol, frase final, texto da tela preta). Edite ali; para tirar as frases,
-  `FRASES = false` em `ajustes.gd`.
+- **Textos:** todas as frases e rótulos do jogo estão em **`scripts/textos.gd`** (tela inicial,
+  entrada de cada cenário, perto do sol, frase final, HUD, créditos, texto da tela preta). Edite
+  ali. `FRASES = false` tira as frases do mito; o texto da tela preta tem o próprio liga/desliga,
+  `TEXTO_NA_TELA_PRETA`.
 - **Fonte:** Lilita One, de Juan Montoreano, licença SIL Open Font License 1.1
   (`assets/fonts/LilitaOne-Regular.ttf` e `assets/fonts/OFL.txt`). Veio do repositório
   `google/fonts` (pasta `ofl/lilitaone`, commit `b9f4a43`). Está nos créditos.

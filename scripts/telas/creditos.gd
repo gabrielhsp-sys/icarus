@@ -11,8 +11,8 @@ extends Control
 
 
 func _ready() -> void:
-	_score.text = "Seu score: %d" % Partida.placar.score()
-	_recorde.text = Textos.NOVO_RECORDE if Partida.ultima_foi_recorde else "Recorde: %d" % Partida.recorde.melhor_score
+	_score.text = Textos.SEU_SCORE % Partida.placar.score()
+	_recorde.text = Textos.NOVO_RECORDE if Partida.ultima_foi_recorde else Textos.RECORDE_NOS_CREDITOS % Partida.recorde.melhor_score
 	_recorde.visible = Ajustes.RECORDE
 	_voltar.text = Textos.VOLTAR_AO_INICIO
 	_voltar.pressed.connect(func() -> void: Telas.trocar_para(Telas.TELA_INICIAL))

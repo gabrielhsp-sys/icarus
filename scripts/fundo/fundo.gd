@@ -18,7 +18,7 @@ func _ready() -> void:
 	for i in IMAGENS.size():
 		var camada := ColorRect.new()
 		camada.name = "Cenario%d" % (i + 1)
-		camada.color = Ajustes.FUNDO_EM_CIMA[i]
+		camada.color = Ajustes.FUNDO_EM_CIMA[i] if Ajustes.PALETA_POR_CENARIO else Ajustes.CORES_SEM_PALETA[i]
 		camada.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		camada.set_anchors_preset(Control.PRESET_FULL_RECT)
 		camada.modulate.a = 0.0

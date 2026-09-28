@@ -11,6 +11,6 @@ func _ready() -> void:
 
 
 func _piscar_vermelho() -> void:
-	var forca := Ajustes.FATOR_DOS_FLASHES_REDUZIDOS if Ajustes.REDUZIR_FLASHES else 0.85
+	var forca := Efeitos.forca_do_flash(Ajustes.FORCA_DO_FLASH_DE_DANO)
 	var flash := create_tween()
 	flash.tween_method(func(v: float) -> void: _material.set_shader_parameter("dano", v), forca, 0.0, 0.45)
