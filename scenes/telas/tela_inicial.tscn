@@ -1,0 +1,49 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/telas/tela_inicial.gd" id="1_script"]
+
+[node name="TelaInicial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Fundo" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3, 0.55, 0.95, 1)
+
+[node name="Centro" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Linhas" type="VBoxContainer" parent="Centro"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Titulo" type="Label" parent="Centro/Linhas"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.1, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 160
+text = "Icarus"
+horizontal_alignment = 1
+
+[node name="Jogar" type="Button" parent="Centro/Linhas"]
+custom_minimum_size = Vector2(360, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 56
+text = "Jogar"

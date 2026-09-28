@@ -1,0 +1,36 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/itens/item_de_poder.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="forma"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="cor"]
+shading_mode = 0
+billboard_mode = 1
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="QuadMesh" id="malha"]
+material = SubResource("cor")
+size = Vector2(0.9, 0.9)
+
+[node name="ItemDePoder" type="Area3D"]
+collision_layer = 16
+collision_mask = 1
+monitorable = false
+script = ExtResource("1_script")
+
+[node name="Colisao" type="CollisionShape3D" parent="."]
+shape = SubResource("forma")
+
+[node name="Visual" type="MeshInstance3D" parent="."]
+mesh = SubResource("malha")
+
+[node name="Letra" type="Label3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
+billboard = 1
+no_depth_test = true
+modulate = Color(0.1, 0.1, 0.1, 1)
+font_size = 64
+outline_size = 0
+text = "V"

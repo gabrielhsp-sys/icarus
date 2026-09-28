@@ -35,34 +35,68 @@ Atualizado em: 2026-09-27
 
 ## Projeto — TÉCNICO
 
-- `project.godot`: nome "Icarus", cena principal `res://scenes/main.tscn`,
-  `config/features=PackedStringArray("4.7")`; projeto e cena já salvos pelo Godot 4.7.2, então o
-  primeiro salvamento de um integrante não gera diff nesses dois arquivos
-- `scenes/main.tscn`: nó raiz `Node` (nem 2D nem 3D), com `scripts/main.gd`, que fecha o jogo com ESC;
-  `scripts/main.gd.uid` gerado pelo Godot e versionado
-- pastas `scenes/`, `scripts/`, `assets/models/`, `assets/textures/`, `assets/audio/`
+- **protótipo jogável** com arte provisória: tela inicial → partida → cutscene final → créditos →
+  tela inicial; mapa das cenas, números de ajuste e como trocar cada peça em
+  [`ARQUITETURA.md`](ARQUITETURA.md)
+- `project.godot`: cena principal `res://scenes/telas/tela_inicial.tscn`; janela 1920×1080 (G-022),
+  escala `canvas_items`, proporção mantida; autoloads `Partida`, `Sons` e `Telas`; ações
+  `mover_esquerda` (A), `mover_direita` (D) e `atirar` (botão esquerdo **e** direito do mouse);
+  nomes das camadas de física
+- mundo 3D travado no plano do jogo (z = 0), câmera em perspectiva que só sobe (G-014)
+- uma cena por elemento; cada elemento 3D tem um nó `Visual` com a forma provisória
+- todos os números de ajuste da jogabilidade em `scripts/ajustes.gd` — valores iniciais, para
+  testar e mudar; as animações provisórias têm os números no próprio script
+- regras sem cena em `scripts/logica/`, com testes em `scripts/testes/`
+- Ícaro usa um modelo provisório low poly feito por script no Blender:
+  `assets/models/_provisorio/icaro_provisorio.glb` (1,62 m, origem nos pés, Git LFS)
+- sons: 6 nomes prontos para arquivos em `assets/audio/`; nenhum som ainda (o jogo fica em silêncio)
+- fundos: 5 nomes prontos para PNG em `assets/textures/`; nenhum PNG ainda (cores provisórias)
 - `.gitignore` do Godot 4 (`.godot/`, `/android/`, saídas de exportação: `/build/`, `/export/`,
   `*.pck`, `*.exe`, `*.x86_64`, `*.apk`, `*.aab`, `*.dmg`, `/*.zip`), backups do Blender,
   `renders/`, `tmp/`, `*.log`, editores e `.env`
 - Git LFS para `*.blend`, `*.glb`, `*.png`, `*.jpg`, `*.jpeg`, `*.wav`, `*.ogg`, `*.mp3`, `*.ttf`,
-  `*.otf` e `*.fbx`, verificado com `git check-attr`;
-  nenhum binário versionado ainda
-- nenhuma mecânica de jogo implementada
+  `*.otf` e `*.fbx`, verificado com `git check-attr`
+
+### Padrões provisórios da Programação
+
+O grupo não decidiu estes pontos. Estão implementados para o protótipo funcionar e podem mudar:
+
+- inimigo genérico: um tipo só, andando de um lado para o outro (tipo, quantidade e movimento são
+  a pendência da equipe de Modelos 3D)
+- atirar com o botão esquerdo e com o direito do mouse; segurar o botão atira de novo a cada
+  intervalo; a flecha vai na direção do cursor
+- plataformas atravessáveis por baixo; Ícaro não passa das bordas laterais
+- um poder por vez: pegar outro item substitui o poder ativo
+- cada inimigo causa um contato por encontro (ao começar a encostar), não um por quadro
+- o score nunca fica abaixo de zero
+- os 5 cenários dividem a subida em trechos iguais
+- o som `asas` toca quando Ícaro começa a andar para o lado e no início da cutscene final
+- os créditos listam a divisão de tarefas (G-013); "Voltar ao início" volta à tela inicial
+- ESC fecha o jogo em qualquer tela
+- nomes dos arquivos de fundo (`fundo_1_terra_creta.png` …) e de som (`pulo.ogg` …)
+- todos os números de `scripts/ajustes.gd`
 
 ## Validação — TÉCNICO (verificado)
 
-Em 2026-09-25, com Godot 4.7.2 (Flathub), sem janela:
+Em 2026-09-27, com Godot 4.7.2 (Flathub), sem janela:
 
-- `godot --headless --path . --import`: código 0; gerou `scripts/main.gd.uid`
-- `godot --headless --path . --quit`: código 0, sem erros nem avisos na saída
-- `godot --headless --path . --check-only --script res://scripts/main.gd`: código 0
-- `.godot/` criado pelo editor e ignorado pelo Git (`git check-ignore`)
+- `--headless --path . --import` e `--headless --path . --quit`: código 0, sem ERROR/WARNING
+- `--script res://scripts/testes/rodar_testes.gd`: 18 testes de regra, 0 falhas, código 0
+- `--script res://scripts/testes/fumaca_fluxo.gd`: 24 etapas, 0 falhas, código 0, em 3 execuções
+  seguidas
+- jogo, cutscene e tela inicial rodados com janela por alguns segundos: código 0, sem ERROR/WARNING
+- cada cena rodada com `--quit-after 600`: código 0, sem ERROR/WARNING
+- o `.glb` provisório importado sem erro; medido no Godot: 1,62 m de altura, pés em y = 0
+
+Só dá para conferir jogando: a sensação do salto e do movimento, a dificuldade, o visual (cores,
+câmera, fundo atrás do 3D) e a leitura do HUD. Um caso conhecido para testar jogando: se Ícaro leva
+dano logo acima de uma plataforma, o empurrão para baixo o põe nela e o salto automático o joga
+para cima de novo.
 
 ## Próximos passos
 
-- equipe de Modelos 3D: decidir os inimigos (a única [pendência](GROUP-DECISIONS.md#pendente))
-- Programação, ao começar: configurar a janela 1920×1080 (G-022) no `project.godot`, que ainda não
-  a define
-
-Ainda não definido: a cena principal tem nó raiz `Node`, que não é 2D nem 3D. O tipo do nó raiz
-ainda não foi definido.
+- equipe de Modelos 3D: decidir os inimigos (a única [pendência](GROUP-DECISIONS.md#pendente)) e
+  trocar as formas provisórias pelos `.glb`
+- equipe de Visual 2D: os 5 fundos, as telas e os itens de poder
+- Sons: os 6 arquivos de som
+- Programação: ajustar os números jogando

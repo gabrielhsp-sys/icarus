@@ -1,0 +1,40 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/jogo/jogo.gd" id="1_jogo"]
+[ext_resource type="Script" path="res://scripts/jogo/camera_da_subida.gd" id="2_camera"]
+[ext_resource type="Script" path="res://scripts/jogo/gerador_de_plataformas.gd" id="3_gerador"]
+[ext_resource type="PackedScene" path="res://scenes/fundo/fundo.tscn" id="4_fundo"]
+[ext_resource type="PackedScene" path="res://scenes/icaro/icaro.tscn" id="5_icaro"]
+[ext_resource type="PackedScene" path="res://scenes/hud/hud.tscn" id="6_hud"]
+
+[sub_resource type="Environment" id="ambiente"]
+background_mode = 3
+background_canvas_max_layer = -1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
+
+[node name="Jogo" type="Node3D"]
+script = ExtResource("1_jogo")
+
+[node name="Ambiente" type="WorldEnvironment" parent="."]
+environment = SubResource("ambiente")
+
+[node name="Sol" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 10, 0)
+light_energy = 1.2
+
+[node name="Fundo" parent="." instance=ExtResource("4_fundo")]
+
+[node name="Plataformas" type="Node3D" parent="."]
+script = ExtResource("3_gerador")
+
+[node name="Icaro" parent="." instance=ExtResource("5_icaro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("alvo")]
+current = true
+script = ExtResource("2_camera")
+alvo = NodePath("../Icaro")
+
+[node name="Hud" parent="." instance=ExtResource("6_hud")]

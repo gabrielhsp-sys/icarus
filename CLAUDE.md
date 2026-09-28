@@ -13,6 +13,7 @@ pedir.
   quê: `README.md`, "Guia rápido"
 - registro de decisões: `docs/DECISIONS.md` (decisões novas entram no fim)
 - estado atual e mudanças: `docs/CURRENT_STATE.md`, `docs/CHANGELOG.md`
+- cenas, scripts, números de ajuste (`scripts/ajustes.gd`) e testes: `docs/ARQUITETURA.md`
 - como abrir, rodar e estrutura de pastas: `README.md`; passo a passo para integrantes:
   `docs/COMO-COMECAR.md`
 
@@ -49,6 +50,8 @@ godot --path . --editor           # abre o editor
 godot --path .                    # roda o jogo (ESC fecha)
 godot --headless --path . --import # importa recursos; gera .uid/.import para commitar
 godot --headless --path . --quit  # validação sem janela; exige código 0
+godot --headless --path . --script res://scripts/testes/rodar_testes.gd  # regras; exige código 0
+godot --headless --path . --script res://scripts/testes/fumaca_fluxo.gd  # fluxo inteiro; exige código 0
 ```
 
 Com Godot via Flathub: `flatpak run org.godotengine.Godot` no lugar de `godot`.
